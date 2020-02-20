@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>18F4550 - acquisition analogique</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="18F4550 - acquisition analogique" />
+    <meta property="og:description" content="Dans ce projet, nous allons introduire la notion d’acquisition numérique. Je vous propose, dans un premier temps de lire la documentation (21.0 Analog-To-Digital Converter, p.259). Le principe du programme que nous allons créer, est d’afficher sur le port D, la tension appliquée sur le port A0" />
+    <meta property="og:url" content="https://www.noopy.fr/18f4550-acquisition-analogique/" />
+    <meta property="article:published_time" content="2013-04-24T12:04:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-12T12:11:00.000Z" />
+    <meta property="article:tag" content="Microchip" />
+    <meta property="article:tag" content="Microcontrollers" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="18F4550 - acquisition analogique" />
+    <meta name="twitter:description" content="Dans ce projet, nous allons introduire la notion d’acquisition numérique. Je vous propose, dans un premier temps de lire la documentation (21.0 Analog-To-Digital Converter, p.259). Le principe du programme que nous allons créer, est d’afficher sur le port D, la tension appliquée sur le port A0" />
+    <meta name="twitter:url" content="https://www.noopy.fr/18f4550-acquisition-analogique/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Microchip, Microcontrollers" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "18F4550 - acquisition analogique",
+    "url": "https://www.noopy.fr/18f4550-acquisition-analogique/",
+    "datePublished": "2013-04-24T12:04:00.000Z",
+    "dateModified": "2017-03-12T12:11:00.000Z",
+    "keywords": "Microchip, Microcontrollers",
+    "description": "Dans ce projet, nous allons introduire la notion d’acquisition numérique. Je vous propose, dans un premier temps de lire la documentation (21.0 Analog-To-Digital Converter, p.259). Le principe du programme que nous allons créer, est d’afficher sur le port D, la tension appliquée sur le port A0",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-microchip tag-microcontrollers">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-microchip tag-microcontrollers">
+
+        <header class="post-header">
+            <h1 class="post-title">18F4550 - acquisition analogique</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2013-04-24">24 April 2013</time>  on <a href="../tag/microchip/index.html">Microchip</a>, <a href="../tag/microcontrollers/index.html">Microcontrollers</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Dans ce projet, nous allons introduire la notion d’acquisition numérique. Je vous propose, dans un premier temps de lire la documentation (21.0 Analog-To-Digital Converter, p.259).</p>
+
+<p>Le principe du programme que nous allons créer, est d’afficher sur le port D, la tension appliquée sur le port A0 (pin2).</p>
+
+<h2 id="lessources">Les sources</h2>
+
+<p>Créez un nouveau projet et insérez deux fichiers:</p>
+
+<ul>
+<li><code>config.h</code></li>
+<li><code>main.c</code></li>
+</ul>
+
+<h3 id="configh">config.h</h3>
+
+<pre><code>#ifndef CONFIG_H_INCLUDED
+#define CONFIG_H_INCLUDED
+
+#include &lt;pic18f4550.h&gt;
+
+// Set the __CONFIG words:
+__code      __at (__CONFIG1L) _conf0   = _PLLDIV_DIVIDE_BY_5__20MHZ_INPUT__1L  &amp; _CPUDIV__OSC1_OSC2_SRC___1__96MHZ_PLL_SRC___2__1L &amp; _USBPLL_CLOCK_SRC_FROM_96MHZ_PLL_2_1L;  
+__code      __at (__CONFIG1L) _conf1   = _OSC_HS__HS_PLL__USB_HS_1H;  
+__code      __at (__CONFIG1L) _conf2   = _VREGEN_ON_2L;  
+__code      __at (__CONFIG1L) _conf3   = _WDT_DISABLED_CONTROLLED_2H;  
+__code      __at (__CONFIG1L) _conf4   = _PBADEN_PORTB_4_0__CONFIGURED_AS_DIGITAL_I_O_ON_RESET_3H;  
+__code      __at (__CONFIG1L) _conf5   = _ENHCPU_OFF_4L &amp; _LVP_OFF_4L ;  
+__code      __at (__CONFIG1L) _conf6   = _CP_0_OFF_5L ;  
+//code     char at __CONFIG5H _conf7   =
+//code     char at __CONFIG6L _conf8   =
+//code     char at __CONFIG6H _conf9   =
+//code     char at __CONFIG7L _conf10  =
+//code     char at __CONFIG7H _conf11  =
+
+#endif // CONFIG_H_INCLUDED
+</code></pre>
+
+<h3 id="mainc">main.c</h3>
+
+<pre><code>/* Directive for ADC library */
+#define __SDCC_PIC18F4550
+
+#include &lt;pic18f4550.h&gt;
+#include &lt;adc.h&gt;
+#include "config.h"
+
+/*
+
+Designed for a 20MHz cristal  
+Prog clock = 48MHz
+
+*/
+
+int getAnalogData(unsigned char channel) {  
+    int result;
+    /* Configure ADC module */
+    adc_open(
+        channel,                           /* channel : Reg ADCON0*/
+        ADC_ACQT_0  | ADC_FOSC_64,         /* Manually launched,  FOSC/64  for 48MHz (table 21_1) : Reg ADCON2*/
+        ADC_CFG_3A,                        /* 3 AN inputs : Reg ADCON1*/
+        ADC_VCFG_VDD_VSS | ADC_FRM_RJUST   /* voltage ref = VSS and VDD, Right justified */
+    );
+    adc_conv ();            /* Launch conversion */
+    while (adc_busy ());    /* Wait for the end of the conversion */
+    result = adc_read ();    /* Get the result */
+    /* stop the module */
+    adc_close ();
+    return result;
+}
+
+void main() {  
+    // set port D as output
+    TRISD=0;
+    // Main loop
+    while(1) {
+        LATD = getAnalogData(0);
+    }
+}
+</code></pre>
+
+<h2 id="explicationduprogramme">Explication du programme</h2>
+
+<p>On commence par définir la constante <code>__SDCC_PIC18F4550</code> afin que lors de l’inclusion de <code>adc.h</code> les constantes adaptées à notre microcontrolleur soient correctement initialisées.</p>
+
+<p>On définit, ensuite, une fonction qui lira un canal. On entend par canal, un numéro de port. Par exemple, le canal 0 correspont au port A0, soit la broche 2 du composant. Dans cette fonction, on fait un appel à <code>adc_open()</code>. Cela permet de configurer le canal sur lequel nous allons effectuer l’acquisition. Ce canal devient le canal par défaut. Vient, ensuite, <code>adc_conv()</code> qui lance la conversion sur le canal par défaut (celui sélectionné avec <code>adc_open()</code>). La conversion n’est pas instantanée et n’est pas terminée lorsque la main est rendu (= lorsque l’on sort de la function <code>adc_conv()</code>). C’est pour ça que l’on trouve la ligne:</p>
+
+<pre><code>while (adc_busy ());    /* Wait for the end of the conversion */  
+</code></pre>
+
+<p>Cette ligne sert à attendre que la conversion soit terminée. Une fois la conversion faite, nous pouvons lire le résultat avec la fonction <code>adc_read()</code></p>
+
+<p>N’oubliez pas de faire un appel à <code>adc_close()</code> pour restaurer l’état du microcontrolleur.</p>
+
+<h2 id="tlchargement">Téléchargement</h2>
+
+<p>Les sources sont disponibles ici : <a href="https://www.noopy.fr/content/misc/2017/03/analogic.tar.gz">analogic.tar.gz</a></p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=18F4550%20-%20acquisition%20analogique&amp;url=https://www.noopy.fr/18f4550-acquisition-analogique/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/18f4550-acquisition-analogique/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/18f4550-acquisition-analogique/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/conception-electronique/">
+        <section class="post">
+            <h2>Conception électronique</h2>
+            <p>Nous allons voir comment faire de la conception électronique sous Linux. Ce que j’entends par conception électronique, c’&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/le-savon/">
+        <section class="post">
+            <h2>Le savon</h2>
+            <p>Hein!? Nous allons nous intéresser à la fabrication du savon. Nom de dieu ! On va enfin pouvoir laver la&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

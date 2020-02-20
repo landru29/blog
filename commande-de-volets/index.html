@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Commande de volets</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Commande de volets" />
+    <meta property="og:description" content="Dans ce tutoriel, nous allons voir comment faire de la domotique avec le fameux Raspberry Pi. En gros, comment piloter ses volets roulants, lumières, … C’est parce que les infos que j’ai trouvées sur le net étaient incomplètes que j’ai décidé d’écrire ce tutoriel. Vous trouverez sûrement" />
+    <meta property="og:url" content="https://www.noopy.fr/commande-de-volets/" />
+    <meta property="article:published_time" content="2013-09-29T09:20:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-12T11:57:41.000Z" />
+    <meta property="article:tag" content="Raspberry Pi" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Commande de volets" />
+    <meta name="twitter:description" content="Dans ce tutoriel, nous allons voir comment faire de la domotique avec le fameux Raspberry Pi. En gros, comment piloter ses volets roulants, lumières, … C’est parce que les infos que j’ai trouvées sur le net étaient incomplètes que j’ai décidé d’écrire ce tutoriel. Vous trouverez sûrement" />
+    <meta name="twitter:url" content="https://www.noopy.fr/commande-de-volets/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Raspberry Pi" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "Commande de volets",
+    "url": "https://www.noopy.fr/commande-de-volets/",
+    "datePublished": "2013-09-29T09:20:00.000Z",
+    "dateModified": "2017-03-12T11:57:41.000Z",
+    "keywords": "Raspberry Pi",
+    "description": "Dans ce tutoriel, nous allons voir comment faire de la domotique avec le fameux Raspberry Pi. En gros, comment piloter ses volets roulants, lumières, … C’est parce que les infos que j’ai trouvées sur le net étaient incomplètes que j’ai décidé d’écrire ce tutoriel. Vous trouverez sûrement",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-raspberry-pi">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-raspberry-pi">
+
+        <header class="post-header">
+            <h1 class="post-title">Commande de volets</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2013-09-29">29 September 2013</time>  on <a href="../tag/raspberry-pi/index.html">Raspberry Pi</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Dans ce tutoriel, nous allons voir comment faire de la domotique avec le fameux Raspberry Pi. En gros, comment piloter ses volets roulants, lumières, …</p>
+
+<p>C’est parce que les infos que j’ai trouvées sur le net étaient incomplètes que j’ai décidé d’écrire ce tutoriel. Vous trouverez sûrement des choses sur le sujet, mais avec de l’équipement pas commun. Je vous détaillerai la manière avec laquelle, j’ai mis en place mon système.</p>
+
+<p>Je vous propose d’aller faire un tours sur cet article : <a href="http://hackspark.fr/fr/blog/2012/12/connecter-des-dispositifs-sans-fil-a-votre-arduino-ou-raspberry-pi-partie-1-reception-en-433mhz/">http://hackspark.fr/fr/blog/2012/12/connecter-des-dispositifs-sans-fil-a-votre-arduino-ou-raspberry-pi-partie-1-reception-en-433mhz/</a></p>
+
+<p>Note: sur un autre article, je propose cette implémentation sur arduino: Le protocole HomeEasy sur Arduino (<a href="../arduino/le-protocole-homeeasy/index.html">http://www.noopy.fr/arduino/le-protocole-homeeasy/</a>)</p>
+
+<h2 id="lematriel">Le matériel</h2>
+
+<p>Pour ce qui est du matériel, il vous faut d’abord vous équiper d’interrupteurs commandés à distance. J’avais le choix entre la solution Casto et la solution LeroyM. Casto propose la marque Blyss. Ce qu’il faut savoir, c’est que Blyss est la marque Casto. C’est un produit développé par le magasin. Par principe, j’ai écarté cette solution, car il y a un risque qu’aucune norme ne soit respectée. Il me restait donc la solution LeroyM. C’est la marque Chacon (<a href="http://www.chacon.be/">http://www.chacon.be/</a>). N’oubliez pas d’acheter la télécommande qui va avec !</p>
+
+<p><img src="../content/images/2017/03/chacon.jpg" alt="" />
+<img src="../content/images/2017/03/telecommande.jpg" alt="" /></p>
+
+<p>Vous aurez ensuite besoin d’un Raspberry Pi ansi que d’un ensemble émetteur/récepteur 433MHz. Vous pouvez trouver le tout sur <a href="http://hackspark.fr/">http://hackspark.fr/</a> :</p>
+
+<ul>
+<li>Le Raspberry Pi</li>
+<li>Le kit 433MHz</li>
+</ul>
+
+<p><img src="../content/images/2017/03/rf.jpg" alt="" />
+<img src="../content/images/2017/03/pi1.jpg" alt="" /></p>
+
+<h3 id="lesentressortiesdurpi">Les entrées-sorties du RPI</h3>
+
+<p>Afin de pouvoir utiliser les entrées et sorties du Raspberry Pi (connecteur à 26 broches) encore appelé GPIO, nous devons installer WiringPi. Vous trouverez les instructions ici : <a href="https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/">https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/</a></p>
+
+<pre><code>sudo apt-get install git-core  
+mkdir ~/src  
+cd ~/src  
+git clone git://git.drogon.net/wiringPi  
+cd wiringPi  
+sudo ./build  
+</code></pre>
+
+<h2 id="premiretapedcodagedusignal">Première étape décodage du signal</h2>
+
+<h3 id="testprliminaire">Test préliminaire</h3>
+
+<p>Dans un premier temps, il va falloir comprendre comment fonctionnent les modules Chacon. Et encore avant, comment fonctionne ce petit récepteur 433MHz qui coûte moins de 5€.</p>
+
+<p>Commencez par câbler le module de réception en plaçant à la sortie une led en série avec une résistance 1K. Vous mettrez</p>
+
+<ul>
+<li>au <strong>5V</strong> la broche <strong>VCC</strong></li>
+<li>au <strong>0V</strong> la broche <strong>GND</strong> </li>
+<li>une des deux sortie <strong>DATA</strong> vers la <strong>led</strong></li>
+</ul>
+
+<p><img src="../content/images/2017/03/montage1.jpg" alt="" /></p>
+
+<p>Vous constatez que la led s’allume et vacille. En gros, c’est le bordel sur les ondes ! Par contre, si vous actionnez votre télécommande, la led se synchronise sue le clignotement du voyant de celle-ci. Cool ! le récepteur fonctionne. Par contre, il va falloir faire le tri des patates entre le bruit ambiant et le signal reçu de la télécommande.</p>
+
+<h3 id="cblageavecleraspberry">Câblage avec le Raspberry</h3>
+
+<p>Utilisez le 5V et le GND du Raspberry pour alimenter le module, et reliez la data sur le GPIO2 (broche 13). Pour la librairie WiringPi, c’est l’entrée 0 (voir la correspondance ici)</p>
+
+<p><img src="../content/images/2017/03/listen.png" alt="" /></p>
+
+<h3 id="programmededcodage">Programme de décodage</h3>
+
+<p>Commencez par récupérer les sources:</p>
+
+<pre><code>cd ~/src  
+git clone https://github.com/landru29/chacon-rpi.git  
+</code></pre>
+
+<p>Et on compile</p>
+
+<pre><code>cd ~/src/chacon-rpi/  
+make  
+</code></pre>
+
+<p>Lancez avec l’option -h</p>
+
+<pre><code>./listen -h
+</code></pre>
+
+<p>Vous avez la liste des options dispo. Lancez avec la commande suivante et vous avez environ 8 seconde pour actionner une touche de votre télécommande (lancer d’abord le programme, puis appuyez sur votre télécommande)</p>
+
+<pre><code>cd ~/src/chacon-rpi  
+sudo ./listen  
+</code></pre>
+
+<p>Vous remarquerez qu’il faut être root pour lancer le programme. C’est dû au fait que les entrées et sorties du RPI sont protégées. Vous devriez avoir le rapport suivant:</p>
+
+<pre><code>Reading data  
+4s 219ms 4µs  
+Analyzing  
+DataStart at 7752
+
+01: 59 95 59 96 55 56 95 A5 EB 32 AB 32 CA AA D2 B4 Nothing to decode with 16 byte(s)
+
+02: 59 95 59 96 55 56 95 A5  
+Decoded command: 2829018C  
+ID found: 00A0A406  
+Button D1 - OFF pressed  
+03: 59 95 59 96 55 56 95 A5  
+Decoded command: 2829018C  
+ID found: 00A0A406  
+Button D1 - OFF pressed  
+04: 59 95 59 96 55 56 95 A5  
+Decoded command: 2829018C  
+ID found: 00A0A406  
+Button D1 - OFF pressed  
+05: 59 92 AC CB 2A AB 4A D2  
+Decoded command: 29EB7F39  
+ID found: 00A7ADFC  
+Button G0 - ON pressed  
+06: There might be an error from here  
+</code></pre>
+
+<p>Le programme de réception n’est pas au point, et il ne faut pas hésiter à insister pour obtenir un résultat. Il vous permettra de récupérer l’ID de votre télécommande; ici, c’est <em>A0A406</em></p>
+
+<h3 id="commentenestonarrivl">Comment en est-on arrivé là</h3>
+
+<p>Pour comprendre un minimum, lancez le programme avec quelques options puis actionnez la télécommande</p>
+
+<pre><code>cd ~/src/chacon-rpi  
+sudo ./listen -v -o resultat.txt  
+</code></pre>
+
+<p>Ouvrez résultat.txt Avancez dans le fichier pour trouver l’expression RawData. A partir de là, c’est l’ensemble des données reçues par le module RF. La seule mise en forme appliquée est un retour à la ligne entre 00 et 11. En faisant défiler le fichier, on commence par voir des choses anarchiques (le temps que vous avez mis avant d’appuyer sur la télécommande) vous allez arriver à une grande ligne de 0 (111000000000000…). Dans mon cas c’est vers la ligne 5000. A ce moment, c’est le début de la trame de réception. Ensuite vous avec un enchainement de données bien moins anarchiques. Vous avez des lignes courtes (111000) et des lignes longues (111000000000000000). C’est pas ultra rigoureux car l’acquisition n’est pas rythmée par une horloge. Au bout de 64 ligne vous arrivez à une ligne plus longue. C’est la fin de la trame et le début de l’autre trame. Tant que vous appuyez sur le bouton de la télécommande, la trame est répétée. Vous remarquerez donc que la trame suivante est rigoureusement identique.</p>
+
+<p>Bref, les lignes courtes correspondent au bit 0 et les lignes longues au bit 1</p>
+
+<h3 id="leprotocolebitbit">Le protocole bit à bit</h3>
+
+<p>Déduction de nos données <br />
+En faisant des essais avec les différents boutons de la télécommande, voilà ce qu’on peut en déduire:</p>
+
+<table>  
+<tbody>  
+<tr>  
+<td>0...51</td>  
+<td>: identifiant de la commande (il faudra reprendre celui de votre télécommande (car vous avez programmé votre module de commande de lumière avec)</td>  
+</tr>  
+<tr>  
+<td>52, 53</td>  
+<td>: 01→mode normal, 10→global (touche G)</td>  
+</tr>  
+<tr>  
+<td>54, 55</td>  
+<td>: 01→ON, 10→OFF</td>  
+</tr>  
+<tr>  
+<td>56...59</td>  
+<td>: 0101→A, 0110→B, 1001→C, 1010→D</td>  
+</tr>  
+<tr>  
+<td>60...63</td>  
+<td>: 0101→1, 0110→2, 1001→3, 1010→4</td>  
+</tr>  
+</tbody>  
+</table>
+
+<p>C’est un peu bizarre… En vous renseignant sur le net, vous trouverez, qu’en fait, Chacon suit le protocole HomeEasy. Ce protocole dit que chaque trame fait 32 bits (moitié moins que ce qu’on a trouvé). L’explication, c’est l’encodage des bits. En fait, le bit 0 est encodé avec la pair de bit 01 et le bit 1 est encodé avec la paire de bits 10.</p>
+
+<p>Si l’on convertit ce que l’on a trouvé en binaire, ça nous donne :</p>
+
+<p>0101 1001 1001 0101 0101 1001 1001 0110 0101 0101 0101 0110 1001 0110 1010 0101</p>
+
+<p>Décodons en transformant les 01 en 0 et les 10 en 1 :</p>
+
+<p>00 10 10 00 00 10 10 01 00 00 00 01 10 01 11 00 , en regroupant, c’est plus lisible: 0010 1000 0010 1001 0000 0001 1001 1100</p>
+
+<p>Le code Hex associé est : 28 29 01 9A</p>
+
+<h3 id="leprotocolehomeeasy">Le protocole HomeEasy</h3>
+
+<table>  
+<tbody>  
+<tr>  
+<td><span style="color: #000000;">0...25 :  
+</span></td>  
+<td><span style="color: #000000;">identifiant de la commande</span></td>  
+</tr>  
+<tr>  
+<td><span style="color: #000000;">26 :  
+</span></td>  
+<td><span style="color: #000000;">0→mode normal, 1→global (touche G)</span></td>  
+</tr>  
+<tr>  
+<td><span style="color: #000000;">27 :  
+</span></td>  
+<td><span style="color: #000000;">0→ON, 1→OFF</span></td>  
+</tr>  
+<tr>  
+<td><span style="color: #000000;">28,29 :  
+</span></td>  
+<td><span style="color: #000000;">00→A, 01→B, 10→C, 11→D</span></td>  
+</tr>  
+<tr>  
+<td><span style="color: #000000;">30...31 :  
+</span></td>  
+<td><span style="color: #000000;">00→1, 01→2, 10→3, 11→4</span></td>  
+</tr>  
+</tbody>  
+</table>
+
+<h3 id="lacouchedetransport">La couche de transport</h3>
+
+<p>Nous avons vu que le bit 0 est représenté par 111000 et le bit 1 par 111000000000000000. Sachant que le programme effectue une acquisition de 100000 données et connaissant le temps d’exécution on en déduit les temps des niveaux logiques. On confortera l’information avec le détail du protocole HomeEasy</p>
+
+<table>  
+<tbody>  
+<tr>  
+<td>Début d'émission:</td>  
+<td>1→275µs puis 0→9900µs</td>  
+</tr>  
+<tr>  
+<td>Début de trame:</td>  
+<td>1→275µs puis 0→2675µs</td>  
+</tr>  
+<tr>  
+<td>bit 0</td>  
+<td>1→275µs puis 0→275µs</td>  
+</tr>  
+<tr>  
+<td>bit 1</td>  
+<td>1→275µs puis 0→1300µs</td>  
+</tr>  
+<tr>  
+<td>Fin de trame</td>  
+<td>1→275µs puis 0→2675µs</td>  
+</tr>  
+</tbody>  
+</table>
+
+<h2 id="emissiondesdonnes">Emission des données</h2>
+
+<h3 id="cablage">Cablage</h3>
+
+<p>Cablez l’entrée de l’émetteur sur le GPIO0 (pin 11)</p>
+
+<p><img src="../content/images/2017/03/emit.png" alt="" /></p>
+
+<h3 id="programmedenvoi">Programme d’envoi</h3>
+
+<p>Une fois que vous avez bien noté l’identifiant de votre télécommande (par exemple A0A406), vous pouvez lancer une commande :</p>
+
+<pre><code>cd ~/src/chacon-rpi  
+sudo ./emit -d A0A406 -b A1  
+</code></pre>
+
+<p>Cette commande enverra un ordre  ON de la touche A-1 de votre télécommande. Pour envoyer un ordre OFF, passez en plus l’option -x :</p>
+
+<pre><code>cd ~/src/chacon-rpi  
+sudo ./emit -d A0A406 -b A1 -x  
+</code></pre>
+
+<p>Détail de l’algorithme: <br />
+1. Décaller l’identifiant de 6 bits vers la gauche et stocker dans Commande <br />
+2. Si OFF, faire un OU LOGIQUE entre Commande et 10h (=10000b) <br />
+3. Si touche G, faire un OU logique entre Commande et 20h (=100000b) <br />
+4. Lettre = lettre – (code ascii ‘A’) <br />
+5. Décaller lettre de 2 bits vers la gauche <br />
+6. Faire un OU logique entre Commande et lettre <br />
+7. Faire un OU LOGIQUE entre Commande et (chiffre – 1) <br />
+8. Encoder Commande (0→01 et 1→10) <br />
+9. Configurer le GPIO <br />
+10. Passer le CPU en mode “temps réel” <br />
+11. Emettre un Start Of Data (275μs haut, 9900μs bas) <br />
+12. Emettre un Start of Frame (275μs haut, 2675μs bas) <br />
+13. Emettre 5 fois [la trame suivit d’un End Of Data (275μs haut, 2675μs bas)] <br />
+14. Passer le CPU en mode “normal”</p>
+
+<h2 id="remarques">Remarques</h2>
+
+<p>Depuis le moment où j'ai écrit cet article, l'image rasbian du raspberry a changé, et cette méthode ne fonctionne plus. <br />
+Je vous conseille de vous référer à mon <a href="../arduino-et-le-protocole-homeeasy/index.html">second article</a> qui explique comment faire cette commande depuis un arduino (ce dernier étant branché à un raspberry par usb)</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Commande%20de%20volets&amp;url=https://www.noopy.fr/commande-de-volets/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/commande-de-volets/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/commande-de-volets/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/18f4550-spi/">
+        <section class="post">
+            <h2>18F4550 - SPI</h2>
+            <p>Une liaison SPI (pour Serial Peripheral Interface) est un bus de données série synchrone baptisé ainsi par Motorola, qui&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/cartographier-a-mort/">
+        <section class="post">
+            <h2>Cartographier à mort !</h2>
+            <p>Generic Mapping Tool Generic Mapping Tool est un outil permettant de générer des cartes. En entrée, on trouve le&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

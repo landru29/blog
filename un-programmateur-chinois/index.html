@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Un programmateur Chinois</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Un programmateur Chinois" />
+    <meta property="og:description" content="Je viens de faire l’acquisition d’un programmateur pour ATMEL sur le célèbre site https://fr.aliexpress.com/ Ce programmateur sert à programmer les puces Atmel (les mêmes utilisées sur les Arduinos). Pour programmer, on utilise le programme avrdude (http://www.nongnu.org/avrdude/). Vous pouvez l’installer depuis" />
+    <meta property="og:url" content="https://www.noopy.fr/un-programmateur-chinois/" />
+    <meta property="article:published_time" content="2017-02-26T10:26:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-12T10:59:31.000Z" />
+    <meta property="article:tag" content="Arduino" />
+    <meta property="article:tag" content="Atmel" />
+    <meta property="article:tag" content="Microcontrollers" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Un programmateur Chinois" />
+    <meta name="twitter:description" content="Je viens de faire l’acquisition d’un programmateur pour ATMEL sur le célèbre site https://fr.aliexpress.com/ Ce programmateur sert à programmer les puces Atmel (les mêmes utilisées sur les Arduinos). Pour programmer, on utilise le programme avrdude (http://www.nongnu.org/avrdude/). Vous pouvez l’installer depuis" />
+    <meta name="twitter:url" content="https://www.noopy.fr/un-programmateur-chinois/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Arduino, Atmel, Microcontrollers" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "Un programmateur Chinois",
+    "url": "https://www.noopy.fr/un-programmateur-chinois/",
+    "datePublished": "2017-02-26T10:26:00.000Z",
+    "dateModified": "2017-03-12T10:59:31.000Z",
+    "keywords": "Arduino, Atmel, Microcontrollers",
+    "description": "Je viens de faire l’acquisition d’un programmateur pour ATMEL sur le célèbre site https://fr.aliexpress.com/ Ce programmateur sert à programmer les puces Atmel (les mêmes utilisées sur les Arduinos). Pour programmer, on utilise le programme avrdude (http://www.nongnu.org/avrdude/). Vous pouvez l’installer depuis",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-arduino tag-atmel tag-microcontrollers">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-arduino tag-atmel tag-microcontrollers">
+
+        <header class="post-header">
+            <h1 class="post-title">Un programmateur Chinois</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-02-26">26 February 2017</time>  on <a href="../tag/arduino/index.html">Arduino</a>, <a href="../tag/atmel/index.html">Atmel</a>, <a href="../tag/microcontrollers/index.html">Microcontrollers</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Je viens de faire l’acquisition d’un programmateur pour ATMEL sur le célèbre site <a href="https://fr.aliexpress.com/">https://fr.aliexpress.com/</a></p>
+
+<p>Ce programmateur sert à programmer les puces Atmel (les mêmes utilisées sur les Arduinos). Pour programmer, on utilise le programme avrdude (<a href="http://www.nongnu.org/avrdude/">http://www.nongnu.org/avrdude/</a>). Vous pouvez l’installer depuis les dépôts Ubuntu</p>
+
+<p><img src="../content/images/2017/03/usbisp01.jpg" alt="" />
+<img src="../content/images/2017/03/usbisp02.jpg" alt="" /></p>
+
+<h2 id="premiresurprise">Première surprise</h2>
+
+<p>Au premier test, mauvaise surprise : le périphérique n’est pas vraiment reconnu. En listant les périphériques USB, je me retrouve avec la signature suivante 03eb:c8b4</p>
+
+<p>Et en fouillant sur internet … Ce n’est pas le bon firmware dessus (<a href="http://wiki.efihacks.com/index.php?title=USBasp_Experiences">http://wiki.efihacks.com/index.php?title=USBasp_Experiences</a>)</p>
+
+<h2 id="dcisiondeflasherlefirmware">Décision de flasher le firmware</h2>
+
+<p>Pour flasher le firmware du programmateur, il faut … un programmateur. C’est balo.</p>
+
+<p>Heureusement, il y a une solution avec l’Arduino Uno (<a href="https://www.arduino.cc/en/Tutorial/ArduinoISP">https://www.arduino.cc/en/Tutorial/ArduinoISP</a>). Bref, il faut suivre les explications et charger le programme sur l’arduino. Pour le câblage:</p>
+
+<ul>
+<li>pin 13 - SCK</li>
+<li>pin 12 - MISO</li>
+<li>pin 11 - MOSI</li>
+<li>pin 10 sur une des deux pin “UP” du programmateur chinois (il faut repérer celle qui est directement liée au microcontroller – sur ma photo, le trou près de la lettre “c”)</li>
+<li>5V - 5V</li>
+<li>GND - GND</li>
+<li>Un condensateur 10µF entre GND et la pin RESET de l’arduino</li>
+</ul>
+
+<p><img src="../content/images/2017/03/usbisp03.jpg" alt="" /></p>
+
+<p>Sur certains sites, on vous dit de relier entre elles les deux pins “UP” du programmateur chinois pour le flasher (une des pins est le RESET du microcontroller, l’autre, le 5V). Pour ma part, ce qui a fonctionné, c’est de relier la pin “up” (proche de la lettre “c” sur la photo) à la PIN 10 de l’arduino</p>
+
+<p>Pour ce qui est du microcontroller sur le programmateur, il m’a fallu regarder au microscope; dans mon cas c’est un ATMEGA88</p>
+
+<h2 id="codesourcedufirmware">Code source du firmware</h2>
+
+<p>Au préalable, il vous faut</p>
+
+<ol>
+<li>Installer les outils de compilation (avr-libc et gcc-avr)  </li>
+<li>Installer avrdude (soft pour flasher)  </li>
+<li>Installer GIT (<a href="https://doc.ubuntu-fr.org/git">https://doc.ubuntu-fr.org/git</a>)</li>
+</ol>
+
+<p>Il faut cloner le repo GIT <a href="https://github.com/landru29/USBasp">https://github.com/landru29/USBasp</a> (j’y ai apporté une modification expliquée sur <a href="https://www.sciencetronics.com/greenphotons/?p=938">https://www.sciencetronics.com/greenphotons/?p=938</a>)</p>
+
+<pre><code>sudo apt-get install git avrdude avr-libc gcc-avr  
+mkdir -p ~/atmel  
+cd ~/atmel  
+git clone https://github.com/landru29/USBasp  
+cd USBasp  
+</code></pre>
+
+<p>Le port change en fonction de votre système; vérifiez sur quel port USB est branché votre arduino</p>
+
+<p>Ensuite compilez depuis le dossier <code>USBasp/firmware</code> en tapant, en ligne de commande</p>
+
+<pre><code>cd ~/atmel/USBasp/firmware  
+TARGET=atmega88 ISP=avrisp PORT=/dev/ttyACM0 make main.hex  
+</code></pre>
+
+<p>Vous pouvez vous affranhcir de la compilation et utiliser les binaires pré-compilé dans le dossier <code>USBasp/bin/firmware</code></p>
+
+<h2 id="onflashe">On flashe</h2>
+
+<p>Tous est branché ? C’est parti ! Placez-vous dans le dossier <code>firmware</code>.</p>
+
+<p>Ensuite, il faut envoyer les commandes suivantes (depuis le dossier <code>USBasp/firmware</code>):</p>
+
+<pre><code>cd ~/atmel/USBasp/firmware  
+TARGET=atmega88 ISP=avrisp PORT=/dev/ttyACM0 make fuses  
+TARGET=atmega88 ISP=avrisp PORT=/dev/ttyACM0 make flash  
+</code></pre>
+
+<p>ou en utilisant les binaires pré-compilés (depuis le dossier <code>USBasp/bin/firmware</code>):</p>
+
+<pre><code>cd ~/atmel/USBasp/bin/firmware  
+TARGET=atmega88 ISP=avrisp PORT=/dev/ttyACM0 make usbasp  
+</code></pre>
+
+<p>N’oubliez pas d’adapter le port à votre system</p>
+
+<p>avrdude devrait vous dire que tout va bien. Il fait, dans l’ordre:</p>
+
+<ol>
+<li>Il vérifie la signature du microcontroller à flasher  </li>
+<li>Abandonne si la signature du microcontroller est différente de la TARGET spécifiée  </li>
+<li>Écrit les données  </li>
+<li>Relit les données écrites</li>
+</ol>
+
+<p>Si vous vous trompez de TARGET, il vous le fera savoir sans tout casser</p>
+
+<p>Pour info, lors du flashage, on écrit les fuses (qui correspondent à la configuration du microcontroller <a href="http://www.engbedded.com/fusecalc/">http://www.engbedded.com/fusecalc/</a>) et ensuite on flash le binaire en eeprom.</p>
+
+<p>Si tout s’est bien passé, la led rouge vient de passer en bleu</p>
+
+<h3 id="ontest">On test ?</h3>
+
+<p>Décâblez tout, et branchez votre programmateur sur une prise usb. <br />
+en lançant la commantde <br />
+<code>lsusb</code>, vous devriez voir quelque chose du genre</p>
+
+<pre><code>ID 16c0:05dc Van Ooijen Technische Informatica shared ID for use with libusb  
+</code></pre>
+
+<p>Brancher votre programmateur sur la prise ISP d’un arduino et entrez dans le shell avrdude:</p>
+
+<pre><code>avrdude -c usbasp -p m328p -t  
+</code></pre>
+
+<p>Puis testez avec les commandes:  </p>
+
+<pre><code>part  
+d lfuse  
+d hfuse  
+</code></pre>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Un%20programmateur%20Chinois&amp;url=https://www.noopy.fr/un-programmateur-chinois/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/un-programmateur-chinois/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/un-programmateur-chinois/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/introduction-a-angularjs/">
+        <section class="post">
+            <h2>Introduction à AngularJs</h2>
+            <p>On parle depuis quelques années de web applications et plus particulièrement de single page applications. Les single page applications&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/ma-station-meteo-a-10-boules/">
+        <section class="post">
+            <h2>Ma station météo à 10 boules</h2>
+            <p>Je me suis lancé dans ce projet, car je voulais ma station météo pour enregistrer mes données météo. Après&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

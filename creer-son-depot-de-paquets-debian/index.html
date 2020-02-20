@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Créer son Dépot de paquets debian</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Créer son Dépot de paquets debian" />
+    <meta property="og:description" content="Créer son dépôt Dans mon tutorial sur les microcontrolleurs, j’ai dû me créer mon dépot Debian dans lequel j’y ai mis les paquets nécessaires à l’installation de l’environnement de développement. Je reprends ici, toutes les étapes pour le faire proprement. Installation des outils On ne va" />
+    <meta property="og:url" content="https://www.noopy.fr/creer-son-depot-de-paquets-debian/" />
+    <meta property="article:published_time" content="2013-03-21T08:54:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-12T09:01:55.000Z" />
+    <meta property="article:tag" content="Linux" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Créer son Dépot de paquets debian" />
+    <meta name="twitter:description" content="Créer son dépôt Dans mon tutorial sur les microcontrolleurs, j’ai dû me créer mon dépot Debian dans lequel j’y ai mis les paquets nécessaires à l’installation de l’environnement de développement. Je reprends ici, toutes les étapes pour le faire proprement. Installation des outils On ne va" />
+    <meta name="twitter:url" content="https://www.noopy.fr/creer-son-depot-de-paquets-debian/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Linux" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "Créer son Dépot de paquets debian",
+    "url": "https://www.noopy.fr/creer-son-depot-de-paquets-debian/",
+    "datePublished": "2013-03-21T08:54:00.000Z",
+    "dateModified": "2017-03-12T09:01:55.000Z",
+    "keywords": "Linux",
+    "description": "Créer son dépôt Dans mon tutorial sur les microcontrolleurs, j’ai dû me créer mon dépot Debian dans lequel j’y ai mis les paquets nécessaires à l’installation de l’environnement de développement. Je reprends ici, toutes les étapes pour le faire proprement. Installation des outils On ne va",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-linux">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-linux">
+
+        <header class="post-header">
+            <h1 class="post-title">Créer son Dépot de paquets debian</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2013-03-21">21 March 2013</time>  on <a href="../tag/linux/index.html">Linux</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <h2 id="crersondpt">Créer son dépôt</h2>
+
+<p>Dans mon tutorial sur les microcontrolleurs, j’ai dû me créer mon dépot Debian dans lequel j’y ai mis les paquets nécessaires à l’installation de l’environnement de développement. Je reprends ici, toutes les étapes pour le faire proprement.</p>
+
+<h3 id="installationdesoutils">Installation des outils</h3>
+
+<p>On ne va pas réinventer la roue et utiliser quelques outils. Commencez par installer quelques petites choses :</p>
+
+<pre><code>sudo apt-get install reprepro  
+sudo apt-get install gpg  
+</code></pre>
+
+<h3 id="crationdesaclefgpg">Création de sa clef GPG</h3>
+
+<p>GPG étant installé, lancez le wizard de création d’une clef:</p>
+
+<pre><code>gpg --gen-key  
+</code></pre>
+
+<p>Ensuite, prenez les valeurs par défaut, précisez un nom, une adresse mail, et pas de phrase secrète. Si vous précisez une phrase secrète, reprepro va crier. Le système vous demandera de bouger la souris et de taper des trucs au clavier. Faites, c’est pour générer de l’aléatoire.</p>
+
+<p>Vous avez une clef. Cette clef est identifiée par l’adresse mail. Pour fixer les idées, imaginons que cet identifiant est foo@noopy.fr</p>
+
+<h3 id="configurationdereprepro">Configuration de reprepro</h3>
+
+<p>Commencez par vous créer un dossier de travail:</p>
+
+<pre><code>mkdir ~/repository  
+</code></pre>
+
+<p>et créer deux sous-dossiers qui seront utilisés par reprepro</p>
+
+<pre><code>mkdir ~/repository/conf  
+mkdir ~/repository/conf  
+</code></pre>
+
+<p>Créer une configuration avec votre éditeur préféré:</p>
+
+<pre><code>nano ~/repository/conf/distributions  
+</code></pre>
+
+<p>et ajoutez les lignes suivantes:</p>
+
+<pre><code>Origin: www.noopy.fr  
+Label: Noopy  
+Suite: unstable  
+Codename: unstable  
+Version: all  
+Architectures: i386 amd64  
+Components: main  
+Description: Repository for Noopy  
+SignWith: foo@noopy.fr  
+</code></pre>
+
+<h3 id="ajoutdespaquets">Ajout des paquets</h3>
+
+<p>Ca ne sera pas bien compliqué. Il vous suffira de lancer la commande suivante:</p>
+
+<pre><code>cd ~/repository  
+reprepro -b . includedeb unstable my_debian_packet.deb  
+</code></pre>
+
+<h3 id="gnrationdelaclefpublique">Génération de la clef publique</h3>
+
+<p>Il faudra que les utilisateur de votre dépôt puisse récupérer la clef publique. Il vous faut donc la générer avec la commande suivante:</p>
+
+<pre><code>gpg --armor --output ~/repository/public.key --export foo@noopy.fr  
+</code></pre>
+
+<h3 id="automatisation">Automatisation</h3>
+
+<p>Je vous propose d’automatiser tout ça avec deux scripts (dont un pompé sur Ubuntu</p>
+
+<pre><code>#!/bin/bash
+# filename: add.sh
+for paquet in $1/*.deb; do  
+reprepro -b . includedeb unstable $paquet;  
+done  
+</code></pre>
+
+<pre><code>#!/bin/bash
+# filename: create_repo.sh
+rm -r db  
+rm -r pool  
+rm -r dists  
+./add.sh source
+gpg --armor --output ~/repository/public.key --export foo@noopy.fr  
+</code></pre>
+
+<h3 id="finalisation">Finalisation</h3>
+
+<p>C’est bien sympas, vous avez un dépôt en local. Ça sert à pas grand chose. Créez-vous un serveur ouèb sur votre PC ou faites appel à un hébergeur. Admettons que vous ayez votre serveur web sur www.hebergeur.fr/foo. Connectez-vous par FTP et créez un dossier depot. Dans ce dossier depot, transférez :</p>
+
+<ul>
+<li>dossier db</li>
+<li>dossier dists</li>
+<li>dossier pool</li>
+<li>fichier public.key</li>
+</ul>
+
+<h3 id="ctclient">Côté client</h3>
+
+<p>C’est ce que vous devez communiquer à tous les utilisateurs de votre dépôt. Ajoutez votre nouveau dépot:</p>
+
+<pre><code>sudo nano /etc/apt/sources.list  
+</code></pre>
+
+<p>et ajoutez la ligne suivante:</p>
+
+<pre><code>deb http://www.hebergeur.fr/foo/depot unstable main  
+</code></pre>
+
+<p>Récupérez la clef publique GPG:</p>
+
+<pre><code>wget -q http://www.hebergeur.fr/foo/depot/public.key -O- | sudo apt-key add -  
+sudo apt-get update  
+</code></pre>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Cr%C3%A9er%20son%20D%C3%A9pot%20de%20paquets%20debian&amp;url=https://www.noopy.fr/creer-son-depot-de-paquets-debian/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/creer-son-depot-de-paquets-debian/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/creer-son-depot-de-paquets-debian/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/microship-18f4550/">
+        <section class="post">
+            <h2>Microship 18F4550</h2>
+            <p>J’ai choisi de travailler avec le PIC 18F4550 de chez Microchip principalement pour son prix (moins de 10€&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

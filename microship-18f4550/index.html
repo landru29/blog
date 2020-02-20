@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Microship 18F4550</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Microship 18F4550" />
+    <meta property="og:description" content="J’ai choisi de travailler avec le PIC 18F4550 de chez Microchip principalement pour son prix (moins de 10€). Ce microcontroleur possède entre autre : un module USB 32Ko de mémoire flash (pour le programme) 2Ko de mémoire RAM 35 bits d’entrées/sorties numériques 10 convertisseurs numériques/analogiques Les requis" />
+    <meta property="og:url" content="https://www.noopy.fr/microship-18f4550/" />
+    <meta property="article:published_time" content="2013-04-13T10:51:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-12T11:48:02.000Z" />
+    <meta property="article:tag" content="Microchip" />
+    <meta property="article:tag" content="Microcontrollers" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Microship 18F4550" />
+    <meta name="twitter:description" content="J’ai choisi de travailler avec le PIC 18F4550 de chez Microchip principalement pour son prix (moins de 10€). Ce microcontroleur possède entre autre : un module USB 32Ko de mémoire flash (pour le programme) 2Ko de mémoire RAM 35 bits d’entrées/sorties numériques 10 convertisseurs numériques/analogiques Les requis" />
+    <meta name="twitter:url" content="https://www.noopy.fr/microship-18f4550/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Microchip, Microcontrollers" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "Microship 18F4550",
+    "url": "https://www.noopy.fr/microship-18f4550/",
+    "datePublished": "2013-04-13T10:51:00.000Z",
+    "dateModified": "2017-03-12T11:48:02.000Z",
+    "keywords": "Microchip, Microcontrollers",
+    "description": "J’ai choisi de travailler avec le PIC 18F4550 de chez Microchip principalement pour son prix (moins de 10€). Ce microcontroleur possède entre autre : un module USB 32Ko de mémoire flash (pour le programme) 2Ko de mémoire RAM 35 bits d’entrées/sorties numériques 10 convertisseurs numériques/analogiques Les requis",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-microchip tag-microcontrollers">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-microchip tag-microcontrollers">
+
+        <header class="post-header">
+            <h1 class="post-title">Microship 18F4550</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2013-04-13">13 April 2013</time>  on <a href="../tag/microchip/index.html">Microchip</a>, <a href="../tag/microcontrollers/index.html">Microcontrollers</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>J’ai choisi de travailler avec le PIC 18F4550 de chez Microchip principalement pour son prix (moins de 10€).</p>
+
+<p><img src="../content/images/2017/03/18f4550.jpg" alt="" /></p>
+
+<p>Ce microcontroleur possède entre autre :</p>
+
+<ul>
+<li>un module USB</li>
+<li>32Ko de mémoire flash (pour le programme)</li>
+<li>2Ko de mémoire RAM</li>
+<li>35 bits d’entrées/sorties numériques</li>
+<li>10 convertisseurs numériques/analogiques</li>
+</ul>
+
+<h2 id="lesrequis">Les requis</h2>
+
+<p>Avant de vous lancer là-dedans, il vous faut :</p>
+
+<ul>
+<li>Un programmateur (pour transférer vos programmes dans le composant); on utilise le PicKit2 (reconnu sous linux et Windows). Rendez-vous chez les Chinois sur EBay pour l’acheter. Pour ma part, je l’ai acheté chez Sure Electronics (25€ environ pour le pickit2 et la plaque de soket). Attention, il faut le pickit2 (pas le 1 pas le 3) ! le pickit2 est complètement reconnu sous linux, par contre les autres versions …</li>
+<li>Un mini-lab (pour faire fonctionner votre microcontrôleur); on va le fabriquer, ce sera expliqué dans les prochains billets (Comptez 40 à 50€ – 10€ pour la gravure chez un professionnel et le reste en composants)</li>
+<li>un ordinateur avec une prise USB (c’est évident, mais je préfère préciser)</li>
+<li>Un compilateur C; parce qu’on va programmer en C. Si vous utilisez Windows, vous pouvez utiliser l’environnement de Microchip. Pour ma part, étant sous linux, j’utilise SDCC. On y ajoutera un IDE pour se faciliter la vie. J’utilise Code::Blocks. Je vous expliquerez plus loin comment on installe tout ça.</li>
+<li>Je vous recommande une plaque d’essai pour câbler votre propre électronique
+On verra plus loin pour faire l’acquisition d’un petit afficheur LCD (à moins de 10€) pour déboguer les programmes (Electronique diffusion ref. L165221J200S)</li>
+</ul>
+
+<p><img src="../content/images/2017/03/pickit.jpg" alt="" /></p>
+
+<p>Avant de continuer et de vous lancer dans ces petites dépenses, assurez-vous d’avoir un minimum de connaissances en :</p>
+
+<ul>
+<li>électronique numérique (qu’est-ce qu’un octet, un bit, les principales fonctions numériques, …)</li>
+<li>programmation C (architecture d’un programme, compilation, …)</li>
+<li>bidouillage (soudure, bricolage de précision, …) et avoir un fer à souder et de l’étain.</li>
+<li>linux (lancer une commande, installer des programmes, …) si vous voulez utiliser mes tutos</li>
+</ul>
+
+<h2 id="datasheet">Datasheet</h2>
+
+<p>Ce sera votre bible pour programmer le microcontroller. Soit vous allez le chercher sur le site de microchip (<a href="http://www.microchip.com/">http://www.microchip.com/</a>), soit vous téléchargez la copie disponible sur le blog :  <a href="https://www.noopy.fr/content/misc/2017/03/pic18f4550.pdf">pic18f4550</a></p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Microship%2018F4550&amp;url=https://www.noopy.fr/microship-18f4550/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/microship-18f4550/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/microship-18f4550/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/un-petit-tour-en-avion/">
+        <section class="post">
+            <h2>Un petit tour en avion</h2>
+            <p>J’ai fixé une gopro sur mon avion et voilà le résultat. Il y a une prise au vent,&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/creer-son-depot-de-paquets-debian/">
+        <section class="post">
+            <h2>Créer son Dépot de paquets debian</h2>
+            <p>Créer son dépôt Dans mon tutorial sur les microcontrolleurs, j’ai dû me créer mon dépot Debian dans lequel&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

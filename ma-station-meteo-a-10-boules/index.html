@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Ma station météo à 10 boules</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ma station météo à 10 boules" />
+    <meta property="og:description" content="Je me suis lancé dans ce projet, car je voulais ma station météo pour enregistrer mes données météo. Après avoir halluciné en voyant les tarifs sur le marché (plus de 150€ les modèles pour lesquels on peut récupérer les données sur ordinateur), j’ai pris la décision de faire ma" />
+    <meta property="og:url" content="https://www.noopy.fr/ma-station-meteo-a-10-boules/" />
+    <meta property="article:published_time" content="2016-08-17T10:20:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-12T10:59:18.000Z" />
+    <meta property="article:tag" content="Arduino" />
+    <meta property="article:tag" content="Microcontrollers" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Ma station météo à 10 boules" />
+    <meta name="twitter:description" content="Je me suis lancé dans ce projet, car je voulais ma station météo pour enregistrer mes données météo. Après avoir halluciné en voyant les tarifs sur le marché (plus de 150€ les modèles pour lesquels on peut récupérer les données sur ordinateur), j’ai pris la décision de faire ma" />
+    <meta name="twitter:url" content="https://www.noopy.fr/ma-station-meteo-a-10-boules/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Arduino, Microcontrollers" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "Ma station météo à 10 boules",
+    "url": "https://www.noopy.fr/ma-station-meteo-a-10-boules/",
+    "datePublished": "2016-08-17T10:20:00.000Z",
+    "dateModified": "2017-03-12T10:59:18.000Z",
+    "keywords": "Arduino, Microcontrollers",
+    "description": "Je me suis lancé dans ce projet, car je voulais ma station météo pour enregistrer mes données météo. Après avoir halluciné en voyant les tarifs sur le marché (plus de 150€ les modèles pour lesquels on peut récupérer les données sur ordinateur), j’ai pris la décision de faire ma",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-arduino tag-microcontrollers">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-arduino tag-microcontrollers">
+
+        <header class="post-header">
+            <h1 class="post-title">Ma station météo à 10 boules</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-08-17">17 August 2016</time>  on <a href="../tag/arduino/index.html">Arduino</a>, <a href="../tag/microcontrollers/index.html">Microcontrollers</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Je me suis lancé dans ce projet, car je voulais ma station météo pour enregistrer mes données météo. Après avoir halluciné en voyant les tarifs sur le marché (plus de 150€ les modèles pour lesquels on peut récupérer les données sur ordinateur), j’ai pris la décision de faire ma propre station météo pour 10€.</p>
+
+<p><img src="../content/images/2017/03/meteo.jpg" alt="" /></p>
+
+<p>Tout le projet est ici: <a href="https://github.com/landru29/esp8266-meteo">https://github.com/landru29/esp8266-meteo</a></p>
+
+<h2 id="leprincipe">Le principe</h2>
+
+<h3 id="mesuresphysiques">Mesures physiques</h3>
+
+<p>La station météo mesure:</p>
+
+<ul>
+<li>la température (DS18B20)</li>
+<li>le taux d’humidité (DHT22)</li>
+<li>la pression (BMP180)</li>
+</ul>
+
+<h3 id="fonctionnement">Fonctionnement</h3>
+
+<p>La station doit pouvoir se connecter au WiFi du domicile. Elle expose ensuite un petit server HTTP qui, à chaque requête de type GET renvoie l’ensemble des mesures au format JSON.</p>
+
+<p><img src="../content/images/2017/03/meteo-diagram.png" alt="" /></p>
+
+<p>Concrêtement, à la mise en route de la station, elle se connecte sur le WiFi (par WPS). Ensuite, il suffit d’aller sur la page <a href="http://meteo-by-noopy/">http://meteo-by-noopy/</a>, et vous aurez, en retour:</p>
+
+<pre><code>{
+    "bmp-temperature": "20.30"
+    "dht-temperature": "20.40"
+    "ds-temperature": "20.36"
+    "bmp-pressure": "10240"
+    "dht-humidity": "19.60"
+    "dht-heat-index": "22.10"
+}
+</code></pre>
+
+<p>Pour info, le host “meteo-by-noopy” est inscrit en dur dans le programme que l’on transfère dans le microcontrolleur. cette adresse est, évidement, atteignable que depuis le réseau de votre domicile.</p>
+
+<h3 id="unpetitmotsurlewps">Un petit mot sur le WPS</h3>
+
+<p>C’est un mode de connexion de certains périphériques à votre box internet. Votre box et le périphérique négocient une connexion sécurisée. En pratique, vous mettez sous tension la station météo, et lorsque la led émet des doubles flashs, appuyez sur le bouton “WPS” qui se trouve sur votre box. la connection se fait.</p>
+
+<p>A la prochaine mise sous tension de la station météo, cette dernière se connectera toute seule à votre box (elle a gardée en mémoire la clef de connexion).</p>
+
+<p><a href="https://fr.wikipedia.org/wiki/Wi-Fi">https://fr.wikipedia.org/wiki/Wi-Fi</a><em>Protected</em>Setup</p>
+
+<h2 id="lescomposants">Les composants</h2>
+
+<ul>
+<li>Wemos D1 Mini (microcontrolleur avec module WiFi): 2,50€</li>
+<li>DHT22 (capteur d’humidité + température): 2,50€</li>
+<li>BMP180 (capteur de pression + température): 2,50€</li>
+<li>DS18B20 (capteur de température précis): 2€ le lot de 5</li>
+<li>2 résistances de 4.7k coûtant quelques centimes</li>
+</ul>
+
+<p>Les prix indiqués sont ceux que l’on retrouve sur le site <a href="https://fr.aliexpress.com/">https://fr.aliexpress.com/</a> (site chinois avec des tarifs chinois).</p>
+
+<h3 id="lescapteurs">Les capteurs</h3>
+
+<p>Ils sont tous les trois numériques. C’est plus pratique, car on n’a pas besoin de se soucier de la chaîne d’acquisition analogique (amplification + conversion numérique). Tout est dans les composants. la données est transportée par un ou deux fils. Vous pouvez retrouver facilement les datasheets sur le net.</p>
+
+<p>Certains, comme le DHT22 et le DS18B20, on besoin d’une résistance (4.7k, spécifié dans les datasheets) de pull-up entre le fil de data et le 5V.</p>
+
+<h3 id="lemicrocontrolleur">Le microcontrolleur</h3>
+
+<p>C’est le fameux Wemos D1 mini (qui embarque l’ESP8266). On en a déjà parlé dans la page de l’IOT (Internet Of Things).</p>
+
+<p>Ce microcontrolleur se programme avec les outils Arduino (<a href="https://www.arduino.cc/">https://www.arduino.cc/</a>). Pour ceux qui ne connaissent pas, vous avez juste à télécharger et installer le soft (disponible gratuitement sur le site), écrire votre programme (en c++), et ensuite, après avoir connecté le microcontrolleur à votre ordinateur, via USB, vous transférez votre programme.</p>
+
+<p>Le programme est disponible sur mon github: <a href="https://github.com/landru29/esp8266-meteo/tree/master/meteo">https://github.com/landru29/esp8266-meteo/tree/master/meteo</a></p>
+
+<p>Le schéma électronique <br />
+Le schéma a été réalisé avec Fritzing (<a href="http://fritzing.org/home/">http://fritzing.org/home/</a> version 0.9.3)</p>
+
+<p><img src="../content/images/2017/03/schematic.png" alt="" /></p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Ma%20station%20m%C3%A9t%C3%A9o%20%C3%A0%2010%20boules&amp;url=https://www.noopy.fr/ma-station-meteo-a-10-boules/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/ma-station-meteo-a-10-boules/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/ma-station-meteo-a-10-boules/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/un-programmateur-chinois/">
+        <section class="post">
+            <h2>Un programmateur Chinois</h2>
+            <p>Je viens de faire l’acquisition d’un programmateur pour ATMEL sur le célèbre site https://fr.aliexpress.com/&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/on-fait-une-ruche/">
+        <section class="post">
+            <h2>On fait une ruche ?</h2>
+            <p>Ca m’a pris comme une envie de … Enfin, non, ça me trottait dans la tête depuis quelques années.&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

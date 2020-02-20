@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>18F4550 - SPI</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="18F4550 - SPI" />
+    <meta property="og:description" content="Une liaison SPI (pour Serial Peripheral Interface) est un bus de données série synchrone baptisé ainsi par Motorola, qui opère en mode Full-duplex. Les circuits communiquent selon un schéma maître-esclaves, où le maître s’occupe totalement de la communication. Plusieurs esclaves peuvent coexister sur un même bus, dans ce cas," />
+    <meta property="og:url" content="https://www.noopy.fr/18f4550-spi/" />
+    <meta property="article:published_time" content="2014-03-16T12:49:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-12T12:54:28.000Z" />
+    <meta property="article:tag" content="Microchip" />
+    <meta property="article:tag" content="Microcontrollers" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="18F4550 - SPI" />
+    <meta name="twitter:description" content="Une liaison SPI (pour Serial Peripheral Interface) est un bus de données série synchrone baptisé ainsi par Motorola, qui opère en mode Full-duplex. Les circuits communiquent selon un schéma maître-esclaves, où le maître s’occupe totalement de la communication. Plusieurs esclaves peuvent coexister sur un même bus, dans ce cas," />
+    <meta name="twitter:url" content="https://www.noopy.fr/18f4550-spi/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Microchip, Microcontrollers" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "18F4550 - SPI",
+    "url": "https://www.noopy.fr/18f4550-spi/",
+    "datePublished": "2014-03-16T12:49:00.000Z",
+    "dateModified": "2017-03-12T12:54:28.000Z",
+    "keywords": "Microchip, Microcontrollers",
+    "description": "Une liaison SPI (pour Serial Peripheral Interface) est un bus de données série synchrone baptisé ainsi par Motorola, qui opère en mode Full-duplex. Les circuits communiquent selon un schéma maître-esclaves, où le maître s’occupe totalement de la communication. Plusieurs esclaves peuvent coexister sur un même bus, dans ce cas,",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-microchip tag-microcontrollers">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-microchip tag-microcontrollers">
+
+        <header class="post-header">
+            <h1 class="post-title">18F4550 - SPI</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2014-03-16">16 March 2014</time>  on <a href="../tag/microchip/index.html">Microchip</a>, <a href="../tag/microcontrollers/index.html">Microcontrollers</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Une liaison SPI (pour Serial Peripheral Interface) est un bus de données série synchrone baptisé ainsi par Motorola, qui opère en mode Full-duplex. Les circuits communiquent selon un schéma maître-esclaves, où le maître s’occupe totalement de la communication. Plusieurs esclaves peuvent coexister sur un même bus, dans ce cas, la sélection du destinataire se fait par une ligne dédiée entre le maître et l’esclave appelée chip select (source: Wikipedia).</p>
+
+<p>Dans cette partie, nous allons mettre en place une dialogue unidirectionnel entre le PIC et le 74HC595. Le 74HC595 est un composant permettant de convertir une liaison série en liaison parallèle.</p>
+
+<h2 id="schmademontage">Schéma de montage</h2>
+
+<p><img src="../content/images/2017/03/spi-e1395002701134.png" alt="" /></p>
+
+<p>On utilisera que deux broche du SPI : l’horloge SCK qui est sur le port B1 et le donnée de sortie SDO qui est sur le port C7. Le composant 74HC595 nécessite une validation des données reçu afin que celles-ci soient disponible sur les broches Qa – Qh. On utilisera le port B2 pour assurer cette validation. La broche 13 du 74HC595 sera connectée au 0V pour que les sorties soient activées, et la broche 10 sera connectée au 5V pour ne pas effectuer un effacement.</p>
+
+<h2 id="lalibrairie">La librairie</h2>
+
+<p>Elle est relativement simple et ne contient que 3 fonctions :</p>
+
+<ul>
+<li>L’initialisation</li>
+<li>La lecture</li>
+<li>L’écriture</li>
+</ul>
+
+<h3 id="leheader">Le header</h3>
+
+<pre><code>#ifndef SPI_H_INCLUDED
+#define SPI_H_INCLUDED
+
+// bus mode
+#define SPI_MODE_00                             0
+#define SPI_MODE_01                             1
+#define SPI_MODE_10                             2
+#define SPI_MODE_11                             3
+// sync mode
+#define SPI_SLAVE_MODE_WITHOUT_SS               0b0101
+#define SPI_SLAVE_MODE_WITH_SS                  0b0100
+#define SPI_MASTER_MODE_CLOCK_TMR2              0b0011
+#define SPI_MASTER_MODE_CLOCK_FOSC64            0b0010
+#define SPI_MASTER_MODE_CLOCK_FOSC16            0b0001
+#define SPI_MASTER_MODE_CLOCK_FOSC4             0b0000
+// smp phase
+#define SPI_SLEW_RATE_ENABLE                    0x00
+#define SPI_SLEW_RATE_DISABLE                   0x80
+#define SPI_STANDARD_SPEED_MODE                 0x80
+#define SPI_HIGH_SPEED_MODE                     0x00
+
+unsigned char spiWriteByte(char b);  
+unsigned char spiReadByte();  
+void spiInit(unsigned char sync_mode, unsigned char bus_mode, unsigned char smp_phase);
+
+#endif // SPI_H_INCLUDED
+</code></pre>
+
+<h3 id="lecode">Le code</h3>
+
+<pre><code>#include "spi.h"
+#include &lt;pic18f4550.h&gt;
+
+/**
+ * Send a byte on the SPI port
+ *
+ * @param b byte to send on the SPI port
+ *
+ * @return 1 on success
+ */
+unsigned char spiWriteByte(char b)  
+{   SSPBUF = b;                 // send byte
+    if (SSPCON1bits.WCOL) {     // a collision occured
+        return 0;
+    }
+    while (!PIR1bits.SSPIF);    // wait for the transaction is completed
+    PIR1bits.SSPIF=0;
+    return 1;
+}
+
+/**
+ * Read a byte from SPI
+ *
+ * @return read byte
+ */
+unsigned char spiReadByte()  
+{
+    SSPBUF = 0x00;                          // initiate bus cycle
+    while (!SSPSTATbits.BF);                // wait until cycle complete
+    return (SSPBUF);                        // return with byte read
+}
+
+/**
+ * Init the SPI
+ * ie. spiInit(SPI_MASTER_MODE_CLOCK_FOSC4, SPI_MODE_00, SPI_HIGH_SPEED_MODE)
+ *
+ * @param sync_mode Synchronization mode
+ * @param bus_mode  Bus mode
+ * @param smp_phase Sample phase
+ */
+void spiInit(unsigned char sync_mode, unsigned char bus_mode, unsigned char smp_phase)  
+{
+    SSPSTAT &amp;= 0x3F;                // power on state
+    SSPCON1 = 0x00;                 // power on state
+    SSPCON1 |= sync_mode;           // select SPI mode
+    SSPSTAT |= smp_phase;           // select data input sample phase
+
+    switch (bus_mode) {
+        case SPI_MODE_00:           // SPI bus mode 0,0
+            SSPCON1bits.CKP = 0;    // clock idle state low
+            SSPSTATbits.CKE = 0;    // data transmitted on rising edge
+            break;
+        case SPI_MODE_10:           // SPI bus mode 1,0
+            SSPCON1bits.CKP = 1;    // clock idle state high
+            SSPSTATbits.CKE = 0;    // data transmitted on falling edge
+            break;
+        case SPI_MODE_11:           // SPI bus mode 1,1
+            SSPCON1bits.CKP = 1;    // clock idle state high
+            SSPSTATbits.CKE = 1;    // data transmitted on rising edge
+            break;
+        default://SPI_MODE_01       // default SPI bus mode 0,1
+            SSPCON1bits.CKP = 0;    // clock idle state low
+            SSPSTATbits.CKE = 1;    // data transmitted on falling edge
+            break;
+    }
+
+    switch (sync_mode) {
+        case SPI_SLAVE_MODE_WITH_SS:    // slave mode w /SS enable
+            TRISAbits.TRISA5 = 1;       // define /SS pin as input
+        case SPI_SLAVE_MODE_WITHOUT_SS: // slave mode w/o /SS enable
+            TRISBbits.TRISB1 = 1;       // define clock pin as input
+            SSPSTATbits.SMP = 0;        // must be cleared in slave SPI mode
+            break;
+        default:                        // master mode, define clock pin as output
+            TRISBbits.TRISB1 = 0;       // define clock pin as output
+            break;
+    }
+    TRISCbits.TRISC7=0; // define SDO as output (master or slave)
+    TRISBbits.TRISB0=1; // define SDI as input (master or slave)
+    SSPCON1bits.SSPEN = 1;
+}
+</code></pre>
+
+<h2 id="programmdexample">Programm d'example</h2>
+
+<pre><code>#include &lt;pic18f4550.h&gt;
+#include &lt;delay.h&gt;
+#include "config.h"
+#include "spi.h"
+
+/*
+ * Connect :
+ *  - pin B2 to PIN 12 (STCP)of 74HC595
+ *  - pin B1(SCK) to PIN 11 (SHCP) of the 74HC595
+ *  - pin C7 (SDO) to PIN 14 (DS) of the 74HC595
+ *  - pin 10 (/MR) of the 74HC595 to Vcc
+ *  - pin 13 (/OE) of the 74HC595 to Gnd
+ */
+
+void validateOutput()  
+{
+    LATBbits.LATB2=1;
+    LATBbits.LATB2=0;
+}
+
+int main()  
+{
+    // Initialisation du module SPI
+    spiInit(SPI_MASTER_MODE_CLOCK_FOSC4, SPI_MODE_01, SPI_STANDARD_SPEED_MODE);
+    // configuration de la gachette de validation
+    TRISBbits.TRISB2 = 0;
+    LATBbits.LATB2=0;
+    // boucle principale
+    while (1) {
+        delay1mtcy(10);
+        spiWriteByte(0xab);
+        validateOutput();
+        delay1mtcy(10);
+        spiWriteByte(0xae);
+        validateOutput();
+        delay1mtcy(10);
+        spiWriteByte(0xf0);
+        validateOutput();
+    }
+}
+</code></pre>
+
+<p>Pour ce qui est du config.h, on utilisera celui cité dans le <a href="../18f4550-premier-projet/index.html">premier programme</a></p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=18F4550%20-%20SPI&amp;url=https://www.noopy.fr/18f4550-spi/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/18f4550-spi/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/18f4550-spi/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/les-moteurs-pas-a-pas/">
+        <section class="post">
+            <h2>Les moteurs pas à pas</h2>
+            <p>Avant de commencer On va d’abord s’équiper un peu; il nous faut: Un moteur pas à pas:&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/commande-de-volets/">
+        <section class="post">
+            <h2>Commande de volets</h2>
+            <p>Dans ce tutoriel, nous allons voir comment faire de la domotique avec le fameux Raspberry Pi. En gros, comment&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

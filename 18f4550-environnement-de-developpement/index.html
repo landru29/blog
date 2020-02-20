@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>18F4550 - environnement de développement</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="18F4550 - environnement de développement" />
+    <meta property="og:description" content="Installation du programmateur Il faut installer le petit outil qui utilisera le programmateur pickit2. Pour installer pk2cmd, il vous faut modifier vos sources de logiciels depuis le dépôt Urriellu Commencez par éditer /etc/apt/sources.list sudo nano /etc/apt/sources.list   Ajoutez la ligne suivante : deb http://deb.urriellu." />
+    <meta property="og:url" content="https://www.noopy.fr/18f4550-environnement-de-developpement/" />
+    <meta property="article:published_time" content="2013-04-15T12:24:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-12T12:42:22.000Z" />
+    <meta property="article:tag" content="Microchip" />
+    <meta property="article:tag" content="Microcontrollers" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="18F4550 - environnement de développement" />
+    <meta name="twitter:description" content="Installation du programmateur Il faut installer le petit outil qui utilisera le programmateur pickit2. Pour installer pk2cmd, il vous faut modifier vos sources de logiciels depuis le dépôt Urriellu Commencez par éditer /etc/apt/sources.list sudo nano /etc/apt/sources.list   Ajoutez la ligne suivante : deb http://deb.urriellu." />
+    <meta name="twitter:url" content="https://www.noopy.fr/18f4550-environnement-de-developpement/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Microchip, Microcontrollers" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "18F4550 - environnement de développement",
+    "url": "https://www.noopy.fr/18f4550-environnement-de-developpement/",
+    "datePublished": "2013-04-15T12:24:00.000Z",
+    "dateModified": "2017-03-12T12:42:22.000Z",
+    "keywords": "Microchip, Microcontrollers",
+    "description": "Installation du programmateur Il faut installer le petit outil qui utilisera le programmateur pickit2. Pour installer pk2cmd, il vous faut modifier vos sources de logiciels depuis le dépôt Urriellu Commencez par éditer /etc/apt/sources.list sudo nano /etc/apt/sources.list   Ajoutez la ligne suivante : deb http://deb.urriellu.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-microchip tag-microcontrollers">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-microchip tag-microcontrollers">
+
+        <header class="post-header">
+            <h1 class="post-title">18F4550 - environnement de développement</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2013-04-15">15 April 2013</time>  on <a href="../tag/microchip/index.html">Microchip</a>, <a href="../tag/microcontrollers/index.html">Microcontrollers</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <h2 id="installationduprogrammateur">Installation du programmateur</h2>
+
+<p>Il faut installer le petit outil qui utilisera le programmateur pickit2. Pour installer pk2cmd, il vous faut modifier vos sources de logiciels depuis le dépôt Urriellu</p>
+
+<p>Commencez par éditer /etc/apt/sources.list</p>
+
+<pre><code>sudo nano /etc/apt/sources.list  
+</code></pre>
+
+<p>Ajoutez la ligne suivante :</p>
+
+<pre><code>deb http://deb.urriellu.net/ any main  
+</code></pre>
+
+<p>Quittez l’éditeur en faisant ctrl+x, puis en répondant O (ou Y) et [entrée]</p>
+
+<p>Installez :</p>
+
+<pre><code>sudo apt-get update  
+sudo apt-get install urriellu-keyring  
+sudo apt-get update  
+sudo apt-get install pk2cmd  
+</code></pre>
+
+<h2 id="premiertest">Premier test</h2>
+
+<p>Nous allons tester cette première installation. Notez que la commande pk2cmd ne prend que des chemins absolus en entrée. Commencez par télécharger le fichier suivant:</p>
+
+<p><a href="https://www.noopy.fr/content/misc/2017/03/chenille.tar.gz">chenille.tar.gz</a></p>
+
+<p>Décompressez-le:</p>
+
+<pre><code>tar xzf chenille.tar.gz  
+</code></pre>
+
+<p>Envoyez-le vers votre PicKit2:</p>
+
+<pre><code>pk2cmd -P -M -F/chemin_absolu_vers_mon_fichier/chenille.hex  
+</code></pre>
+
+<p>Vous devriez avoir une réponse du genre:</p>
+
+<pre><code>Auto-Detect: Found part PIC18F4550.
+
+PICkit 2 Program Report  
+19-4-2013, 14:43:18  
+Device Type: PIC18F4550
+
+Program Succeeded.
+
+Operation Succeeded  
+</code></pre>
+
+<p>Branchez votre PIC sur votre platine de test et envoyez la sauce ! Le port D devrait se comporter comme la voiture de K2000. Il est possible que ça ne démarre pas; j’ai souvent des faux-contacts. Il faut faire bouger le composant sur son support, et il finit par démarrer.</p>
+
+<h2 id="installerlecompilateur">Installer le compilateur</h2>
+
+<p>Nous allons installer SDCC dans sa version 3. Soit vous installez depuis les dépôts, soit depuis les sources pré-compilées.</p>
+
+<h3 id="depuislesdpts">Depuis les dépôts</h3>
+
+<p>Commencez par vérifier la version de SDCC sur les dépôts en tapant la commande suivante:</p>
+
+<pre><code>apt-cache show sdcc | grep Version  
+</code></pre>
+
+<p>Si la version est au moins la 3, vous pouvez continuer, sinon, installez depuis les sources pré-compilées.</p>
+
+<pre><code>sudo apt-get install sdcc  
+</code></pre>
+
+<h3 id="depuislessourcesprcompiles">Depuis les sources pré-compilées</h3>
+
+<p>Rendez-vous sur la page de téléchargement de sdcc et téléchargez l’archive. Décompressez</p>
+
+<pre><code>cd /tmp  
+sudo tar xjf path_to_download/sdcc-3.2.0-i386-unknown-linux2.5.tar.bz2  
+sudo cp -r sdcc/share/sdcc /usr/share/.  
+sudo cp sdcc/bin/* /usr/local/bin/.  
+</code></pre>
+
+<p>SDCC ne pourra fonctionner que si vous avez installé <code>gputils</code>. En fait, SDCC génère un fichier source assembleur. Ensuite, il fait un appel à gpasm inclu dans le paquet gputils qui va générer le binaire.</p>
+
+<pre><code>sudo apt-get install gputils  
+</code></pre>
+
+<p>Il est possible que vous n’ayez pas la librairie non libre. Pour vérifier, faites :</p>
+
+<pre><code>ls -d /usr/sdcc/non-free  
+</code></pre>
+
+<p>Si le système ne trouve rien, récupérez <a href="https://www.noopy.fr/content/misc/2017/03/non-free.tar.gz">non-free.tar</a> et faites:</p>
+
+<pre><code>cd /  
+tar xzf chemin_vers_download/non-free.tar.gz  
+</code></pre>
+
+<h2 id="installationdecodeblocks">Installation de Code::Blocks</h2>
+
+<p>Dans un premier temps, nous allons installer un IDE. Code::Blocks est particulièrement approprié pour développer en C.</p>
+
+<pre><code>sudo apt-get install codeblocks  
+</code></pre>
+
+<h2 id="configurationdecodeblocks">Configuration de Code::Blocks</h2>
+
+<p>Commencez par lancer Code::Blocks. Il risque de vous dire qu’il n’a pas trouvé SDCC : il bluffe, Marconni (au pire vous vérifierez dans la conf, onglet Toolchain executables) !</p>
+
+<p><img src="../content/images/2017/03/cb-initial.jpg" alt="" /></p>
+
+<p>Il faut préciser à Code::Blocks l’extension d’un fichier compilé. Par défaut, c’est <code>*.rel</code>.</p>
+
+<p>Allez dans le menu <em>Settings->Compiler and debugger</em> et sélectionnez SDCC dans le menu déroulant. Allez ensuite dans l’onglet <em>Other settings</em> (l’onglet est peut-être caché sur la droite; cliquez sur le petite flèche à droite de <em>Toolchain executables</em> pour découvrir les autres onglets), puis cliquez sur le bouton <em>Advanced options</em>.</p>
+
+<p><img src="../content/images/2017/03/cb-other.jpg" alt="" />
+<img src="../content/images/2017/03/cb-advanced.jpg" alt="" /></p>
+
+<p>Dans la fenêtre qui vient de s’ouvrir, allez dans l’onglet Others. Modifiez le champs Object file extension (e.g. o)</p>
+
+<pre><code>o  
+</code></pre>
+
+<p>Nous allons maintenant préciser le dossier des headers. Allez dans l’onglet Search directory et ajoutez :</p>
+
+<pre><code>/usr/share/sdcc/non-free/include/pic16
+/usr/share/sdcc/include/pic16
+</code></pre>
+
+<p>Précisons maintenant les librairies. Allez dans l’onglet Linker settings et précisez Other linker options</p>
+
+<pre><code>-L/usr/share/sdcc/lib/pic16/
+-L/usr/share/sdcc/non-free/lib/pic16
+-I/usr/share/sdcc/include/pic16
+-llibio18f4550.lib
+-llibc18f.lib
+</code></pre>
+
+<p>Rendez-vous maintenant sur l’onglet Compiler Settings puis l’onglet Compiler Flags. Cochez :</p>
+
+<ul>
+<li><code>-verbose</code></li>
+<li><code>-opt-code-size</code></li>
+<li><code>-mpic16</code></li>
+</ul>
+
+<p>Rendez-vous sur l’onglet Compiler Settings puis l’onglet Other options et ajoutez:</p>
+
+<pre><code>-p18f4550
+--use-non-free
+</code></pre>
+
+<p>Ça devrait être bon.</p>
+
+<h2 id="despetiteschosesfacultatives">Des petites choses facultatives</h2>
+
+<h3 id="lesoutils">Les outils</h3>
+
+<p>Nous allons configurer quelques outils qui nous seront utiles pour le transfert de données vers le PIC. Allez dans le menu <em>Tools->Configure Tools</em> et enregistrez les deux outils suivant:</p>
+
+<pre><code>Burn to PICKIT  
+/usr/bin/pk2cmd
+-P -M -F$(PROJECT_DIR)/$(TARGET_OUTPUT_FILE).hex
+</code></pre>
+
+<p><img src="../content/images/2017/03/tool-burn.jpg" alt="" /></p>
+
+<pre><code>Dump PIC  
+/usr/bin/pk2cmd
+-P -GF$(PROJECT_DIR)/dump.hex
+</code></pre>
+
+<p><img src="../content/images/2017/03/tool-dump.jpg" alt="" /></p>
+
+<h3 id="faciliterletransfertdefichier">Faciliter le transfert de fichier</h3>
+
+<p>Créez un fichier template :</p>
+
+<pre><code>mkdir nano ~/.sdcc  
+nano ~/.sdcc/mypk2cmd  
+</code></pre>
+
+<p>Et ajoutez ces lignes</p>
+
+<pre><code>#!/bin/sh
+pk2cmd -P -M -F$0.hex  
+</code></pre>
+
+<p>Rendez la commande exécutable</p>
+
+<pre><code>chmod +x ~/.sdcc/mypk2cmd  
+</code></pre>
+
+<p>Ensuite, pour chacun de vos projets, il vous suffira de modifier les build options (clique-droit sur le projet), onglet pre/post build steps et ajouter la commande suivante dans le deuxième cadre:</p>
+
+<pre><code>cp ~/.sdcc/mypk2cmd $(PROJECT_DIR)$(TARGET_OUTPUT_FILE)  
+</code></pre>
+
+<p>De cette manière, lorsque vous voulez transférer le programme dans votre micro, vous n’avez plus qu’à “exécuter le programme” (bouton triangle bleu près du bouton de compilation)</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=18F4550%20-%20environnement%20de%20d%C3%A9veloppement&amp;url=https://www.noopy.fr/18f4550-environnement-de-developpement/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/18f4550-environnement-de-developpement/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/18f4550-environnement-de-developpement/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/18f4550-premier-projet/">
+        <section class="post">
+            <h2>18F4550 - premier projet</h2>
+            <p>Dans ce projet, nous allons refaire le programme de la chenille (celui qui nous a servi de test pour&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/fabrication-du-minilab-microship/">
+        <section class="post">
+            <h2>Fabrication du minilab microship</h2>
+            <p>Le minilab ressempble à peu prêt à ça : Les sources Vous pouvez télécharger les schémas électriques ainsi que le&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

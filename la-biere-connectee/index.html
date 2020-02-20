@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>La bière connectée</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="La bière connectée" />
+    <meta property="og:description" content="Je me suis fabriqué un thermomètre connecté (http://www.noopy.fr/arduino/iot/), et brassé ma bière avec. Les données sont envoyées sur le service IOT d’OVH. Sur mon serveur, je crée mes graphes avec l’application Grafana. Cet article analyse les résultats. Les paliers Dans la vue d’" />
+    <meta property="og:url" content="https://www.noopy.fr/la-biere-connectee/" />
+    <meta property="article:published_time" content="2016-06-19T10:24:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-20T20:38:55.000Z" />
+    <meta property="article:tag" content="Bière" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="La bière connectée" />
+    <meta name="twitter:description" content="Je me suis fabriqué un thermomètre connecté (http://www.noopy.fr/arduino/iot/), et brassé ma bière avec. Les données sont envoyées sur le service IOT d’OVH. Sur mon serveur, je crée mes graphes avec l’application Grafana. Cet article analyse les résultats. Les paliers Dans la vue d’" />
+    <meta name="twitter:url" content="https://www.noopy.fr/la-biere-connectee/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Bière" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "La bière connectée",
+    "url": "https://www.noopy.fr/la-biere-connectee/",
+    "datePublished": "2016-06-19T10:24:00.000Z",
+    "dateModified": "2017-03-20T20:38:55.000Z",
+    "keywords": "Bière",
+    "description": "Je me suis fabriqué un thermomètre connecté (http://www.noopy.fr/arduino/iot/), et brassé ma bière avec. Les données sont envoyées sur le service IOT d’OVH. Sur mon serveur, je crée mes graphes avec l’application Grafana. Cet article analyse les résultats. Les paliers Dans la vue d’",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-biere">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-biere">
+
+        <header class="post-header">
+            <h1 class="post-title">La bière connectée</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-06-19">19 June 2016</time>  on <a href="../tag/biere/index.html">Bière</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Je me suis fabriqué un thermomètre connecté (<a href="../arduino/iot/index.html">http://www.noopy.fr/arduino/iot/</a>), et brassé ma bière avec. Les données sont envoyées sur le service IOT d’OVH. Sur mon serveur, je crée mes graphes avec l’application Grafana. Cet article analyse les résultats.</p>
+
+<p><img src="../content/images/2017/03/thermometre.png" alt="" /></p>
+
+<h2 id="lespaliers">Les paliers</h2>
+
+<p><img src="../content/images/2017/03/graph-all.png" alt="" />
+Dans la vue d’ensemble, on voit bien les différents paliers:</p>
+
+<ol>
+<li>Le palier à 45°c pour faire travailler les protéines (tenue de la mousse)  </li>
+<li>Le palier à 64°c pour obtenir les sucres fermentescibles (alcool)  </li>
+<li>Le palier à 70°c pour obtenir les sucres non fermentescible (rondeur)  </li>
+<li>L’ébulition avec le houblonnage  </li>
+<li>La mise en cuve après refroidissement à travers l’échangeur à plaques</li>
+</ol>
+
+<h3 id="palierdemptage">Palier d’empâtage</h3>
+
+<p><img src="../content/images/2017/03/palier1.png" alt="" /></p>
+
+<p>Ce palier à 45°c environ, favorise la tenue de la mousse. En principe j’y reste 15 à 20 minutes. La petite chute de température correspond à la mise en route de l’hélice de brassage. Ça met en évidence le problème d’homogénéité de la température dans le brassin. Ce dernier est très pâteux, et la convection se fait très mal.</p>
+
+<h3 id="premierpalierdesaccharification">Premier palier de saccharification</h3>
+
+<p><img src="../content/images/2017/03/palier2.png" alt="" /></p>
+
+<p>Là encore, on voit un saut de température. Pendant toute la montée en température, mon hélice tournait. Je l’ai arrêtée à 9H38. C’est pratiquement 1°C d’incertitude sur le brassin. Il faut faire attention car on peut avoir des surprises. Par expérience, je coupe le gaz 1°c à 2°c avant d’atteindre mon palier, quitte à rallumer  pour ajuster.</p>
+
+<h3 id="secondpalierdesaccharification">Second palier de saccharification</h3>
+
+<p><img src="../content/images/2017/03/palier3.png" alt="" /></p>
+
+<p>Ici, encore, on retrouve le saut de température. Je suis obligé de couper mon moteur, car celui-ci chauffe beaucoup. En dehors de la chauffe, je l’éteins. Quand j’aurais un autre moteur plus performant, il tournera en permanence. Je pense aussi revoir mon hélice pour qu’elle brasse mieux le mou.</p>
+
+<h3 id="lesmontesentemprature">Les montées en température</h3>
+
+<p><img src="../content/images/2017/03/graph-montee1.png" alt="" />
+<img src="../content/images/2017/03/graph-montee2.png" alt="" /></p>
+
+<p>Elle sont constantes. On remarque qu’en basse température (de 45°c à 65°c), on est a une chauffe à 1,8°c par minute, alors qu’en haute température ( de 65°c à 70°c), on est à 1°c par minute. C’est dû à la non-isolation de ma cuve. le couvercle permet déjà de garder une grosse partie de la chaleur; mais ce n’est pas suffisant.</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=La%20bi%C3%A8re%20connect%C3%A9e&amp;url=https://www.noopy.fr/la-biere-connectee/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/la-biere-connectee/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/la-biere-connectee/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/on-fait-une-ruche/">
+        <section class="post">
+            <h2>On fait une ruche ?</h2>
+            <p>Ca m’a pris comme une envie de … Enfin, non, ça me trottait dans la tête depuis quelques années.&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/iot-internet-of-things/">
+        <section class="post">
+            <h2>IOT (Internet Of Things)</h2>
+            <p>Dans cet article nous allons fabriquer un “objet connecté”: un thermomètre qui envoie les mesures sur internet. Et tant&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

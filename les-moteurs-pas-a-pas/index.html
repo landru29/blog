@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Les moteurs pas à pas</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Les moteurs pas à pas" />
+    <meta property="og:description" content="Avant de commencer On va d’abord s’équiper un peu; il nous faut: Un moteur pas à pas: on fera de la récup sur une vieille imprimante ou un vieux scanner Un microcontrôller: pour me simplifier la vie, j’ai utilisé un Arduino. Mais on peut rapidement adapter l’" />
+    <meta property="og:url" content="https://www.noopy.fr/les-moteurs-pas-a-pas/" />
+    <meta property="article:published_time" content="2014-04-21T12:53:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-12T13:12:34.000Z" />
+    <meta property="article:tag" content="Arduino" />
+    <meta property="article:tag" content="Microcontrollers" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Les moteurs pas à pas" />
+    <meta name="twitter:description" content="Avant de commencer On va d’abord s’équiper un peu; il nous faut: Un moteur pas à pas: on fera de la récup sur une vieille imprimante ou un vieux scanner Un microcontrôller: pour me simplifier la vie, j’ai utilisé un Arduino. Mais on peut rapidement adapter l’" />
+    <meta name="twitter:url" content="https://www.noopy.fr/les-moteurs-pas-a-pas/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Arduino, Microcontrollers" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "Les moteurs pas à pas",
+    "url": "https://www.noopy.fr/les-moteurs-pas-a-pas/",
+    "datePublished": "2014-04-21T12:53:00.000Z",
+    "dateModified": "2017-03-12T13:12:34.000Z",
+    "keywords": "Arduino, Microcontrollers",
+    "description": "Avant de commencer On va d’abord s’équiper un peu; il nous faut: Un moteur pas à pas: on fera de la récup sur une vieille imprimante ou un vieux scanner Un microcontrôller: pour me simplifier la vie, j’ai utilisé un Arduino. Mais on peut rapidement adapter l’",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-arduino tag-microcontrollers">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-arduino tag-microcontrollers">
+
+        <header class="post-header">
+            <h1 class="post-title">Les moteurs pas à pas</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2014-04-21">21 April 2014</time>  on <a href="../tag/arduino/index.html">Arduino</a>, <a href="../tag/microcontrollers/index.html">Microcontrollers</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <h2 id="avantdecommencer">Avant de commencer</h2>
+
+<p>On va d’abord s’équiper un peu; il nous faut:</p>
+
+<ul>
+<li>Un moteur pas à pas: on fera de la récup sur une vieille imprimante ou un vieux scanner</li>
+<li>Un microcontrôller: pour me simplifier la vie, j’ai utilisé un Arduino. Mais on peut rapidement adapter l’expérience sur un Microship.</li>
+<li>un circuit de contrôle: C’est un circuit de puissance pour alimenter les bobinages du moteur. Ce circuit supporte des intensité assez élevée. Concrètement, si l’on branchait directement un microcontrôller sur un moteur pas à pas, on le flinguerait rapidement. Vous trouverez ce genre de circuit en recherchant “L298” sur ebay (prenez le moins cher).</li>
+</ul>
+
+<p><img src="../content/images/2017/03/circuit_moteur.jpg" alt="" /></p>
+
+<h2 id="principedumoteur">Principe du moteur</h2>
+
+<p>La plupart des moteurs de récup, sont des moteurs bipolaires; c’est à dire qu’ils ont deux paires de bobines. Pour être sûr d’avoir le bon type de moteur entre vos mains, comptez le nombre de fil d’alimentation. Il doit y avoir exactement 4.</p>
+
+<p><img src="../content/images/2017/03/principe_moteur.png" alt="" /></p>
+
+<p>Maintenant, il faut trouver les deux paires de fil; Utilisez un multimètre pour trouver les deux fils qui présentent une résistance (les deux restants en présentent une également)</p>
+
+<h2 id="fonctionnementducircuitdecommande">Fonctionnement du circuit de commande</h2>
+
+<p>Le circuit de commande possède un premier bornier de 3; au milieu, nous avons la masse (qui nous servira de 0V avec le microcontrôlleur), une entrée 12V (j’y branche un transfo de 9V) et une sortie régulée de 5V (le circuit possède un régulateur de tension à 5V)</p>
+
+<p>On trouve ensuite deux borniers de 2. Il correspondent aux bobinages du moteur. Vous y branchez les deux paires de bobines.</p>
+
+<p>Et enfin la partie commande, un bornier de 6. Deux bornent servent à mettre en fonction chaque bobine, et 4 bornes servent à donner la polarité des deux bobines; par exemple, si l’on applique 1001, la bobine A est en N-S et la bobine B en S-N.</p>
+
+<h2 id="fonctionnementdumoteur">Fonctionnement du moteur</h2>
+
+<p>Il y a deux modes de fonctionnements:</p>
+
+<ul>
+<li>Monophasé</li>
+<li>Biphasé</li>
+</ul>
+
+<h3 id="monophas">Monophasé</h3>
+
+<p>Dans ce mode de fonctionnement on n’alimente qu’une bobine à la fois</p>
+
+<p><img src="../content/images/2017/03/pas_a_pas_m.png" alt="" /></p>
+
+<p>La commande se fera de la manière suivante:</p>
+
+<ol>
+<li>10xx  </li>
+<li>xx01  </li>
+<li>01xx  </li>
+<li>xx10</li>
+</ol>
+
+<p>(xx signifie que la bobine n’est pas active)</p>
+
+<h3 id="biphas">Biphasé</h3>
+
+<p>Dans ce mode de fonctionnement on alimente les deux bobines à la fois. En conséquence, on obtient un couple deux fois plus grand que dans le mode monophasé (mais par contre, on consomme deux fois plus de courant).</p>
+
+<p><img src="../content/images/2017/03/pas_a_pas_b.png" alt="" /></p>
+
+<p>La commande se fera de la manière suivante:</p>
+
+<ol>
+<li>1010  </li>
+<li>1001  </li>
+<li>0101  </li>
+<li>0110</li>
+</ol>
+
+<p>Remarquez, que dans les deux mode de fonctionnement, inverser l’alimentation d’une bobine, fait changer le sens de rotation du moteur.</p>
+
+<h2 id="programmedecommande">Programme de commande</h2>
+
+<pre><code>int ENA=0; //Connect on Arduino, Pin 0  
+int IN1=1; //Connect on Arduino, Pin 1  
+int IN2=2; //Connect on Arduino, Pin 2  
+int IN3=3; //Connect on Arduino, Pin 3  
+int IN4=4; //Connect on Arduino, Pin 4  
+int ENB=5; //Connect on Arduino, Pin 5
+
+
+void biphase(int stepNumber, int dir) {  
+  digitalWrite(ENA,LOW);
+  digitalWrite(ENB,LOW);
+  int A = ((stepNumber % 4)&lt;2) ? LOW : HIGH;
+  int B = (((stepNumber+1) % 4)&lt;2) ? dir : !dir;
+  digitalWrite(IN1,A);
+  digitalWrite(IN2,!A);
+  digitalWrite(IN3,B);
+  digitalWrite(IN4,!B);
+  digitalWrite(ENA,HIGH);
+  digitalWrite(ENB,HIGH);
+}
+
+void monophase(int stepNumber, int dir) {  
+  digitalWrite(ENA,LOW);
+  digitalWrite(ENB,LOW);
+  int polarity = (stepNumber % 4) / 2;
+
+  digitalWrite(IN1,polarity);
+  digitalWrite(IN2,!polarity);
+  if (dir) {
+    digitalWrite(IN3,polarity);
+    digitalWrite(IN4,!polarity);
+  } else {
+    digitalWrite(IN3,!polarity);
+    digitalWrite(IN4,polarity);
+  }
+
+  digitalWrite(ENA,!(stepNumber % 2));
+  digitalWrite(ENB,(stepNumber % 2));
+}
+
+void setup() {  
+ pinMode(ENA,OUTPUT);
+ pinMode(ENB,OUTPUT);
+ pinMode(IN1,OUTPUT);
+ pinMode(IN2,OUTPUT);
+ pinMode(IN3,OUTPUT);
+ pinMode(IN4,OUTPUT);
+}
+
+int i=0;  
+void loop(){  
+ biphase(i++, HIGH);
+ //monophase(i++, HIGH);
+ delay(1);
+}
+</code></pre>
+
+<h3 id="unvisueldelaconnectique">Un visuel de la connectique</h3>
+
+<p>N’oubliez pas de mettre la masse en commun entre le circuit de commande et l’arduino.</p>
+
+<p>Dans mon cas, je n’utilise pas le 5V du circuit de commande.</p>
+
+<p><img src="../content/images/2017/03/IMG_20140421_160523.jpg" alt="" />
+<img src="../content/images/2017/03/IMG_20140421_160533.jpg" alt="" />
+<img src="../content/images/2017/03/IMG_20140421_160551.jpg" alt="" /></p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Les%20moteurs%20pas%20%C3%A0%20pas&amp;url=https://www.noopy.fr/les-moteurs-pas-a-pas/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/les-moteurs-pas-a-pas/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/les-moteurs-pas-a-pas/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/matrice-de-leds/">
+        <section class="post">
+            <h2>Matrice de leds</h2>
+            <p>Repository GIT:  https://github.com/landru29/ledmatrix Description du projet Ce projet consiste à créer un afficheurs à led&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/18f4550-spi/">
+        <section class="post">
+            <h2>18F4550 - SPI</h2>
+            <p>Une liaison SPI (pour Serial Peripheral Interface) est un bus de données série synchrone baptisé ainsi par Motorola, qui&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

@@ -1,0 +1,1653 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Trucs et Bidules]]></title><description><![CDATA[Un joli bordel]]></description><link>https://www.noopy.fr/</link><generator>Ghost 0.11</generator><lastBuildDate>Thu, 20 Feb 2020 20:08:18 GMT</lastBuildDate><atom:link href="https://www.noopy.fr/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Pilotez vos radiateurs électriques]]></title><description><![CDATA[<p>Je suis en train d'automatiser l'allumage et lextinction de mes radiateurs électriques. Tous les radiateur électriques récents ont ce qu'on appel un fil pilote (en plus des deux fils d'alimentation. Ce fil pilote permet de mettre en marche ou arrêter le radiateur. <br>
+Sur ce fil pilote, on y applique du</p>]]></description><link>https://www.noopy.fr/pilotez-vos-radiateurs-electriques/</link><guid isPermaLink="false">bf7b6c8e-84d8-4b5a-b788-fb5a10c515b0</guid><category><![CDATA[Arduino]]></category><category><![CDATA[Bidules]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Wed, 28 Feb 2018 13:06:42 GMT</pubDate><content:encoded><![CDATA[<p>Je suis en train d'automatiser l'allumage et lextinction de mes radiateurs électriques. Tous les radiateur électriques récents ont ce qu'on appel un fil pilote (en plus des deux fils d'alimentation. Ce fil pilote permet de mettre en marche ou arrêter le radiateur. <br>
+Sur ce fil pilote, on y applique du 230V, comme résumé avec ce tableau</p>
+
+<p><img src="https://www.noopy.fr/content/images/2018/02/ordre_fil_pilote.jpg" alt="Fil pilote"></p>
+
+<p>Le circuit que j'ai conçu utilise les fonctionnalités:</p>
+
+<ul>
+<li>Éco ou réduit</li>
+<li>Hors-gel</li>
+<li>Arrêt</li>
+<li>Confort</li>
+</ul>
+
+<h1 id="lacommande">La commande</h1>
+
+<p>Il faut un circuit capable de "trier" les alternances d'un courant alternatif 230V. <br>
+J'ai utilisé des diodes avec des opto-triacs <a href="http://www.farnell.com/datasheets/97984.pdf">MOC3022</a></p>
+
+<p><img src="https://www.noopy.fr/content/images/2018/02/opto-triac.png" alt="Schema"></p>
+
+<p>La phase du secteur arrive sur <code>J1-1</code> et le fil pilote sur <code>J1-2</code>. Ensuite, en prenant le 0V sur J2-1: </p>
+
+<ul>
+<li>00 : Confort</li>
+<li>01 : Hors-gel</li>
+<li>10 : Arrêt</li>
+<li>11 : Éco ou réduit</li>
+</ul>
+
+<h1 id="pilotage">Pilotage</h1>
+
+<p>J'ai utilisé le <a href="https://wiki.wemos.cc/products:d1:d1_mini">Wemos</a>; c'est une sorte d'arduino avec le wifi embarqué. Le programme que j'ai mis à dispo sur <a href="https://github.com/landru29/wemosHeater">github</a> expose une API. <br>
+Le circuit est capable de se connecter par WPS sur la box internet.</p>]]></content:encoded></item><item><title><![CDATA[AngularJs et les filtres]]></title><description><![CDATA[<p>C'est une autre entité d'AngularJs : Les filtres <code>filter</code>. Il vont servir à modifier le rendu d'une variable dans votre HTML. </p>
+
+<h2 id="utilisationdesfiltres">Utilisation des filtres</h2>
+
+<p>Le cas le plus pertinent est l'affichage d'une date Prenons l'exemple suivant:</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;</code></pre>]]></description><link>https://www.noopy.fr/angularjs-et-les-filtres/</link><guid isPermaLink="false">803c2513-b8c0-4e3d-b3dd-3936eb3b35a7</guid><category><![CDATA[AngularJs]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Mon, 27 Mar 2017 06:41:03 GMT</pubDate><content:encoded><![CDATA[<p>C'est une autre entité d'AngularJs : Les filtres <code>filter</code>. Il vont servir à modifier le rendu d'une variable dans votre HTML. </p>
+
+<h2 id="utilisationdesfiltres">Utilisation des filtres</h2>
+
+<p>Le cas le plus pertinent est l'affichage d'une date Prenons l'exemple suivant:</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec JQuery&lt;/title&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.controller.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body data-ng-app="MyApp" data-ng-controller="MainCtrl"&gt;
+    &lt;label&gt;Nous sommes le&lt;/label&gt;
+    &lt;span data-ng-bind="maintenant"&gt;&lt;/span&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<pre><code class="language-javascript">/* app/app.js */
+
+// Déclaration de notre module
+angular.module("MyApp", []);  
+</code></pre>
+
+<pre><code class="language-javascript">/* app/app.controller.js */
+
+angular.module("MyApp").controller("MainCtrl", function ($scope) {  
+    "use strict";
+
+    $scope.maintenant = new Date();
+});
+</code></pre>
+
+<p><a href="https://jsfiddle.net/rt7wpo79/">https://jsfiddle.net/rt7wpo79/</a></p>
+
+<p>Vous remarquez que la date n'est pas super lisible comme ça:</p>
+
+<blockquote>
+  <p><strong>Nous sommes le</strong> Mon Mar 27 2017 08:15:47 GMT+0200 (CEST)</p>
+</blockquote>
+
+<p>Le filtre prends alors tout son sens. Nous allons appliquer un filter de date sur la variable <code>maintenant</code> de cette façon : <code>maintenant | date:'dd/MM/yyyy'</code></p>
+
+<p>On obtient:  </p>
+
+<blockquote>
+  <p><strong>Nous sommes le</strong> 27/03/2017</p>
+</blockquote>
+
+<p>Vous trouverez toutes les utilisation de ce filtre sur <a href="https://docs.angularjs.org/api/ng/filter/date">https://docs.angularjs.org/api/ng/filter/date</a></p>
+
+<h2 id="creationdunfiltre">Creation d'un filtre</h2>
+
+<p>Vous avez besoin de vous créer un filtre ? C'est parti ! créez-vous un fichier <code>app/app.filter.js</code> (comme pour les contrôleur, on soigne la syntaxe du nommage du fichier de filtre)</p>
+
+<pre><code class="language-javascript">/* app/app.filter.js */
+
+// filter qui juxtapose
+angular.module("MyApp").filter("bob", function() {  
+    return function (input, opt1, opt2) {
+        return [opt1, input, opt2].join(" ");
+    };
+});
+</code></pre>
+
+<p>et modifiez votre HTML</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec JQuery&lt;/title&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.controller.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.filter.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body data-ng-app="MyApp" data-ng-controller="MainCtrl"&gt;
+    &lt;div&gt;
+       &lt;span data-ng-bind="'tout' | bob:'coucou':'le monde'"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<p><a href="https://jsfiddle.net/kkhcfwsy/1/">https://jsfiddle.net/kkhcfwsy/1/</a></p>
+
+<blockquote>
+  <p>coucou tout le monde</p>
+</blockquote>
+
+<p>Le filtre a bien été appliqué sur la chaine <code>'tout'</code> en préfixant avec le premier paramètre et suffixant avec le second paramètre. Vous remarquez que l'on utilise <code>|</code> pour introduire un filtre et que l'on utilise <code>:</code> pour introduire un paramètre de filtre.</p>
+
+<p>Remarquez aussi que l'on peut chainer les filtres. Essayez : <code>&lt;span data-ng-bind="maintenant |date:'dd/MM/yyyy' | bob:'nous sommes le':'et il fait beau'"&gt;&lt;/span&gt;</code></p>
+
+<h2 id="lestrucspasfaire">Les trucs à pas faire</h2>
+
+<p>Un filtre n'est pas fait pour décorer des éléments avec de l'HTML. Par example un filtre qui ajoute <code>&lt;strong&gt;&lt;/strong&gt;</code> autour d'un texte. Pour faire ce genre de chose, il y a une autre entité appelée <code>directive</code> ou encore une entité appelée <code>component</code></p>]]></content:encoded></item><item><title><![CDATA[Introduction à AngularJs]]></title><description><![CDATA[<p>On parle depuis quelques années de <em>web applications</em> et plus particulièrement de <em>single page applications</em>. Les <em>single page applications</em> sont des applications qui s'exécutent depuis une unique page. Pour que ça fonctionne, du code javascript est exécuté sur cette page.</p>
+
+<p>Concrêtement, ce programme javascript va manipuler le <em>DOM</em>. Comme vous</p>]]></description><link>https://www.noopy.fr/introduction-a-angularjs/</link><guid isPermaLink="false">f19205d3-c432-49d2-b1a5-c32b4890ac84</guid><category><![CDATA[AngularJs]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Sun, 26 Mar 2017 19:40:59 GMT</pubDate><content:encoded><![CDATA[<p>On parle depuis quelques années de <em>web applications</em> et plus particulièrement de <em>single page applications</em>. Les <em>single page applications</em> sont des applications qui s'exécutent depuis une unique page. Pour que ça fonctionne, du code javascript est exécuté sur cette page.</p>
+
+<p>Concrêtement, ce programme javascript va manipuler le <em>DOM</em>. Comme vous le savez, les pages web sont écrites en HTML; c'est un langage par balise qui défini une structure, aussi appelé <em>l'arbre DOM</em></p>
+
+<p>Pour la suite, il vaut mieux que vous ayez des notions d'HTML et de javascript.</p>
+
+<h2 id="jquerylaprhistoire">JQuery, la préhistoire</h2>
+
+<p>Il y a fort longtemps, le principal framework utilisé sur les pages web était le <a href="https://jquery.com/">JQuery</a>. C'était fort pratique mais sans rigueur, le code devenait rapidement un sacré sac de noeuds. Le JQuery permet de manipuler directement les éléments du DOM. Un petit exemple vaut mieux que de longs discours.</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec JQuery&lt;/title&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.2.1.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hey !&lt;/h1&gt;
+    &lt;span&gt;Cliquez-moi&lt;/span&gt;
+    &lt;script&gt;
+        $("span").on("click", function () {
+            $("h1").html("Yeah!");
+        });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<p>Ouvrez ce ficher dans votre navigateur internet (ctrl+o), ou allez directement à la page de test (<a href="https://jsfiddle.net/Le35xgvu/">https://jsfiddle.net/Le35xgvu/</a>)</p>
+
+<h3 id="comportement">Comportement</h3>
+
+<p>Quand on clique sur <strong>Cliquez-moi</strong>, le titre change.</p>
+
+<h3 id="petiteexplication">Petite explication:</h3>
+
+<p>La première balise script permet de charger JQuery. La seconde balise est notre programme. Ce dernier intercepte un clique sur "Cliquez-moi" et transforme le titre en "Yeah!". En détail, on sélectionne la balise <code>&lt;span&gt;&lt;/span&gt;</code>, on intercepte tout clique dessus pour exécuter une fonction dite <em>anonyme</em>. Dans cette dernière, on sélectionne la balise <code>&lt;h1&gt;&lt;/h1&gt;</code> et on change le contenu par le texte <code>Yeah!</code></p>
+
+<h2 id="angularjs">AngularJs</h2>
+
+<h3 id="leprogrammededpart">Le programme de départ</h3>
+
+<p>Angular JS est un autre framework avec une autre approche : on ne trafique plus le DOM; on laisse AngularJs s'en occuper. Nous on ne fait que décrire le comportement voulu. Si l'on reprends l'exemple précédent, lors du clique, on ne va pas sélectionner la balise <code>&lt;h1&gt;&lt;/h1&gt;</code> pour y modifier le contenu. On va <em>variabiliser</em> le contenu de la balise <code>&lt;h1&gt;&lt;/h1&gt;</code>. Ensuite, au clique, on modifie la variable. Et hop, l'exemple :</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec Angularjs&lt;/title&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body data-ng-app data-ng-init="titre='Hey'"&gt;
+    &lt;h1&gt;{{titre}}&lt;/h1&gt;
+    &lt;span data-ng-click="titre='Yeah!'"&gt;Cliquez-moi&lt;/span&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<p><a href="https://jsfiddle.net/pdjs24d9/">https://jsfiddle.net/pdjs24d9/</a></p>
+
+<p>Vous avez vu, la balise <code>&lt;body&gt;&lt;/body&gt;</code> s'est vu décorer de deux attributs:</p>
+
+<ul>
+<li>Le premier, <code>data-ng-app</code>indique à angularjs, que notre application se trouve dans cette balise</li>
+<li>Le second, <code>data-ng-init="titre='Hey'"</code>permet d'initialiser une variable <code>titre</code> avec la valeur <em>Hey</em></li>
+</ul>
+
+<p>Vous remarquez ensuite, que la variable <em>titre</em> est entre moustaches <code>{{titre}}</code>. Cela indique à AngularJs d'afficher le contenu de cette variable. C'est pratique pour commencer, mais rapidement on choisira une autre écriture <code>&lt;h1 data-ng-bind="titre"&gt;&lt;/h1&gt;</code> Car le principal inconvénient de cette écriture, est que le temps que l'application se charge, les moustaches sont affichées à l'écran.</p>
+
+<p>Et enfin, le dernier point, l'attribut <code>data-ng-click="titre='Yeah!'"</code>. C'est assez explicite.</p>
+
+<h3 id="onpasselapremirevitesse">On passe la première vitesse ?</h3>
+
+<p>Vous allez me dire: "C'est bien gentil, mais faire une application web qui fait juste ça, c'est pas persuasif!" <br>
+Et je vous réponds: "C'est pas faux"</p>
+
+<p>Nous allons refaire notre exemple du clique qui modifie le titre en plus propre.</p>
+
+<p>Avant tout, on va commencer par se préparer une structure de fichier; parce qu'avant tout, faut être un minimum rigoureux, et être propre. Commencer un projet de patachon vous mènera vers le mur. </p>
+
+<pre><code>app  
+ |--app.js
+ |--app.controller.js
+index.html  
+</code></pre>
+
+<p>Avec le premier fichier, <code>app.js</code>, nous allons introduire la notion de modules. Tout est organisé en modules. Chaque module peux avoir des dépendances vers d'autres modules. Généralement, on ne déclare qu'un module. Editez le fichier <code>app/app.js</code> et copiez le code suivant:</p>
+
+<pre><code class="language-javascript">/* app.js */
+
+// Déclaration de notre module
+angular.module("MyApp", []);  
+</code></pre>
+
+<p>Dans le second fichier, nous allons déclarer un contrôleur (à l'intérieur de notre module). Le contrôleur est la première entité AngularJs. Il y en a d'autres, on le verra plus tard. Dans ce contrôleur, nous allons décrire le comportement de notre page. Quelques règles que je me suis fixé, et que je vous conseille de suivre :</p>
+
+<ul>
+<li>Un fichier par contrôleur</li>
+<li>Un seul contrôleur par fichier</li>
+<li>Le nom d'un contrôleur commence toujours par une majuscule et se termine toujours par <code>Ctrl</code></li>
+<li>le nom de fichier d'un contrôleur se termine toujours par <code>.controller.js</code></li>
+</ul>
+
+<pre><code class="language-javascript">/* app.controller.js */
+
+angular.module("MyApp").controller("MainCtrl", function ($scope) {  
+    "use strict";
+
+    $scope.title = "Hey";
+
+    $scope.click = function() {
+        $scope.title = "Yeah!"
+    };
+});
+</code></pre>
+
+<p>Tient ! c'est quoi cette variable <code>$scope</code> ? C'est une variable lié au dom, dans toute la partie couverte par ce contrôleur. Elle est injectée par AngularJs dans notre contrôleur. Lorsque l'on passe <code>$scope</code> en paramètre de notre contrôleur, AngularJs l'injecte. C'est ce qu'on appelle l'auto-injection. Ce qu'il faut savoir, c'est que, dans notre fichier HTML, toutes les variables, fonctions auquelles nous faisons référence font partie du scope.</p>
+
+<p>Et maintenant, passons à notre fichier html</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec Angularjs&lt;/title&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.controller.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body data-ng-app="MyApp" data-ng-controller="MainCtrl"&gt;
+    &lt;h1 data-ng-bind="title"&gt;&lt;/h1&gt;
+    &lt;span data-ng-click="click()"&gt;Cliquez-moi&lt;/span&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<p><a href="https://jsfiddle.net/qbcm3rwu/">https://jsfiddle.net/qbcm3rwu/</a></p>
+
+<p>Remarquez, que l'attribut <code>data-ng-app</code>fait référence à notre module. On déclare aussi notre contrôleur avec <code>data-ng-controller="MainCtrl"</code></p>
+
+<p>Comme on le disait juste avant, la variable <code>title</code> et la fonction <code>click()</code> sont dans le scope; on peut donc les utiliser directement dans notre HTML.</p>
+
+<h3 id="lescope">Le scope</h3>
+
+<p>C'est une notion très importante dans le framework AngularJs. Tout ce que l'on veut référencer dans le fichier HTML doit être dans le scope. Mais sachez qu'il n'y a pas toujours qu'un seul scope. Il y en a plein. Pour commencer, à chaque contrôleur, on retrouve un scope. Les scopes sont même hiérarchisés. un scope peut avoir des enfants et des parents. Et le plus important:</p>
+
+<p><strong>Lors de la création d'un scope enfant, le scope parent est cloné</strong>. En d'autres terme, lorsqu'AngularJs crée un scope enfant, il le fait en clonant le scope parent.</p>
+
+<p>Pour illustrer cette notion de scope, nous allons prendre un autre exemple et introduire une nouvelle notion : la <code>directive</code>. une directive est une entité AngularJs qui décrit un comportement lorsqu'un attribut (ou une balise) est ajouté dans l'HTML. Nous allons voir la directive <code>data-ng-repeat</code></p>
+
+<p>Modifiez le contrôleur pour y insérer un tableau de valeurs</p>
+
+<pre><code class="language-javascript">/* app.controller.js */
+
+angular.module("MyApp").controller("MainCtrl", function ($scope) {  
+    "use strict";
+
+    $scope.table = [
+        "trucs",
+        "bidules"
+    ];
+
+    $scope.title = "Hey";
+
+    $scope.click = function() {
+        $scope.title = "Yeah!"
+    };
+});
+</code></pre>
+
+<p>et le fichier HTML</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec Angularjs&lt;/title&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.controller.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body data-ng-app="MyApp" data-ng-controller="MainCtrl"&gt;
+    &lt;h1 data-ng-bind="title"&gt;&lt;/h1&gt;
+    &lt;span data-ng-click="click()"&gt;Cliquez-moi&lt;/span&gt;
+    &lt;ul&gt;
+        &lt;li data-ng-repeat="element in table" data-ng-bind="element"&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<p><a href="https://jsfiddle.net/zr29zck4/1/">https://jsfiddle.net/zr29zck4/1/</a></p>
+
+<p>Magique ! Nous avvons affiché une liste contenant:</p>
+
+<ul>
+<li>trucs</li>
+<li>bidules</li>
+</ul>
+
+<p>Comment ça marche ? <code>data-ng-repeat</code> va créer autant de balise <code>&lt;li&gt;&lt;/li&gt;</code> qu'il n'y a d'éléments dans notre tableau. Pour chacune de ces balises <code>&lt;li&gt;&lt;/li&gt;</code>, AngularJs va créer un scope enfant en y injectant l'élément du tableau.</p>
+
+<h3 id="sapristicanemarchepas">Sapristi ! Ca ne marche pas !</h3>
+
+<p>Ben oui, va falloir débugger quand ça ne marche pas. Pour commencer, je vous conseille fortement d'utiliser, comme navigateur Chrome (ou Chromium).</p>
+
+<p>Ensuite, vous devez installer une extension appelée Battarang (<a href="https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk">https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk</a>)</p>
+
+<p>Vous y êtes ? rechargez votre page et ouvrez la console développeur (F12). Faites un clique droit sur <strong>Hey</strong> et faites <em>Inspecter</em>. Vous voyez sur quel element HTML vous êtes. allez dans l'onglet <em>console</em> et tapez <code>$scope</code> puis retour à la ligne. Yeah ! vous pouvez afficher le contenu de votre scope. Vous remarquez que vous trouvez, dans le scope, <code>title</code>, <code>click()</code> et <code>table</code></p>
+
+<p>C'est de cette manière que vous débuggerez la plupart de vos applications.</p>
+
+<p>Maintenant, faites un clique droit sur <strong>trucs</strong>, puis, dans la console, tapez <code>$scope.element</code>; la valeur de element pour cette ligne est affiché; vous êtes dans le scope de la première ligne du <code>data-ng-repeat</code></p>]]></content:encoded></item><item><title><![CDATA[Un programmateur Chinois]]></title><description><![CDATA[<p>Je viens de faire l’acquisition d’un programmateur pour ATMEL sur le célèbre site <a href="https://fr.aliexpress.com/">https://fr.aliexpress.com/</a></p>
+
+<p>Ce programmateur sert à programmer les puces Atmel (les mêmes utilisées sur les Arduinos). Pour programmer, on utilise le programme avrdude (<a href="http://www.nongnu.org/avrdude/">http://www.nongnu.org/avrdude/</a>). Vous pouvez l’installer depuis</p>]]></description><link>https://www.noopy.fr/un-programmateur-chinois/</link><guid isPermaLink="false">3c3df158-c2a4-4d76-ad07-d243347abec3</guid><category><![CDATA[Arduino]]></category><category><![CDATA[Atmel]]></category><category><![CDATA[Microcontrollers]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Sun, 26 Feb 2017 10:26:00 GMT</pubDate><content:encoded><![CDATA[<p>Je viens de faire l’acquisition d’un programmateur pour ATMEL sur le célèbre site <a href="https://fr.aliexpress.com/">https://fr.aliexpress.com/</a></p>
+
+<p>Ce programmateur sert à programmer les puces Atmel (les mêmes utilisées sur les Arduinos). Pour programmer, on utilise le programme avrdude (<a href="http://www.nongnu.org/avrdude/">http://www.nongnu.org/avrdude/</a>). Vous pouvez l’installer depuis les dépôts Ubuntu</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/usbisp01.jpg" alt="">
+<img src="https://www.noopy.fr/content/images/2017/03/usbisp02.jpg" alt=""></p>
+
+<h2 id="premiresurprise">Première surprise</h2>
+
+<p>Au premier test, mauvaise surprise : le périphérique n’est pas vraiment reconnu. En listant les périphériques USB, je me retrouve avec la signature suivante 03eb:c8b4</p>
+
+<p>Et en fouillant sur internet … Ce n’est pas le bon firmware dessus (<a href="http://wiki.efihacks.com/index.php?title=USBasp_Experiences">http://wiki.efihacks.com/index.php?title=USBasp_Experiences</a>)</p>
+
+<h2 id="dcisiondeflasherlefirmware">Décision de flasher le firmware</h2>
+
+<p>Pour flasher le firmware du programmateur, il faut … un programmateur. C’est balo.</p>
+
+<p>Heureusement, il y a une solution avec l’Arduino Uno (<a href="https://www.arduino.cc/en/Tutorial/ArduinoISP">https://www.arduino.cc/en/Tutorial/ArduinoISP</a>). Bref, il faut suivre les explications et charger le programme sur l’arduino. Pour le câblage:</p>
+
+<ul>
+<li>pin 13 - SCK</li>
+<li>pin 12 - MISO</li>
+<li>pin 11 - MOSI</li>
+<li>pin 10 sur une des deux pin “UP” du programmateur chinois (il faut repérer celle qui est directement liée au microcontroller – sur ma photo, le trou près de la lettre “c”)</li>
+<li>5V - 5V</li>
+<li>GND - GND</li>
+<li>Un condensateur 10µF entre GND et la pin RESET de l’arduino</li>
+</ul>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/usbisp03.jpg" alt=""></p>
+
+<p>Sur certains sites, on vous dit de relier entre elles les deux pins “UP” du programmateur chinois pour le flasher (une des pins est le RESET du microcontroller, l’autre, le 5V). Pour ma part, ce qui a fonctionné, c’est de relier la pin “up” (proche de la lettre “c” sur la photo) à la PIN 10 de l’arduino</p>
+
+<p>Pour ce qui est du microcontroller sur le programmateur, il m’a fallu regarder au microscope; dans mon cas c’est un ATMEGA88</p>
+
+<h2 id="codesourcedufirmware">Code source du firmware</h2>
+
+<p>Au préalable, il vous faut</p>
+
+<ol>
+<li>Installer les outils de compilation (avr-libc et gcc-avr)  </li>
+<li>Installer avrdude (soft pour flasher)  </li>
+<li>Installer GIT (<a href="https://doc.ubuntu-fr.org/git">https://doc.ubuntu-fr.org/git</a>)</li>
+</ol>
+
+<p>Il faut cloner le repo GIT <a href="https://github.com/landru29/USBasp">https://github.com/landru29/USBasp</a> (j’y ai apporté une modification expliquée sur <a href="https://www.sciencetronics.com/greenphotons/?p=938">https://www.sciencetronics.com/greenphotons/?p=938</a>)</p>
+
+<pre><code>sudo apt-get install git avrdude avr-libc gcc-avr  
+mkdir -p ~/atmel  
+cd ~/atmel  
+git clone https://github.com/landru29/USBasp  
+cd USBasp  
+</code></pre>
+
+<p>Le port change en fonction de votre système; vérifiez sur quel port USB est branché votre arduino</p>
+
+<p>Ensuite compilez depuis le dossier <code>USBasp/firmware</code> en tapant, en ligne de commande</p>
+
+<pre><code>cd ~/atmel/USBasp/firmware  
+TARGET=atmega88 ISP=avrisp PORT=/dev/ttyACM0 make main.hex  
+</code></pre>
+
+<p>Vous pouvez vous affranhcir de la compilation et utiliser les binaires pré-compilé dans le dossier <code>USBasp/bin/firmware</code></p>
+
+<h2 id="onflashe">On flashe</h2>
+
+<p>Tous est branché ? C’est parti ! Placez-vous dans le dossier <code>firmware</code>.</p>
+
+<p>Ensuite, il faut envoyer les commandes suivantes (depuis le dossier <code>USBasp/firmware</code>):</p>
+
+<pre><code>cd ~/atmel/USBasp/firmware  
+TARGET=atmega88 ISP=avrisp PORT=/dev/ttyACM0 make fuses  
+TARGET=atmega88 ISP=avrisp PORT=/dev/ttyACM0 make flash  
+</code></pre>
+
+<p>ou en utilisant les binaires pré-compilés (depuis le dossier <code>USBasp/bin/firmware</code>):</p>
+
+<pre><code>cd ~/atmel/USBasp/bin/firmware  
+TARGET=atmega88 ISP=avrisp PORT=/dev/ttyACM0 make usbasp  
+</code></pre>
+
+<p>N’oubliez pas d’adapter le port à votre system</p>
+
+<p>avrdude devrait vous dire que tout va bien. Il fait, dans l’ordre:</p>
+
+<ol>
+<li>Il vérifie la signature du microcontroller à flasher  </li>
+<li>Abandonne si la signature du microcontroller est différente de la TARGET spécifiée  </li>
+<li>Écrit les données  </li>
+<li>Relit les données écrites</li>
+</ol>
+
+<p>Si vous vous trompez de TARGET, il vous le fera savoir sans tout casser</p>
+
+<p>Pour info, lors du flashage, on écrit les fuses (qui correspondent à la configuration du microcontroller <a href="http://www.engbedded.com/fusecalc/">http://www.engbedded.com/fusecalc/</a>) et ensuite on flash le binaire en eeprom.</p>
+
+<p>Si tout s’est bien passé, la led rouge vient de passer en bleu</p>
+
+<h3 id="ontest">On test ?</h3>
+
+<p>Décâblez tout, et branchez votre programmateur sur une prise usb. <br>
+en lançant la commantde <br>
+<code>lsusb</code>, vous devriez voir quelque chose du genre</p>
+
+<pre><code>ID 16c0:05dc Van Ooijen Technische Informatica shared ID for use with libusb  
+</code></pre>
+
+<p>Brancher votre programmateur sur la prise ISP d’un arduino et entrez dans le shell avrdude:</p>
+
+<pre><code>avrdude -c usbasp -p m328p -t  
+</code></pre>
+
+<p>Puis testez avec les commandes:  </p>
+
+<pre><code>part  
+d lfuse  
+d hfuse  
+</code></pre>]]></content:encoded></item><item><title><![CDATA[Ma station météo à 10 boules]]></title><description><![CDATA[<p>Je me suis lancé dans ce projet, car je voulais ma station météo pour enregistrer mes données météo. Après avoir halluciné en voyant les tarifs sur le marché (plus de 150€ les modèles pour lesquels on peut récupérer les données sur ordinateur), j’ai pris la décision de faire ma</p>]]></description><link>https://www.noopy.fr/ma-station-meteo-a-10-boules/</link><guid isPermaLink="false">d912d1be-882a-428c-b57b-0fbac6669135</guid><category><![CDATA[Arduino]]></category><category><![CDATA[Microcontrollers]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Wed, 17 Aug 2016 10:20:00 GMT</pubDate><content:encoded><![CDATA[<p>Je me suis lancé dans ce projet, car je voulais ma station météo pour enregistrer mes données météo. Après avoir halluciné en voyant les tarifs sur le marché (plus de 150€ les modèles pour lesquels on peut récupérer les données sur ordinateur), j’ai pris la décision de faire ma propre station météo pour 10€.</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/meteo.jpg" alt=""></p>
+
+<p>Tout le projet est ici: <a href="https://github.com/landru29/esp8266-meteo">https://github.com/landru29/esp8266-meteo</a></p>
+
+<h2 id="leprincipe">Le principe</h2>
+
+<h3 id="mesuresphysiques">Mesures physiques</h3>
+
+<p>La station météo mesure:</p>
+
+<ul>
+<li>la température (DS18B20)</li>
+<li>le taux d’humidité (DHT22)</li>
+<li>la pression (BMP180)</li>
+</ul>
+
+<h3 id="fonctionnement">Fonctionnement</h3>
+
+<p>La station doit pouvoir se connecter au WiFi du domicile. Elle expose ensuite un petit server HTTP qui, à chaque requête de type GET renvoie l’ensemble des mesures au format JSON.</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/meteo-diagram.png" alt=""></p>
+
+<p>Concrêtement, à la mise en route de la station, elle se connecte sur le WiFi (par WPS). Ensuite, il suffit d’aller sur la page <a href="http://meteo-by-noopy/">http://meteo-by-noopy/</a>, et vous aurez, en retour:</p>
+
+<pre><code>{
+    "bmp-temperature": "20.30"
+    "dht-temperature": "20.40"
+    "ds-temperature": "20.36"
+    "bmp-pressure": "10240"
+    "dht-humidity": "19.60"
+    "dht-heat-index": "22.10"
+}
+</code></pre>
+
+<p>Pour info, le host “meteo-by-noopy” est inscrit en dur dans le programme que l’on transfère dans le microcontrolleur. cette adresse est, évidement, atteignable que depuis le réseau de votre domicile.</p>
+
+<h3 id="unpetitmotsurlewps">Un petit mot sur le WPS</h3>
+
+<p>C’est un mode de connexion de certains périphériques à votre box internet. Votre box et le périphérique négocient une connexion sécurisée. En pratique, vous mettez sous tension la station météo, et lorsque la led émet des doubles flashs, appuyez sur le bouton “WPS” qui se trouve sur votre box. la connection se fait.</p>
+
+<p>A la prochaine mise sous tension de la station météo, cette dernière se connectera toute seule à votre box (elle a gardée en mémoire la clef de connexion).</p>
+
+<p><a href="https://fr.wikipedia.org/wiki/Wi-Fi">https://fr.wikipedia.org/wiki/Wi-Fi</a><em>Protected</em>Setup</p>
+
+<h2 id="lescomposants">Les composants</h2>
+
+<ul>
+<li>Wemos D1 Mini (microcontrolleur avec module WiFi): 2,50€</li>
+<li>DHT22 (capteur d’humidité + température): 2,50€</li>
+<li>BMP180 (capteur de pression + température): 2,50€</li>
+<li>DS18B20 (capteur de température précis): 2€ le lot de 5</li>
+<li>2 résistances de 4.7k coûtant quelques centimes</li>
+</ul>
+
+<p>Les prix indiqués sont ceux que l’on retrouve sur le site <a href="https://fr.aliexpress.com/">https://fr.aliexpress.com/</a> (site chinois avec des tarifs chinois).</p>
+
+<h3 id="lescapteurs">Les capteurs</h3>
+
+<p>Ils sont tous les trois numériques. C’est plus pratique, car on n’a pas besoin de se soucier de la chaîne d’acquisition analogique (amplification + conversion numérique). Tout est dans les composants. la données est transportée par un ou deux fils. Vous pouvez retrouver facilement les datasheets sur le net.</p>
+
+<p>Certains, comme le DHT22 et le DS18B20, on besoin d’une résistance (4.7k, spécifié dans les datasheets) de pull-up entre le fil de data et le 5V.</p>
+
+<h3 id="lemicrocontrolleur">Le microcontrolleur</h3>
+
+<p>C’est le fameux Wemos D1 mini (qui embarque l’ESP8266). On en a déjà parlé dans la page de l’IOT (Internet Of Things).</p>
+
+<p>Ce microcontrolleur se programme avec les outils Arduino (<a href="https://www.arduino.cc/">https://www.arduino.cc/</a>). Pour ceux qui ne connaissent pas, vous avez juste à télécharger et installer le soft (disponible gratuitement sur le site), écrire votre programme (en c++), et ensuite, après avoir connecté le microcontrolleur à votre ordinateur, via USB, vous transférez votre programme.</p>
+
+<p>Le programme est disponible sur mon github: <a href="https://github.com/landru29/esp8266-meteo/tree/master/meteo">https://github.com/landru29/esp8266-meteo/tree/master/meteo</a></p>
+
+<p>Le schéma électronique <br>
+Le schéma a été réalisé avec Fritzing (<a href="http://fritzing.org/home/">http://fritzing.org/home/</a> version 0.9.3)</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/schematic.png" alt=""></p>]]></content:encoded></item><item><title><![CDATA[On fait une ruche ?]]></title><description><![CDATA[<p>Ca m’a pris comme une envie de … Enfin, non, ça me trottait dans la tête depuis quelques années. C’est comme une taupe. Elle pousse, elle gêne, et puis, il faut concrétiser.</p>
+
+<p>La saison prochaine, je me lance dans l’élevage d’abeilles. C’est pas mon truc d’</p>]]></description><link>https://www.noopy.fr/on-fait-une-ruche/</link><guid isPermaLink="false">8a063064-8436-4c3e-b77e-374b3beddfd0</guid><category><![CDATA[Bidules]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Sun, 19 Jun 2016 12:28:00 GMT</pubDate><content:encoded><![CDATA[<p>Ca m’a pris comme une envie de … Enfin, non, ça me trottait dans la tête depuis quelques années. C’est comme une taupe. Elle pousse, elle gêne, et puis, il faut concrétiser.</p>
+
+<p>La saison prochaine, je me lance dans l’élevage d’abeilles. C’est pas mon truc d’acheter le matériel tout fait (cf, ma pico brasserie entièrement bricolée), donc, fabrication maison ! Et puis, par expérience, quand on se construit son matériel, ça nous oblige à bien nous documenter, et au final, on maîtrise mieux le sujet. Autre argument : une ruche coûte plus de 100€. je la fabriquerai pour moins de 60€:</p>
+
+<ul>
+<li>20€ de pin douglas</li>
+<li>18€ de contre-plaqué</li>
+<li>15€ de tôle galvanisée</li>
+</ul>
+
+<h2 id="lestypesderuches">Les types de ruches</h2>
+
+<p>Comme vous pouvez imaginer, il y a un paquets de types de ruches. On trouve les ruches tronc (dans des troncs d’arbres, des ruches Dadant, des ruches Warré, … Le type de ruche à la mode en France est la Warré. J’aime pas la mode.</p>
+
+<p>Pour résumer, le modèle Warré n’a pas de cadres (juste des baguettes de bois à partir desquelles les abeilles bâtissent leur rayons de cire). Le type Dadant, modèle traditionnel en France comporte des cadres avec une feuille de cire, pour “imposer” le sens de bâtissage des rayons de cire.</p>
+
+<p>Et puis, il y a cet article qui m’a beaucoup plu : <a href="http://www.abeille-et-nature.com/index.php?cat=essaims&amp;page=ruche_warre2">http://www.abeille-et-nature.com/index.php?cat=essaims&amp;page=ruche_warre2</a>. J’ai donc décidé de partir sur le modèle Dadant.</p>
+
+<h2 id="compositionduneruche">Composition d’une ruche</h2>
+
+<p>Une ruche, c’est:</p>
+
+<ul>
+<li>Un corps principal (dans laquelle on trouve la reine; on ne touche pas au miel : il appartient aux abeilles)</li>
+<li>Des hausses (C’est là que l’on trouve le miel à récolter)</li>
+<li>Un fond avec une planche d’envol</li>
+<li>Un toit</li>
+</ul>
+
+<p>Il y a encores quelques éléments comme:</p>
+
+<ul>
+<li>Le couvre cadre</li>
+<li>La grille à reine(qui empêche la reine de monter dans les hausses)</li>
+<li>La porte (qui ne laisse pas passer le frelon asiatique)</li>
+<li>…</li>
+</ul>
+
+<h2 id="quelquesdimensionsconnatre">Quelques dimensions à connaître</h2>
+
+<p>Les dimensions de la ruche sont déduites de quelques données d’entrée:</p>
+
+<ul>
+<li>Un cadre mesure 433mm de large et 300mm de hauteur</li>
+<li>Les cadres sont disposés tous les 38mm</li>
+<li>S’il existe un espace de plus de 10mm, les abeilles combleront avec de la cire</li>
+<li>S’il existe un espace de moins de 6mm, les abeilles combleront avec du propolis</li>
+</ul>
+
+<p>Comme je veux faire une ruche à 10 cadres, les dimensions intérieures sont : 450mm x 380mm, et 310mm de hauteur.</p>
+
+<h2 id="onlafaitenquoi">On la fait en quoi ?</h2>
+
+<p>Les abeilles sont très sensibles aux pesticides et tous ces trucs. Il faut donc utiliser du bois non traité. J’ai choisi d’utiliser du pin Douglas en 20mm, acheté directement en scierie. J’ai trouvé des planches qui font plus de 400mm de large. Ça tombe bien, la hauteur de ma ruche est de 310mm. <br>
+Par contre, pour le fond, j’ai dû prendre du contre-plaqué (idem pour le couvre-cadre).</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/hive-1-1.png" alt=""></p>
+
+<p>Pour protéger le toit, je voulais du zinc, mais je n’ai pas trouvé. Je me suis rabattu sur de la tôle galvanisée, achetée chez un vendeur de métal (dans les magasins de brico, c’est hors de prix)</p>
+
+<h2 id="outillage">Outillage</h2>
+
+<p>On s’en sort pas avec un marteau et une scie. Il faut un minimum d’outillage:</p>
+
+<ul>
+<li>Une scie circulaire</li>
+<li>Une scie sauteuse</li>
+<li>Une ponceuse</li>
+<li>Une perceuse</li>
+<li>Râpe, gouge, équerre, …</li>
+</ul>
+
+<h2 id="construction">Construction</h2>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/hive.jpg" alt="">
+L’assemblage se fait avec des queues droites. Pour les réaliser (sans machine à bois), on y va à coups de scie sauteuse. Il faut être très précis. On adapte avec une râpe. Ensuite tout est vissé (attention, pas de colle ! les abeilles n’aiment pas). L’assemblage est fait avec des vis à bois de longueur 50mm et diamètre 6mm. Donc pour ne pas éclater le bois, un perçage à 3mm ou 4mm de diamètre est nécessaire. <br>
+<img src="https://www.noopy.fr/content/images/2017/03/hive-2.png" alt="">
+Dans le dessin de définition ci-dessus (devant et derrière), j’y ai prévu une encoche pour loger les cadres. Ces encoches sont réalisées avec la scie circulaire. Mettez en place un guide fixé à la planche au sert-joint; ensuite, finissez à la gouge. On y clouera une crémaillère : C’est une pièce en tôle d’acier que l’on trouve en magasin spécialisé pour quelques centimes (<a href="http://www.abeille35.com/equipement-des-ruches/319-cremaillere-l-45-cm-pour-10-cadres.html">http://www.abeille35.com/equipement-des-ruches/319-cremaillere-l-45-cm-pour-10-cadres.html</a>). Ça fixe la distance entre les cadres.</p>
+
+<h2 id="lesplans">Les plans</h2>
+
+<ul>
+<li><a href="https://github.com/landru29/hive/raw/master/Hive.pdf">https://github.com/landru29/hive/raw/master/Hive.pdf</a></li>
+<li><a href="https://github.com/landru29/hive/raw/master/Main-Back-Front.pdf">https://github.com/landru29/hive/raw/master/Main-Back-Front.pdf</a></li>
+<li><a href="https://github.com/landru29/hive/raw/master/Main-Side.pdf">https://github.com/landru29/hive/raw/master/Main-Side.pdf</a></li>
+<li><a href="https://github.com/landru29/hive/raw/master/Additional-Back-Front.pdf">https://github.com/landru29/hive/raw/master/Additional-Back-Front.pdf</a></li>
+<li><a href="https://github.com/landru29/hive/raw/master/Additional-Side.pdf">https://github.com/landru29/hive/raw/master/Additional-Side.pdf</a></li>
+<li><a href="https://github.com/landru29/hive/raw/master/Bottom.pdf">https://github.com/landru29/hive/raw/master/Bottom.pdf</a></li>
+<li><a href="https://github.com/landru29/hive/raw/master/Roof-Gable.pdf">https://github.com/landru29/hive/raw/master/Roof-Gable.pdf</a></li>
+<li><a href="https://github.com/landru29/hive/raw/master/Roof-Top.pdf">https://github.com/landru29/hive/raw/master/Roof-Top.pdf</a></li>
+</ul>
+
+<p>Tout le reste est sur mon github. Des mises à jours arriveront au fil de l’eau : <a href="https://github.com/landru29/hive">https://github.com/landru29/hive</a></p>]]></content:encoded></item><item><title><![CDATA[La bière connectée]]></title><description><![CDATA[<p>Je me suis fabriqué un thermomètre connecté (<a href="http://www.noopy.fr/arduino/iot/">http://www.noopy.fr/arduino/iot/</a>), et brassé ma bière avec. Les données sont envoyées sur le service IOT d’OVH. Sur mon serveur, je crée mes graphes avec l’application Grafana. Cet article analyse les résultats.</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/thermometre.png" alt=""></p>
+
+<h2 id="lespaliers">Les paliers</h2>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/graph-all.png" alt="">
+Dans la vue d’</p>]]></description><link>https://www.noopy.fr/la-biere-connectee/</link><guid isPermaLink="false">8ca06eae-daa8-420c-8e81-0ecb234841e6</guid><category><![CDATA[Bière]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Sun, 19 Jun 2016 10:24:00 GMT</pubDate><content:encoded><![CDATA[<p>Je me suis fabriqué un thermomètre connecté (<a href="http://www.noopy.fr/arduino/iot/">http://www.noopy.fr/arduino/iot/</a>), et brassé ma bière avec. Les données sont envoyées sur le service IOT d’OVH. Sur mon serveur, je crée mes graphes avec l’application Grafana. Cet article analyse les résultats.</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/thermometre.png" alt=""></p>
+
+<h2 id="lespaliers">Les paliers</h2>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/graph-all.png" alt="">
+Dans la vue d’ensemble, on voit bien les différents paliers:</p>
+
+<ol>
+<li>Le palier à 45°c pour faire travailler les protéines (tenue de la mousse)  </li>
+<li>Le palier à 64°c pour obtenir les sucres fermentescibles (alcool)  </li>
+<li>Le palier à 70°c pour obtenir les sucres non fermentescible (rondeur)  </li>
+<li>L’ébulition avec le houblonnage  </li>
+<li>La mise en cuve après refroidissement à travers l’échangeur à plaques</li>
+</ol>
+
+<h3 id="palierdemptage">Palier d’empâtage</h3>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/palier1.png" alt=""></p>
+
+<p>Ce palier à 45°c environ, favorise la tenue de la mousse. En principe j’y reste 15 à 20 minutes. La petite chute de température correspond à la mise en route de l’hélice de brassage. Ça met en évidence le problème d’homogénéité de la température dans le brassin. Ce dernier est très pâteux, et la convection se fait très mal.</p>
+
+<h3 id="premierpalierdesaccharification">Premier palier de saccharification</h3>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/palier2.png" alt=""></p>
+
+<p>Là encore, on voit un saut de température. Pendant toute la montée en température, mon hélice tournait. Je l’ai arrêtée à 9H38. C’est pratiquement 1°C d’incertitude sur le brassin. Il faut faire attention car on peut avoir des surprises. Par expérience, je coupe le gaz 1°c à 2°c avant d’atteindre mon palier, quitte à rallumer  pour ajuster.</p>
+
+<h3 id="secondpalierdesaccharification">Second palier de saccharification</h3>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/palier3.png" alt=""></p>
+
+<p>Ici, encore, on retrouve le saut de température. Je suis obligé de couper mon moteur, car celui-ci chauffe beaucoup. En dehors de la chauffe, je l’éteins. Quand j’aurais un autre moteur plus performant, il tournera en permanence. Je pense aussi revoir mon hélice pour qu’elle brasse mieux le mou.</p>
+
+<h3 id="lesmontesentemprature">Les montées en température</h3>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/graph-montee1.png" alt="">
+<img src="https://www.noopy.fr/content/images/2017/03/graph-montee2.png" alt=""></p>
+
+<p>Elle sont constantes. On remarque qu’en basse température (de 45°c à 65°c), on est a une chauffe à 1,8°c par minute, alors qu’en haute température ( de 65°c à 70°c), on est à 1°c par minute. C’est dû à la non-isolation de ma cuve. le couvercle permet déjà de garder une grosse partie de la chaleur; mais ce n’est pas suffisant.</p>]]></content:encoded></item><item><title><![CDATA[IOT (Internet Of Things)]]></title><description><![CDATA[<p><img src="https://www.noopy.fr/content/images/2017/03/iot-temp.jpg" alt=""></p>
+
+<p>Dans cet article nous allons fabriquer un “objet connecté”: un thermomètre qui envoie les mesures sur internet. Et tant qu’à y être on le faire pour moins de 10€ ! <br>
+Pour ce faire, nous avons besoin:</p>
+
+<ul>
+<li>D’un capteur de temprérature DS18B20</li>
+<li>D’un afficheur led</li>
+<li>D’un microcontrolleur avec</li></ul>]]></description><link>https://www.noopy.fr/iot-internet-of-things/</link><guid isPermaLink="false">bbb8c75a-99b4-45c8-b35d-30a49341dd6f</guid><category><![CDATA[Arduino]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Wed, 27 Apr 2016 10:08:00 GMT</pubDate><content:encoded><![CDATA[<p><img src="https://www.noopy.fr/content/images/2017/03/iot-temp.jpg" alt=""></p>
+
+<p>Dans cet article nous allons fabriquer un “objet connecté”: un thermomètre qui envoie les mesures sur internet. Et tant qu’à y être on le faire pour moins de 10€ ! <br>
+Pour ce faire, nous avons besoin:</p>
+
+<ul>
+<li>D’un capteur de temprérature DS18B20</li>
+<li>D’un afficheur led</li>
+<li>D’un microcontrolleur avec wifi intégré ESP8266</li>
+</ul>
+
+<h2 id="lematriel">Le matériel</h2>
+
+<h3 id="esp8266">ESP8266</h3>
+
+<p>Cette puce intègre un module wifi. J’ai choisi l’implémentation faite par Wemos (<a href="http://www.wemos.cc/">http://www.wemos.cc/</a>), et plus particulièrement le Wemos D1 mini.</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/Wemos_D1_mini.jpg" alt=""></p>
+
+<p>Les avantages:</p>
+
+<ul>
+<li>C’est petit</li>
+<li>C’est compatible Arduino</li>
+<li>Pas cher (on le trouve facilement à moins de 4€ chez les Chinois)</li>
+</ul>
+
+<p>Vous aurez à souder les pins vous-même. Il vous faut donc un fer à souder.</p>
+
+<h3 id="lasondedetempratureds18b20">La sonde de température DS18b20</h3>
+
+<p>C'est un capteur numérique très précis. On y accède par le protocole i2c, cest à dire que 3 câbles suffisent (voire 2) pour mettre en oeuvre ce capteur. Vous trouverez plus d’informations avec la datasheet. J’ai fait l’acquisition de la version étanche pour 3€</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/ds18b20-waterproof.jpg" alt=""></p>
+
+<h3 id="leprotocole12c">Le protocole 12c</h3>
+
+<p>C’est un protocole qui permet de communiquer avec plusieurs périphériques avec un seul cable de données. Chaque périphérique a donc une adresse. Chaque fois que l’on veut communiquer avec un périphérique, on passe d’abord l’adresse (bit par bit sur la ligne de données), puis les données. Le constructeur doit fournir cette adresse</p>
+
+<p>Le DS18B20 a une petit particularité : chaque capteur fabriqué a sa propre adresse. Ce qui permet d’utiliser plusieurs DS18B20 sur la même ligne. Le constructeur a prévu une procédure pour découvrir les adresses des capteurs connectés sur la ligne. et la librairie OneWire implémente cette méthode (search).</p>
+
+<h3 id="brochage">Brochage</h3>
+
+<ul>
+<li><strong>GND</strong> sera connecté au <strong>GND</strong> du Wemos</li>
+<li><strong>VDD</strong> sera connecté au <strong>5V</strong> du Wemos</li>
+<li><strong>Data</strong> sera connecté à la pin <strong>D4</strong> du Wemos</li>
+<li>Il nous faut une résistance de <strong>4,7K</strong> entre <strong>5V</strong> et <strong>D4</strong> (résistance de pull-up)</li>
+</ul>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/Fritzing-temp-1.png" alt=""></p>
+
+<p>J’ai fait mon propre shield pour que ce soit plus simple à brancher. Les pins en haut à droite ne servent à rien (juste une fonction mécanique). Vous remarquerez la résistance de 7,7K entre le fil rouge (5V) et le fil jaune (Data)</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/ds18b20-shield.jpg" alt=""></p>
+
+<p>L’afficheur <br>
+Il n’est pas indispensable, mais vu sont prix (moins de 5€), on va pas s’en priver. On pourra afficher la température directement (sans être obligé de consulter internet). Il existe une version pour Wemos (OLED shield)</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/oled_500.jpg" alt=""></p>
+
+<p>Comme pour le Wemos, il faudra souder !</p>
+
+<p>On assemble tout <br>
+Ca donne quelque chose comme ça:</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/temperature.jpg" alt=""></p>
+
+<h3 id="principedefonctionnement">Principe de fonctionnement</h3>
+
+<p>Le montage fera les opérations suivantes:</p>
+
+<ol>
+<li>Se connecter au wifi  </li>
+<li>Récupérer l’adresse du capteur  </li>
+<li>Lancer une acquisition de température  </li>
+<li>Envoyer les données sur internet</li>
+</ol>
+
+<h3 id="onenvoieo">On envoie où ?</h3>
+
+<p>Nous allons utiliser un service d’OVH : <a href="https://www.runabove.com/iot-paas-timeseries.xml">https://www.runabove.com/iot-paas-timeseries.xml</a></p>
+
+<p>C’est un service prévu pour l’IOT; on y pousse des données de capteurs. Ces données sont datées. Ensuite, pour les bidouilleurs, on s’installe un server avec Grafana (Grafana, nativement, sait récupérer les données depuis l’IOT d’OVH) et on obtient quelque chose comme ça:</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/grafana.png" alt=""></p>
+
+<h4 id="crersoncompteiotchezovh">Créer son compte IOT chez OVH</h4>
+
+<ol>
+<li>Rendez-vous sur la page <a href="https://www.runabove.com/iot-paas-timeseries.xml">https://www.runabove.com/iot-paas-timeseries.xml</a> <br>
+Cliquez sur le bouton “Start now” et créez-vous un compte “Runabove” (<a href="https://cloud.runabove.com/signup/?launch=iot">https://cloud.runabove.com/signup/?launch=iot</a>)  </li>
+<li>Sur le menu de gauche, cliquez sur “Internet of things” <br>
+Créez une nouvelle application avec Nom, Description et le cluster (SBG-DEDICATED-OVH)</li>
+</ol>
+
+<p>L’application vous fournit deux paire de crédentials; un pour lire et un pour écrire. Nous utiliserons les crédentials d’écriture dans notre programme chargé dans le Wemos (la paire de lecture sera utilisée dans Grafana)</p>
+
+<h4 id="legraphique">Le graphique</h4>
+
+<p>Vous trouverez un bon tuto pour installer Grafana et le brancher sur l’IOT d’OVH (<a href="http://blog.toorop.fr/paas-iot-time-series-ovh-tutoriel/">http://blog.toorop.fr/paas-iot-time-series-ovh-tutoriel/</a>)</p>
+
+<p>Vous pouvez faire l’acquisition d’un petit VPS chez OVH (<a href="https://www.ovh.com/fr/vps/vps-ssd.xml">https://www.ovh.com/fr/vps/vps-ssd.xml</a>)</p>
+
+<h4 id="leprogramme">Le programme</h4>
+
+<p>Il est disponible sur github: <a href="https://github.com/landru29/iot-wemos-temperature">https://github.com/landru29/iot-wemos-temperature</a></p>
+
+<p>Pour l’utiliser, il vous faudra :</p>
+
+<ul>
+<li>Arduino 1.6.8 minimum</li>
+<li>Installer OneWire (depuis Arduino, menu Croquis > Inclure une Bibliothèque > Gérer les bibliotèque) pour utiliser le protocole i2c avec découverte d’adresse</li>
+<li>Installer le support ESP8266 (depuis Arduino, menu <em>Outils > Type de carte > Gestionnaire de carte</em> puis recherchez ESP8266)</li>
+<li>Pour l’écran, il vous faut installer OLED de sparkfun. La version officielle ne fonctionne pas correctement sur Wemos. Récupérez mon fork <a href="https://github.com/landru29/SparkFun">https://github.com/landru29/SparkFun</a><em>Micro</em>OLED<em>Arduino</em>Library et copiez le dans sketchbook/libraries</li>
+</ul>
+
+<p>Faites une copie de config.h.sample en config.h et modifiez les mots de passe:</p>
+
+<ul>
+<li>ssid => c’est le nom du wifi</li>
+<li>password => c’est le mot de passe du wifi</li>
+<li>iotId et iotKey (La ligne “write”)</li>
+</ul>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/iot.png" alt=""></p>
+
+<h4 id="ondcortiquetouta">On décortique tout ça</h4>
+
+<p>Pour commencer, le programme se connecte au wifi local avec le SSID et le mot de passe fourni dans config.h</p>
+
+<p>On est connecté au réseau !</p>
+
+<p>Toutes les requêtes sont en HTTPS; c’est à dire qu’elles sont chiffrées. Les clefs de chiffrage (fingerprint) sont récupérées sur le site <a href="https://www.grc.com/fingerprints.htm">https://www.grc.com/fingerprints.htm</a></p>
+
+<p>Pour pousser les données sur IOT, il faut un timestamp (c’est le nombre de secondes écoulées depuis le 1er janvier 1970). Le programme récupère un timestamp depuis l’api d’OVH. Ensuite, toutes les secondes, ce timestamp est incrémenté. On utilise un timer pour ça (timestamp.cpp)</p>
+
+<p>Pour faire l’aquisition de température, il faut, tout d’abord, découvrir l’adresse du capteur. On le fait une fois pour toute avec ds.search(addr). Ensuite, on lance une acquisition, on laisse le temps au capteur de faire sa mesure (1 seconde, car on est en haute précision: 0.06°c). Reste à lire la mesure. Pour info, la mesure est stoquée dans une eeprom interne au capteur, qui est données pour 50000 écritures seulement.Selon la fréquence de mesure, vous aurez vite-fait flinguer votre capteur.</p>
+
+<p>Reste à envoyer les données vers IOT. on construit les données au format JSON, on ajoute les crédentials dans l’entête de la requêtes et c’est parti ! Si la réponse de l’API IOT est vide, c’est que tout s’est bien passé.</p>
+
+<p>Tout au long du programme, on envoie des données sur la console série (accessible depuis Arduino, si le wemos est branché à votre ordinateur), et sur l’afficheur à led (addresse IP, puis les mesures de tempétature). Un curseur animé permet de savoir où on en est:</p>
+
+<ul>
+<li>Une barre qui tourne => on ne fait rien</li>
+<li>“?” => mesure de température</li>
+<li>“>” => envoie de la mesure sur IOT</li>
+</ul>]]></content:encoded></item><item><title><![CDATA[Arduino et le protocole HomeEasy]]></title><description><![CDATA[<p>Après l’implémentation (plus ou moins réussie) du fameux protocole de commande à distance de la domotique sur Raspberry, je vous propose la même sur Arduino. Pour résumer, ce tuto vous explique comment commander des interrupteurs à distance. J’utilise les interrupteurs de la marque Chacon que l’on trouve</p>]]></description><link>https://www.noopy.fr/arduino-et-le-protocole-homeeasy/</link><guid isPermaLink="false">5380d70d-cd7a-4876-9523-64a1007c0d45</guid><category><![CDATA[Arduino]]></category><category><![CDATA[Microcontrollers]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Tue, 22 Mar 2016 10:37:00 GMT</pubDate><content:encoded><![CDATA[<p>Après l’implémentation (plus ou moins réussie) du fameux protocole de commande à distance de la domotique sur Raspberry, je vous propose la même sur Arduino. Pour résumer, ce tuto vous explique comment commander des interrupteurs à distance. J’utilise les interrupteurs de la marque Chacon que l’on trouve à l’enseigne verte du bricolage.</p>
+
+<p>Le constat, c’est que l’implémentation par certains internautes a été douloureuse sur Raspberry. Il fallait donc proposer quelque chose de plus efficace.</p>
+
+<p>Autre difficulté: avec l’implémentation sur Raspberry, il faut être “root” pour émettre des commandes. Ça oblige à introduire une faille de sécurité sur le Rasberry pour pouvoir utiliser l’utiliser avec Jeedom (<a href="https://www.jeedom.com/site/fr/">https://www.jeedom.com/site/fr/</a>).</p>
+
+<h2 id="dtaildunsignal">Détail d’un signal</h2>
+
+<p>Pour ce qui est de l’explication du protocole, vous trouverez tout sur <a href="https://www.noopy.fr/commande-de-volets/">L’article du Raspberry</a>. <br>
+Pour résumer, les trames font 32 bits:</p>
+
+<ul>
+<li>26 bits pour l’identification de la télécommande</li>
+<li>1 bit mode “normal” ou touche “G”</li>
+<li>1 bit “on/off”</li>
+<li>4 bits d’identification de la touche de télécommande</li>
+</ul>
+
+<p>Les bits sont encodé de la manière suivante:</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/homeeasy.png" alt=""></p>
+
+<p>J’ai fait le tour de ce que j’ai trouvé sur les différentes implémentations sur Arduino, mais rien de fonctionnel / simple. Beaucoup d’usines à gaz !</p>
+
+<p>Je vous propose quelque chose d’ultra simple avec, en première partie, l’émission du signal.</p>
+
+<h2 id="lemontage">Le montage</h2>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/home-easy01.jpg" alt="">
+<img src="https://www.noopy.fr/content/images/2017/03/home-easy02.jpg" alt=""></p>
+
+<p>Relativement simple; on connecte :</p>
+
+<ul>
+<li>VCC au 5V de l’Arduino</li>
+<li>GND au GND de l’Arduino</li>
+<li>DATA à la pin 4 de l’Arduino (par exemple)</li>
+</ul>
+
+<h2 id="lecode">Le code</h2>
+
+<p>Tout est dans cette lib : HomeEasyByNoopy  ou sur Github</p>
+
+<p>Dézippez ce fichier dans le dossier “libraries” du dossier de sources de l’Arduino. Lancez, ensuite, l’IDE Arduino. Dans le menu, section “exemples”, vour trouverez les programmes suivant:</p>
+
+<h3 id="emettreunetlcommande">Emettre une télécommande</h3>
+
+<p>C’est assez simple; la librairie envoie les bits en respectant les temps au niveaux bas et niveaux hauts; on utilise des delayMicrosecond() pour ça.</p>
+
+<pre><code class="language- cpp">#include &lt;HomeEasyByNoopy.h&gt;
+
+// create a sender on pin 4 (listen on pin 0, no handler)
+HomeEasyByNoopy sender(4, 0, 0);
+
+void setup() {  
+  // the frame will be repeated  15 times (default is 10)
+  sender.setEmitFrameCount(15);
+}
+
+void loop() {  
+  // Emit the signal "ON" on controller A0A406, device A1
+  sender.emit(0x0a0a406, HE_DEVICE_A + HE_DEVICE_1, HE_ON);
+
+  // wait for 15 seconds before renewing the command
+  delay(15000);
+}
+</code></pre>
+
+<h3 id="recevoirunetlcommande">Recevoir une télécommande</h3>
+
+<p>C’est un peu plus complexe. On va brancher (logiciellement) une interruption sur la pin qui reçoit le signal du recepteur (0, par exemple). A chaque changement (niveau haut/bas), l’interruption déclenchera l’exécution d’un bout de code. Attention, toutes les pins ne se branchent pas à des interruptions; vérifiez la doc de votre arduino. Mais généralement la pin 0 fonctionne.</p>
+
+<p>En parallèle, un timer 16 bits va s’incrémenter toutes les 4µs environ (timer1, prescale à 64). On saura, ainsi calculer les temps aux niveaux hauts et bas avec un précision acceptable. Une fonction getCount() viendra lire le compteur et le remettre à 0. Pour tester :</p>
+
+<pre><code class="language- cpp">#include &lt;HomeEasyByNoopy.h&gt; 
+
+// can emit on pin 4, Listen on pin 0, no handler
+HomeEasyByNoopy sender(4, 0, 0);
+
+void setup() {  
+  Serial.begin(9600);
+}
+
+void loop() {  
+  unsigned long controller;
+  unsigned int device;
+  unsigned char onOff;
+  unsigned char global;
+
+  // Beginning to listen
+  sender.EnableRead(true);
+  delay(2000);
+  sender.EnableRead(false);
+  // Listen is done
+
+  // Decoding what we received
+  // If controller is equal to 0, nothing was heard
+  sender.getReceiveCommand(&amp;controller, &amp;device, &amp;onOff, &amp;global);
+
+  // Display the result
+  Serial.println("##################");
+  Serial.println(controller);
+  Serial.println(device);
+  Serial.println(onOff);
+  Serial.println(global);
+}
+</code></pre>
+
+<h2 id="lesexemples">Les exemples</h2>
+
+<h3 id="emit01">emit01</h3>
+
+<p>Programme simple qui émet une commande toutes les 15 secondes</p>
+
+<h3 id="emit02">emit02</h3>
+
+<p>Programme qui écoute la console série et envoie la commande reçue. Par exemple, pour envoyer:</p>
+
+<ul>
+<li>controller A0A406</li>
+<li>device C3</li>
+<li>allumer</li>
+</ul>
+
+<p>Taper : A0A406+C3</p>
+
+<p>Depuis une console linux (par exemple depuis le raspberry):</p>
+
+<p><code>echo “A0A406+C3” &gt; /dev/ttyACM0</code></p>
+
+<h3 id="receive01">receive01</h3>
+
+<p>Programme qui lance une écoute de 2 secondes et renvoie le résultat de commande sur la console série</p>
+
+<h3 id="receive02">receive02</h3>
+
+<p>Programme qui écoute en continu et envoie les commandes reçues sur la console série</p>]]></content:encoded></item><item><title><![CDATA[On fait sa bière maison ?]]></title><description><![CDATA[<p>Depuis quelques années, je brasse ma bière. Mais il me manquait un outil simple pour créer mes recettes. Je ne trouvais rien sur le net qui soit gratuit, simple et qui couvre mon besoin. J’ai donc suivi le fameux dicton : “Si t’es pas content, t’as qu’à</p>]]></description><link>https://www.noopy.fr/on-fait-sa-biere-maison/</link><guid isPermaLink="false">5e17fe2e-7dbc-4385-9a82-0e885b499868</guid><category><![CDATA[Bière]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Wed, 21 Jan 2015 12:33:00 GMT</pubDate><content:encoded><![CDATA[<p>Depuis quelques années, je brasse ma bière. Mais il me manquait un outil simple pour créer mes recettes. Je ne trouvais rien sur le net qui soit gratuit, simple et qui couvre mon besoin. J’ai donc suivi le fameux dicton : “Si t’es pas content, t’as qu’à le faire”. Le code source est sur <a href="https://github.com/landru29/brew-it-yourself">https://github.com/landru29/brew-it-yourself</a>.</p>
+
+<h2 id="brewityourself">Brew it yourself !</h2>
+
+<p><a href="http://beer.noopy.fr/">http://beer.noopy.fr/</a></p>
+
+<p>Ca se passe comment ? <br>
+La fabrication de la bière se déroule en plusieurs étapes (d’où la notion de “steps”) :</p>
+
+<ol>
+<li><strong>Empâtage (mashing)</strong>: on mélange le malt concassé avec de l’eau à 50°c  </li>
+<li><strong>Brassage – sucres fermenticibles</strong>: on maintient la température à 62°c pendant 30 à 45 minutes; des sucres dits “fermenticibles” sont créés (ce sont ces sucres qui donneront l’alcool)  </li>
+<li><strong>Brassage – sucres non fermenticibles</strong>: on maintient la température à 68°c pendant 30 à 45 minutes; des sucres dits “non fermenticibles” sont créés (ce sont ces sucres qui donneront la rondeur à la bière)  </li>
+<li><strong>Désactivation des enzymes</strong>: On pousse la température à 80°c pendant 10 minutes pour tuer les enzymes qui sont responsables de la production des sucres  </li>
+<li><strong>Filtration</strong>: on filtre le mou pour en récupérer le jus. On peut jeter le malt.  </li>
+<li><strong>Ebulition</strong>: on fait bouillir, pendant 1 heure minimum, le mou, en y ajoutant du houblon amérisant. L’amertume est donnée par l’IBU. Pendant cette étape, a lieu le phénomène de “cassure” : les impuretés précipitent  </li>
+<li><strong>Fin de l’ébulition</strong>: 10 minutes avant la fin de l’ébulition, on ajoute le houblon aromatique (les arômes du houblon sont volatiles).  </li>
+<li><strong>Refroidissement</strong>: On soutir le jus clair (en laissant le précipité et le houblon dans la cuve) et on le refroidit en dessous de 25°c (lorsque l’on mettra les levures, celles-ci meurent au dessus de 30°c)  </li>
+<li><strong>Mesure de la densité</strong>: On mesure la densité avant fermentation pour pouvoir estimer le taux d’alcool.  </li>
+<li><strong>Ensemencement</strong>: On ajoute la levure.  </li>
+<li><strong>Fermentation</strong>: La fermentation dure quelques jours, et on compte 10 à 15 jours pour que toute activité disparaisse (selon la température ambiante) <br>
+Mesure de la densité: On mesure la densité après fermentation et l’on peut enfin calculer le taux d’alcool : 1000 x (densitéInit – densitéFinal) / 7,6</li>
+</ol>]]></content:encoded></item><item><title><![CDATA[Imprimante 3D]]></title><description><![CDATA[<h2 id="ungrosbidule">Un gros bidule</h2>
+
+<p>Pourquoi pas construire une imprimante 3D ?</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/printer.jpg" alt=""></p>
+
+<p>Une imprimante 3D est une machine qui permet de reproduire des pièces plus ou moins complexes par apport de matière. Il existe plusieurs types d’imprimantes, selon le principe d’apport de matière utilisé. Le périmètre de ce projet est une</p>]]></description><link>https://www.noopy.fr/imprimante-3d/</link><guid isPermaLink="false">915bacad-00af-4524-a139-ac64ce210d5c</guid><category><![CDATA[Bidules]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Thu, 03 Jul 2014 08:17:00 GMT</pubDate><content:encoded><![CDATA[<h2 id="ungrosbidule">Un gros bidule</h2>
+
+<p>Pourquoi pas construire une imprimante 3D ?</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/printer.jpg" alt=""></p>
+
+<p>Une imprimante 3D est une machine qui permet de reproduire des pièces plus ou moins complexes par apport de matière. Il existe plusieurs types d’imprimantes, selon le principe d’apport de matière utilisé. Le périmètre de ce projet est une imprimante qui extrude du plastique à déposer couches par couches.</p>
+
+<p>Le projet est toujours à l’état de conception. il me reste les dernière pièces à concevoir avant de commencer à monter le chassie.</p>
+
+<h2 id="objectif">Objectif</h2>
+
+<p>Le principal objectif est, évidement, de construire une imprimante 3D. Cette imprimante fonctionnera sur le principe d’extrusion de matière plastique. Je m’appuie sur les imprimantes Reprap <a href="http://reprap.org/wiki/RepRap/fr">http://reprap.org/wiki/RepRap/fr</a>. Dans cette perspective, je m’autorise à réutiliser, modifier, adapter des pièces conçues pour d’autres imprimantes Reprap. Une contrainte forte de ce projet est le budget. En référence, une imprimante Reprap i3 en kit est vendue 450€ sans l’électronique de commande (600€ tout compris). Mon objectif est de limiter mon budget à 250€. C’est difficilement atteignable, mais pas impossible.</p>
+
+<h2 id="lesimprimantesreprap">Les imprimantes RepRap</h2>
+
+<p>Le principe de ces imprimantes est qu’elles sont réplicables. Concrêtement, pour fabriquer une imprimante RepRap, on profite d’une autre imprimante pour imprimer des pièces. Mon projet repose sur ce principe. En effet, pour des questions de facilité (je m’affranchis de certains usinages complexe), la plupart des supports seront imprimés.</p>
+
+<p>Rendez-vous sur mon repository github: <a href="https://github.com/landru29/printer">https://github.com/landru29/printer</a></p>
+
+<p><code>git clone https://github.com/landru29/printer.git</code></p>
+
+<p>Téléchargez la doc: <a href="https://github.com/landru29/printer/raw/master/doc/printer.pdf">https://github.com/landru29/printer/raw/master/doc/printer.pdf</a></p>
+
+<p>Téléchargez le dossier de définition: <a href="https://github.com/landru29/printer/raw/master/doc/definition.pdf">https://github.com/landru29/printer/raw/master/doc/definition.pdf</a></p>]]></content:encoded></item><item><title><![CDATA[Matrice de leds]]></title><description><![CDATA[<p><img src="https://www.noopy.fr/content/images/2017/03/ledmatrix.jpg" alt=""></p>
+
+<p>Repository GIT: <br>
+<a href="https://github.com/landru29/ledmatrix">https://github.com/landru29/ledmatrix</a></p>
+
+<h2 id="descriptionduprojet">Description du projet</h2>
+
+<p>Ce projet consiste à créer un afficheurs à led d’une dimension de 8×128 leds, piloté par un RaspberryPi</p>
+
+<p>[documentation à venir]</p>]]></description><link>https://www.noopy.fr/matrice-de-leds/</link><guid isPermaLink="false">e2a2583d-5fe6-4e1f-b3ba-5c75a0286222</guid><category><![CDATA[Raspberry Pi]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Wed, 02 Jul 2014 09:43:00 GMT</pubDate><content:encoded><![CDATA[<p><img src="https://www.noopy.fr/content/images/2017/03/ledmatrix.jpg" alt=""></p>
+
+<p>Repository GIT: <br>
+<a href="https://github.com/landru29/ledmatrix">https://github.com/landru29/ledmatrix</a></p>
+
+<h2 id="descriptionduprojet">Description du projet</h2>
+
+<p>Ce projet consiste à créer un afficheurs à led d’une dimension de 8×128 leds, piloté par un RaspberryPi</p>
+
+<p>[documentation à venir]</p>]]></content:encoded></item><item><title><![CDATA[Les moteurs pas à pas]]></title><description><![CDATA[<h2 id="avantdecommencer">Avant de commencer</h2>
+
+<p>On va d’abord s’équiper un peu; il nous faut:</p>
+
+<ul>
+<li>Un moteur pas à pas: on fera de la récup sur une vieille imprimante ou un vieux scanner</li>
+<li>Un microcontrôller: pour me simplifier la vie, j’ai utilisé un Arduino. Mais on peut rapidement adapter l’</li></ul>]]></description><link>https://www.noopy.fr/les-moteurs-pas-a-pas/</link><guid isPermaLink="false">3623c3e5-1b4a-425d-9fe0-b55b364d5477</guid><category><![CDATA[Arduino]]></category><category><![CDATA[Microcontrollers]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Mon, 21 Apr 2014 12:53:00 GMT</pubDate><content:encoded><![CDATA[<h2 id="avantdecommencer">Avant de commencer</h2>
+
+<p>On va d’abord s’équiper un peu; il nous faut:</p>
+
+<ul>
+<li>Un moteur pas à pas: on fera de la récup sur une vieille imprimante ou un vieux scanner</li>
+<li>Un microcontrôller: pour me simplifier la vie, j’ai utilisé un Arduino. Mais on peut rapidement adapter l’expérience sur un Microship.</li>
+<li>un circuit de contrôle: C’est un circuit de puissance pour alimenter les bobinages du moteur. Ce circuit supporte des intensité assez élevée. Concrètement, si l’on branchait directement un microcontrôller sur un moteur pas à pas, on le flinguerait rapidement. Vous trouverez ce genre de circuit en recherchant “L298” sur ebay (prenez le moins cher).</li>
+</ul>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/circuit_moteur.jpg" alt=""></p>
+
+<h2 id="principedumoteur">Principe du moteur</h2>
+
+<p>La plupart des moteurs de récup, sont des moteurs bipolaires; c’est à dire qu’ils ont deux paires de bobines. Pour être sûr d’avoir le bon type de moteur entre vos mains, comptez le nombre de fil d’alimentation. Il doit y avoir exactement 4.</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/principe_moteur.png" alt=""></p>
+
+<p>Maintenant, il faut trouver les deux paires de fil; Utilisez un multimètre pour trouver les deux fils qui présentent une résistance (les deux restants en présentent une également)</p>
+
+<h2 id="fonctionnementducircuitdecommande">Fonctionnement du circuit de commande</h2>
+
+<p>Le circuit de commande possède un premier bornier de 3; au milieu, nous avons la masse (qui nous servira de 0V avec le microcontrôlleur), une entrée 12V (j’y branche un transfo de 9V) et une sortie régulée de 5V (le circuit possède un régulateur de tension à 5V)</p>
+
+<p>On trouve ensuite deux borniers de 2. Il correspondent aux bobinages du moteur. Vous y branchez les deux paires de bobines.</p>
+
+<p>Et enfin la partie commande, un bornier de 6. Deux bornent servent à mettre en fonction chaque bobine, et 4 bornes servent à donner la polarité des deux bobines; par exemple, si l’on applique 1001, la bobine A est en N-S et la bobine B en S-N.</p>
+
+<h2 id="fonctionnementdumoteur">Fonctionnement du moteur</h2>
+
+<p>Il y a deux modes de fonctionnements:</p>
+
+<ul>
+<li>Monophasé</li>
+<li>Biphasé</li>
+</ul>
+
+<h3 id="monophas">Monophasé</h3>
+
+<p>Dans ce mode de fonctionnement on n’alimente qu’une bobine à la fois</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/pas_a_pas_m.png" alt=""></p>
+
+<p>La commande se fera de la manière suivante:</p>
+
+<ol>
+<li>10xx  </li>
+<li>xx01  </li>
+<li>01xx  </li>
+<li>xx10</li>
+</ol>
+
+<p>(xx signifie que la bobine n’est pas active)</p>
+
+<h3 id="biphas">Biphasé</h3>
+
+<p>Dans ce mode de fonctionnement on alimente les deux bobines à la fois. En conséquence, on obtient un couple deux fois plus grand que dans le mode monophasé (mais par contre, on consomme deux fois plus de courant).</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/pas_a_pas_b.png" alt=""></p>
+
+<p>La commande se fera de la manière suivante:</p>
+
+<ol>
+<li>1010  </li>
+<li>1001  </li>
+<li>0101  </li>
+<li>0110</li>
+</ol>
+
+<p>Remarquez, que dans les deux mode de fonctionnement, inverser l’alimentation d’une bobine, fait changer le sens de rotation du moteur.</p>
+
+<h2 id="programmedecommande">Programme de commande</h2>
+
+<pre><code>int ENA=0; //Connect on Arduino, Pin 0  
+int IN1=1; //Connect on Arduino, Pin 1  
+int IN2=2; //Connect on Arduino, Pin 2  
+int IN3=3; //Connect on Arduino, Pin 3  
+int IN4=4; //Connect on Arduino, Pin 4  
+int ENB=5; //Connect on Arduino, Pin 5
+
+
+void biphase(int stepNumber, int dir) {  
+  digitalWrite(ENA,LOW);
+  digitalWrite(ENB,LOW);
+  int A = ((stepNumber % 4)&lt;2) ? LOW : HIGH;
+  int B = (((stepNumber+1) % 4)&lt;2) ? dir : !dir;
+  digitalWrite(IN1,A);
+  digitalWrite(IN2,!A);
+  digitalWrite(IN3,B);
+  digitalWrite(IN4,!B);
+  digitalWrite(ENA,HIGH);
+  digitalWrite(ENB,HIGH);
+}
+
+void monophase(int stepNumber, int dir) {  
+  digitalWrite(ENA,LOW);
+  digitalWrite(ENB,LOW);
+  int polarity = (stepNumber % 4) / 2;
+
+  digitalWrite(IN1,polarity);
+  digitalWrite(IN2,!polarity);
+  if (dir) {
+    digitalWrite(IN3,polarity);
+    digitalWrite(IN4,!polarity);
+  } else {
+    digitalWrite(IN3,!polarity);
+    digitalWrite(IN4,polarity);
+  }
+
+  digitalWrite(ENA,!(stepNumber % 2));
+  digitalWrite(ENB,(stepNumber % 2));
+}
+
+void setup() {  
+ pinMode(ENA,OUTPUT);
+ pinMode(ENB,OUTPUT);
+ pinMode(IN1,OUTPUT);
+ pinMode(IN2,OUTPUT);
+ pinMode(IN3,OUTPUT);
+ pinMode(IN4,OUTPUT);
+}
+
+int i=0;  
+void loop(){  
+ biphase(i++, HIGH);
+ //monophase(i++, HIGH);
+ delay(1);
+}
+</code></pre>
+
+<h3 id="unvisueldelaconnectique">Un visuel de la connectique</h3>
+
+<p>N’oubliez pas de mettre la masse en commun entre le circuit de commande et l’arduino.</p>
+
+<p>Dans mon cas, je n’utilise pas le 5V du circuit de commande.</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/IMG_20140421_160523.jpg" alt="">
+<img src="https://www.noopy.fr/content/images/2017/03/IMG_20140421_160533.jpg" alt="">
+<img src="https://www.noopy.fr/content/images/2017/03/IMG_20140421_160551.jpg" alt=""></p>]]></content:encoded></item><item><title><![CDATA[18F4550 - SPI]]></title><description><![CDATA[<p>Une liaison SPI (pour Serial Peripheral Interface) est un bus de données série synchrone baptisé ainsi par Motorola, qui opère en mode Full-duplex. Les circuits communiquent selon un schéma maître-esclaves, où le maître s’occupe totalement de la communication. Plusieurs esclaves peuvent coexister sur un même bus, dans ce cas,</p>]]></description><link>https://www.noopy.fr/18f4550-spi/</link><guid isPermaLink="false">ab7de13c-5cea-4673-918c-467c7e012c87</guid><category><![CDATA[Microchip]]></category><category><![CDATA[Microcontrollers]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Sun, 16 Mar 2014 12:49:00 GMT</pubDate><content:encoded><![CDATA[<p>Une liaison SPI (pour Serial Peripheral Interface) est un bus de données série synchrone baptisé ainsi par Motorola, qui opère en mode Full-duplex. Les circuits communiquent selon un schéma maître-esclaves, où le maître s’occupe totalement de la communication. Plusieurs esclaves peuvent coexister sur un même bus, dans ce cas, la sélection du destinataire se fait par une ligne dédiée entre le maître et l’esclave appelée chip select (source: Wikipedia).</p>
+
+<p>Dans cette partie, nous allons mettre en place une dialogue unidirectionnel entre le PIC et le 74HC595. Le 74HC595 est un composant permettant de convertir une liaison série en liaison parallèle.</p>
+
+<h2 id="schmademontage">Schéma de montage</h2>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/spi-e1395002701134.png" alt=""></p>
+
+<p>On utilisera que deux broche du SPI : l’horloge SCK qui est sur le port B1 et le donnée de sortie SDO qui est sur le port C7. Le composant 74HC595 nécessite une validation des données reçu afin que celles-ci soient disponible sur les broches Qa – Qh. On utilisera le port B2 pour assurer cette validation. La broche 13 du 74HC595 sera connectée au 0V pour que les sorties soient activées, et la broche 10 sera connectée au 5V pour ne pas effectuer un effacement.</p>
+
+<h2 id="lalibrairie">La librairie</h2>
+
+<p>Elle est relativement simple et ne contient que 3 fonctions :</p>
+
+<ul>
+<li>L’initialisation</li>
+<li>La lecture</li>
+<li>L’écriture</li>
+</ul>
+
+<h3 id="leheader">Le header</h3>
+
+<pre><code>#ifndef SPI_H_INCLUDED
+#define SPI_H_INCLUDED
+
+// bus mode
+#define SPI_MODE_00                             0
+#define SPI_MODE_01                             1
+#define SPI_MODE_10                             2
+#define SPI_MODE_11                             3
+// sync mode
+#define SPI_SLAVE_MODE_WITHOUT_SS               0b0101
+#define SPI_SLAVE_MODE_WITH_SS                  0b0100
+#define SPI_MASTER_MODE_CLOCK_TMR2              0b0011
+#define SPI_MASTER_MODE_CLOCK_FOSC64            0b0010
+#define SPI_MASTER_MODE_CLOCK_FOSC16            0b0001
+#define SPI_MASTER_MODE_CLOCK_FOSC4             0b0000
+// smp phase
+#define SPI_SLEW_RATE_ENABLE                    0x00
+#define SPI_SLEW_RATE_DISABLE                   0x80
+#define SPI_STANDARD_SPEED_MODE                 0x80
+#define SPI_HIGH_SPEED_MODE                     0x00
+
+unsigned char spiWriteByte(char b);  
+unsigned char spiReadByte();  
+void spiInit(unsigned char sync_mode, unsigned char bus_mode, unsigned char smp_phase);
+
+#endif // SPI_H_INCLUDED
+</code></pre>
+
+<h3 id="lecode">Le code</h3>
+
+<pre><code>#include "spi.h"
+#include &lt;pic18f4550.h&gt;
+
+/**
+ * Send a byte on the SPI port
+ *
+ * @param b byte to send on the SPI port
+ *
+ * @return 1 on success
+ */
+unsigned char spiWriteByte(char b)  
+{   SSPBUF = b;                 // send byte
+    if (SSPCON1bits.WCOL) {     // a collision occured
+        return 0;
+    }
+    while (!PIR1bits.SSPIF);    // wait for the transaction is completed
+    PIR1bits.SSPIF=0;
+    return 1;
+}
+
+/**
+ * Read a byte from SPI
+ *
+ * @return read byte
+ */
+unsigned char spiReadByte()  
+{
+    SSPBUF = 0x00;                          // initiate bus cycle
+    while (!SSPSTATbits.BF);                // wait until cycle complete
+    return (SSPBUF);                        // return with byte read
+}
+
+/**
+ * Init the SPI
+ * ie. spiInit(SPI_MASTER_MODE_CLOCK_FOSC4, SPI_MODE_00, SPI_HIGH_SPEED_MODE)
+ *
+ * @param sync_mode Synchronization mode
+ * @param bus_mode  Bus mode
+ * @param smp_phase Sample phase
+ */
+void spiInit(unsigned char sync_mode, unsigned char bus_mode, unsigned char smp_phase)  
+{
+    SSPSTAT &amp;= 0x3F;                // power on state
+    SSPCON1 = 0x00;                 // power on state
+    SSPCON1 |= sync_mode;           // select SPI mode
+    SSPSTAT |= smp_phase;           // select data input sample phase
+
+    switch (bus_mode) {
+        case SPI_MODE_00:           // SPI bus mode 0,0
+            SSPCON1bits.CKP = 0;    // clock idle state low
+            SSPSTATbits.CKE = 0;    // data transmitted on rising edge
+            break;
+        case SPI_MODE_10:           // SPI bus mode 1,0
+            SSPCON1bits.CKP = 1;    // clock idle state high
+            SSPSTATbits.CKE = 0;    // data transmitted on falling edge
+            break;
+        case SPI_MODE_11:           // SPI bus mode 1,1
+            SSPCON1bits.CKP = 1;    // clock idle state high
+            SSPSTATbits.CKE = 1;    // data transmitted on rising edge
+            break;
+        default://SPI_MODE_01       // default SPI bus mode 0,1
+            SSPCON1bits.CKP = 0;    // clock idle state low
+            SSPSTATbits.CKE = 1;    // data transmitted on falling edge
+            break;
+    }
+
+    switch (sync_mode) {
+        case SPI_SLAVE_MODE_WITH_SS:    // slave mode w /SS enable
+            TRISAbits.TRISA5 = 1;       // define /SS pin as input
+        case SPI_SLAVE_MODE_WITHOUT_SS: // slave mode w/o /SS enable
+            TRISBbits.TRISB1 = 1;       // define clock pin as input
+            SSPSTATbits.SMP = 0;        // must be cleared in slave SPI mode
+            break;
+        default:                        // master mode, define clock pin as output
+            TRISBbits.TRISB1 = 0;       // define clock pin as output
+            break;
+    }
+    TRISCbits.TRISC7=0; // define SDO as output (master or slave)
+    TRISBbits.TRISB0=1; // define SDI as input (master or slave)
+    SSPCON1bits.SSPEN = 1;
+}
+</code></pre>
+
+<h2 id="programmdexample">Programm d'example</h2>
+
+<pre><code>#include &lt;pic18f4550.h&gt;
+#include &lt;delay.h&gt;
+#include "config.h"
+#include "spi.h"
+
+/*
+ * Connect :
+ *  - pin B2 to PIN 12 (STCP)of 74HC595
+ *  - pin B1(SCK) to PIN 11 (SHCP) of the 74HC595
+ *  - pin C7 (SDO) to PIN 14 (DS) of the 74HC595
+ *  - pin 10 (/MR) of the 74HC595 to Vcc
+ *  - pin 13 (/OE) of the 74HC595 to Gnd
+ */
+
+void validateOutput()  
+{
+    LATBbits.LATB2=1;
+    LATBbits.LATB2=0;
+}
+
+int main()  
+{
+    // Initialisation du module SPI
+    spiInit(SPI_MASTER_MODE_CLOCK_FOSC4, SPI_MODE_01, SPI_STANDARD_SPEED_MODE);
+    // configuration de la gachette de validation
+    TRISBbits.TRISB2 = 0;
+    LATBbits.LATB2=0;
+    // boucle principale
+    while (1) {
+        delay1mtcy(10);
+        spiWriteByte(0xab);
+        validateOutput();
+        delay1mtcy(10);
+        spiWriteByte(0xae);
+        validateOutput();
+        delay1mtcy(10);
+        spiWriteByte(0xf0);
+        validateOutput();
+    }
+}
+</code></pre>
+
+<p>Pour ce qui est du config.h, on utilisera celui cité dans le <a href="https://www.noopy.fr/18f4550-premier-projet/">premier programme</a></p>]]></content:encoded></item><item><title><![CDATA[Commande de volets]]></title><description><![CDATA[<p>Dans ce tutoriel, nous allons voir comment faire de la domotique avec le fameux Raspberry Pi. En gros, comment piloter ses volets roulants, lumières, …</p>
+
+<p>C’est parce que les infos que j’ai trouvées sur le net étaient incomplètes que j’ai décidé d’écrire ce tutoriel. Vous trouverez sûrement</p>]]></description><link>https://www.noopy.fr/commande-de-volets/</link><guid isPermaLink="false">81211ea1-a4a6-4703-8d8c-1e5a78041f60</guid><category><![CDATA[Raspberry Pi]]></category><dc:creator><![CDATA[Cyrille Meichel]]></dc:creator><pubDate>Sun, 29 Sep 2013 09:20:00 GMT</pubDate><content:encoded><![CDATA[<p>Dans ce tutoriel, nous allons voir comment faire de la domotique avec le fameux Raspberry Pi. En gros, comment piloter ses volets roulants, lumières, …</p>
+
+<p>C’est parce que les infos que j’ai trouvées sur le net étaient incomplètes que j’ai décidé d’écrire ce tutoriel. Vous trouverez sûrement des choses sur le sujet, mais avec de l’équipement pas commun. Je vous détaillerai la manière avec laquelle, j’ai mis en place mon système.</p>
+
+<p>Je vous propose d’aller faire un tours sur cet article : <a href="http://hackspark.fr/fr/blog/2012/12/connecter-des-dispositifs-sans-fil-a-votre-arduino-ou-raspberry-pi-partie-1-reception-en-433mhz/">http://hackspark.fr/fr/blog/2012/12/connecter-des-dispositifs-sans-fil-a-votre-arduino-ou-raspberry-pi-partie-1-reception-en-433mhz/</a></p>
+
+<p>Note: sur un autre article, je propose cette implémentation sur arduino: Le protocole HomeEasy sur Arduino (<a href="http://www.noopy.fr/arduino/le-protocole-homeeasy/">http://www.noopy.fr/arduino/le-protocole-homeeasy/</a>)</p>
+
+<h2 id="lematriel">Le matériel</h2>
+
+<p>Pour ce qui est du matériel, il vous faut d’abord vous équiper d’interrupteurs commandés à distance. J’avais le choix entre la solution Casto et la solution LeroyM. Casto propose la marque Blyss. Ce qu’il faut savoir, c’est que Blyss est la marque Casto. C’est un produit développé par le magasin. Par principe, j’ai écarté cette solution, car il y a un risque qu’aucune norme ne soit respectée. Il me restait donc la solution LeroyM. C’est la marque Chacon (<a href="http://www.chacon.be/">http://www.chacon.be/</a>). N’oubliez pas d’acheter la télécommande qui va avec !</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/chacon.jpg" alt="">
+<img src="https://www.noopy.fr/content/images/2017/03/telecommande.jpg" alt=""></p>
+
+<p>Vous aurez ensuite besoin d’un Raspberry Pi ansi que d’un ensemble émetteur/récepteur 433MHz. Vous pouvez trouver le tout sur <a href="http://hackspark.fr/">http://hackspark.fr/</a> :</p>
+
+<ul>
+<li>Le Raspberry Pi</li>
+<li>Le kit 433MHz</li>
+</ul>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/rf.jpg" alt="">
+<img src="https://www.noopy.fr/content/images/2017/03/pi1.jpg" alt=""></p>
+
+<h3 id="lesentressortiesdurpi">Les entrées-sorties du RPI</h3>
+
+<p>Afin de pouvoir utiliser les entrées et sorties du Raspberry Pi (connecteur à 26 broches) encore appelé GPIO, nous devons installer WiringPi. Vous trouverez les instructions ici : <a href="https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/">https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/</a></p>
+
+<pre><code>sudo apt-get install git-core  
+mkdir ~/src  
+cd ~/src  
+git clone git://git.drogon.net/wiringPi  
+cd wiringPi  
+sudo ./build  
+</code></pre>
+
+<h2 id="premiretapedcodagedusignal">Première étape décodage du signal</h2>
+
+<h3 id="testprliminaire">Test préliminaire</h3>
+
+<p>Dans un premier temps, il va falloir comprendre comment fonctionnent les modules Chacon. Et encore avant, comment fonctionne ce petit récepteur 433MHz qui coûte moins de 5€.</p>
+
+<p>Commencez par câbler le module de réception en plaçant à la sortie une led en série avec une résistance 1K. Vous mettrez</p>
+
+<ul>
+<li>au <strong>5V</strong> la broche <strong>VCC</strong></li>
+<li>au <strong>0V</strong> la broche <strong>GND</strong> </li>
+<li>une des deux sortie <strong>DATA</strong> vers la <strong>led</strong></li>
+</ul>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/montage1.jpg" alt=""></p>
+
+<p>Vous constatez que la led s’allume et vacille. En gros, c’est le bordel sur les ondes ! Par contre, si vous actionnez votre télécommande, la led se synchronise sue le clignotement du voyant de celle-ci. Cool ! le récepteur fonctionne. Par contre, il va falloir faire le tri des patates entre le bruit ambiant et le signal reçu de la télécommande.</p>
+
+<h3 id="cblageavecleraspberry">Câblage avec le Raspberry</h3>
+
+<p>Utilisez le 5V et le GND du Raspberry pour alimenter le module, et reliez la data sur le GPIO2 (broche 13). Pour la librairie WiringPi, c’est l’entrée 0 (voir la correspondance ici)</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/listen.png" alt=""></p>
+
+<h3 id="programmededcodage">Programme de décodage</h3>
+
+<p>Commencez par récupérer les sources:</p>
+
+<pre><code>cd ~/src  
+git clone https://github.com/landru29/chacon-rpi.git  
+</code></pre>
+
+<p>Et on compile</p>
+
+<pre><code>cd ~/src/chacon-rpi/  
+make  
+</code></pre>
+
+<p>Lancez avec l’option -h</p>
+
+<pre><code>./listen -h
+</code></pre>
+
+<p>Vous avez la liste des options dispo. Lancez avec la commande suivante et vous avez environ 8 seconde pour actionner une touche de votre télécommande (lancer d’abord le programme, puis appuyez sur votre télécommande)</p>
+
+<pre><code>cd ~/src/chacon-rpi  
+sudo ./listen  
+</code></pre>
+
+<p>Vous remarquerez qu’il faut être root pour lancer le programme. C’est dû au fait que les entrées et sorties du RPI sont protégées. Vous devriez avoir le rapport suivant:</p>
+
+<pre><code>Reading data  
+4s 219ms 4µs  
+Analyzing  
+DataStart at 7752
+
+01: 59 95 59 96 55 56 95 A5 EB 32 AB 32 CA AA D2 B4 Nothing to decode with 16 byte(s)
+
+02: 59 95 59 96 55 56 95 A5  
+Decoded command: 2829018C  
+ID found: 00A0A406  
+Button D1 - OFF pressed  
+03: 59 95 59 96 55 56 95 A5  
+Decoded command: 2829018C  
+ID found: 00A0A406  
+Button D1 - OFF pressed  
+04: 59 95 59 96 55 56 95 A5  
+Decoded command: 2829018C  
+ID found: 00A0A406  
+Button D1 - OFF pressed  
+05: 59 92 AC CB 2A AB 4A D2  
+Decoded command: 29EB7F39  
+ID found: 00A7ADFC  
+Button G0 - ON pressed  
+06: There might be an error from here  
+</code></pre>
+
+<p>Le programme de réception n’est pas au point, et il ne faut pas hésiter à insister pour obtenir un résultat. Il vous permettra de récupérer l’ID de votre télécommande; ici, c’est <em>A0A406</em></p>
+
+<h3 id="commentenestonarrivl">Comment en est-on arrivé là</h3>
+
+<p>Pour comprendre un minimum, lancez le programme avec quelques options puis actionnez la télécommande</p>
+
+<pre><code>cd ~/src/chacon-rpi  
+sudo ./listen -v -o resultat.txt  
+</code></pre>
+
+<p>Ouvrez résultat.txt Avancez dans le fichier pour trouver l’expression RawData. A partir de là, c’est l’ensemble des données reçues par le module RF. La seule mise en forme appliquée est un retour à la ligne entre 00 et 11. En faisant défiler le fichier, on commence par voir des choses anarchiques (le temps que vous avez mis avant d’appuyer sur la télécommande) vous allez arriver à une grande ligne de 0 (111000000000000…). Dans mon cas c’est vers la ligne 5000. A ce moment, c’est le début de la trame de réception. Ensuite vous avec un enchainement de données bien moins anarchiques. Vous avez des lignes courtes (111000) et des lignes longues (111000000000000000). C’est pas ultra rigoureux car l’acquisition n’est pas rythmée par une horloge. Au bout de 64 ligne vous arrivez à une ligne plus longue. C’est la fin de la trame et le début de l’autre trame. Tant que vous appuyez sur le bouton de la télécommande, la trame est répétée. Vous remarquerez donc que la trame suivante est rigoureusement identique.</p>
+
+<p>Bref, les lignes courtes correspondent au bit 0 et les lignes longues au bit 1</p>
+
+<h3 id="leprotocolebitbit">Le protocole bit à bit</h3>
+
+<p>Déduction de nos données <br>
+En faisant des essais avec les différents boutons de la télécommande, voilà ce qu’on peut en déduire:</p>
+
+<table>  
+<tbody>  
+<tr>  
+<td>0...51</td>  
+<td>: identifiant de la commande (il faudra reprendre celui de votre télécommande (car vous avez programmé votre module de commande de lumière avec)</td>  
+</tr>  
+<tr>  
+<td>52, 53</td>  
+<td>: 01→mode normal, 10→global (touche G)</td>  
+</tr>  
+<tr>  
+<td>54, 55</td>  
+<td>: 01→ON, 10→OFF</td>  
+</tr>  
+<tr>  
+<td>56...59</td>  
+<td>: 0101→A, 0110→B, 1001→C, 1010→D</td>  
+</tr>  
+<tr>  
+<td>60...63</td>  
+<td>: 0101→1, 0110→2, 1001→3, 1010→4</td>  
+</tr>  
+</tbody>  
+</table>
+
+<p>C’est un peu bizarre… En vous renseignant sur le net, vous trouverez, qu’en fait, Chacon suit le protocole HomeEasy. Ce protocole dit que chaque trame fait 32 bits (moitié moins que ce qu’on a trouvé). L’explication, c’est l’encodage des bits. En fait, le bit 0 est encodé avec la pair de bit 01 et le bit 1 est encodé avec la paire de bits 10.</p>
+
+<p>Si l’on convertit ce que l’on a trouvé en binaire, ça nous donne :</p>
+
+<p>0101 1001 1001 0101 0101 1001 1001 0110 0101 0101 0101 0110 1001 0110 1010 0101</p>
+
+<p>Décodons en transformant les 01 en 0 et les 10 en 1 :</p>
+
+<p>00 10 10 00 00 10 10 01 00 00 00 01 10 01 11 00 , en regroupant, c’est plus lisible: 0010 1000 0010 1001 0000 0001 1001 1100</p>
+
+<p>Le code Hex associé est : 28 29 01 9A</p>
+
+<h3 id="leprotocolehomeeasy">Le protocole HomeEasy</h3>
+
+<table>  
+<tbody>  
+<tr>  
+<td><span style="color: #000000;">0...25 :  
+</span></td>  
+<td><span style="color: #000000;">identifiant de la commande</span></td>  
+</tr>  
+<tr>  
+<td><span style="color: #000000;">26 :  
+</span></td>  
+<td><span style="color: #000000;">0→mode normal, 1→global (touche G)</span></td>  
+</tr>  
+<tr>  
+<td><span style="color: #000000;">27 :  
+</span></td>  
+<td><span style="color: #000000;">0→ON, 1→OFF</span></td>  
+</tr>  
+<tr>  
+<td><span style="color: #000000;">28,29 :  
+</span></td>  
+<td><span style="color: #000000;">00→A, 01→B, 10→C, 11→D</span></td>  
+</tr>  
+<tr>  
+<td><span style="color: #000000;">30...31 :  
+</span></td>  
+<td><span style="color: #000000;">00→1, 01→2, 10→3, 11→4</span></td>  
+</tr>  
+</tbody>  
+</table>
+
+<h3 id="lacouchedetransport">La couche de transport</h3>
+
+<p>Nous avons vu que le bit 0 est représenté par 111000 et le bit 1 par 111000000000000000. Sachant que le programme effectue une acquisition de 100000 données et connaissant le temps d’exécution on en déduit les temps des niveaux logiques. On confortera l’information avec le détail du protocole HomeEasy</p>
+
+<table>  
+<tbody>  
+<tr>  
+<td>Début d'émission:</td>  
+<td>1→275µs puis 0→9900µs</td>  
+</tr>  
+<tr>  
+<td>Début de trame:</td>  
+<td>1→275µs puis 0→2675µs</td>  
+</tr>  
+<tr>  
+<td>bit 0</td>  
+<td>1→275µs puis 0→275µs</td>  
+</tr>  
+<tr>  
+<td>bit 1</td>  
+<td>1→275µs puis 0→1300µs</td>  
+</tr>  
+<tr>  
+<td>Fin de trame</td>  
+<td>1→275µs puis 0→2675µs</td>  
+</tr>  
+</tbody>  
+</table>
+
+<h2 id="emissiondesdonnes">Emission des données</h2>
+
+<h3 id="cablage">Cablage</h3>
+
+<p>Cablez l’entrée de l’émetteur sur le GPIO0 (pin 11)</p>
+
+<p><img src="https://www.noopy.fr/content/images/2017/03/emit.png" alt=""></p>
+
+<h3 id="programmedenvoi">Programme d’envoi</h3>
+
+<p>Une fois que vous avez bien noté l’identifiant de votre télécommande (par exemple A0A406), vous pouvez lancer une commande :</p>
+
+<pre><code>cd ~/src/chacon-rpi  
+sudo ./emit -d A0A406 -b A1  
+</code></pre>
+
+<p>Cette commande enverra un ordre  ON de la touche A-1 de votre télécommande. Pour envoyer un ordre OFF, passez en plus l’option -x :</p>
+
+<pre><code>cd ~/src/chacon-rpi  
+sudo ./emit -d A0A406 -b A1 -x  
+</code></pre>
+
+<p>Détail de l’algorithme: <br>
+1. Décaller l’identifiant de 6 bits vers la gauche et stocker dans Commande <br>
+2. Si OFF, faire un OU LOGIQUE entre Commande et 10h (=10000b) <br>
+3. Si touche G, faire un OU logique entre Commande et 20h (=100000b) <br>
+4. Lettre = lettre – (code ascii ‘A’) <br>
+5. Décaller lettre de 2 bits vers la gauche <br>
+6. Faire un OU logique entre Commande et lettre <br>
+7. Faire un OU LOGIQUE entre Commande et (chiffre – 1) <br>
+8. Encoder Commande (0→01 et 1→10) <br>
+9. Configurer le GPIO <br>
+10. Passer le CPU en mode “temps réel” <br>
+11. Emettre un Start Of Data (275μs haut, 9900μs bas) <br>
+12. Emettre un Start of Frame (275μs haut, 2675μs bas) <br>
+13. Emettre 5 fois [la trame suivit d’un End Of Data (275μs haut, 2675μs bas)] <br>
+14. Passer le CPU en mode “normal”</p>
+
+<h2 id="remarques">Remarques</h2>
+
+<p>Depuis le moment où j'ai écrit cet article, l'image rasbian du raspberry a changé, et cette méthode ne fonctionne plus. <br>
+Je vous conseille de vous référer à mon <a href="https://www.noopy.fr/arduino-et-le-protocole-homeeasy/">second article</a> qui explique comment faire cette commande depuis un arduino (ce dernier étant branché à un raspberry par usb)</p>]]></content:encoded></item></channel></rss>

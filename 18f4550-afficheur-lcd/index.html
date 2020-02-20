@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>18F4550 - afficheur LCD</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="18F4550 - afficheur LCD" />
+    <meta property="og:description" content="La plupart des afficheurs LCD sont fichus de la même manière et ont le même brochage. Donc pour commencer, un fois votre afficheur trouvé (je vous conseil un afficheur deux lignes), réalisez la connectique suivante; n’oubliez pas le potentiomètre qui fait un pont entre VCC et VSS et le" />
+    <meta property="og:url" content="https://www.noopy.fr/18f4550-afficheur-lcd/" />
+    <meta property="article:published_time" content="2013-05-01T12:15:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-12T12:25:59.000Z" />
+    <meta property="article:tag" content="Microchip" />
+    <meta property="article:tag" content="Microcontrollers" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="18F4550 - afficheur LCD" />
+    <meta name="twitter:description" content="La plupart des afficheurs LCD sont fichus de la même manière et ont le même brochage. Donc pour commencer, un fois votre afficheur trouvé (je vous conseil un afficheur deux lignes), réalisez la connectique suivante; n’oubliez pas le potentiomètre qui fait un pont entre VCC et VSS et le" />
+    <meta name="twitter:url" content="https://www.noopy.fr/18f4550-afficheur-lcd/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Microchip, Microcontrollers" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "18F4550 - afficheur LCD",
+    "url": "https://www.noopy.fr/18f4550-afficheur-lcd/",
+    "datePublished": "2013-05-01T12:15:00.000Z",
+    "dateModified": "2017-03-12T12:25:59.000Z",
+    "keywords": "Microchip, Microcontrollers",
+    "description": "La plupart des afficheurs LCD sont fichus de la même manière et ont le même brochage. Donc pour commencer, un fois votre afficheur trouvé (je vous conseil un afficheur deux lignes), réalisez la connectique suivante; n’oubliez pas le potentiomètre qui fait un pont entre VCC et VSS et le",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-microchip tag-microcontrollers">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-microchip tag-microcontrollers">
+
+        <header class="post-header">
+            <h1 class="post-title">18F4550 - afficheur LCD</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2013-05-01">01 May 2013</time>  on <a href="../tag/microchip/index.html">Microchip</a>, <a href="../tag/microcontrollers/index.html">Microcontrollers</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>La plupart des afficheurs LCD sont fichus de la même manière et ont le même brochage. Donc pour commencer, un fois votre afficheur trouvé (je vous conseil un afficheur deux lignes), réalisez la connectique suivante; n’oubliez pas le potentiomètre qui fait un pont entre VCC et VSS et le curseur sur V0: ça servira à régler le contraste:</p>
+
+<p><img src="../content/images/2017/03/lcd.png" alt="" /></p>
+
+<ul>
+<li>Le connecteur1 servira à l’alimentation (faites des piquages de tension sur votre mini-lab).</li>
+<li>Le connecteur2 se branchera sur le port C (c0, c1, c2).</li>
+<li>Le connecteur3 se branchera sur le port D (d0 →d7)</li>
+</ul>
+
+<p>Je vous conseille vivement de mettre votre afficheur dans un boîtier pour éviter les câbles qui se dessoudent, les court-circuits, …</p>
+
+<p>Pour ma part, j’ai acheté mon afficheur chez Electronique-Diffusion (<a href="http://www.electronique-diffusion.fr/">http://www.electronique-diffusion.fr/</a>), et j’ai pris le moins cher (celui à 6 euros). Jetez un oeil sur la datasheet <a href="https://www.noopy.fr/content/misc/2017/03/lcd-nrb16244.pdf">lcd – nrb16244</a></p>
+
+<h2 id="description">Description</h2>
+
+<p>L’étape la plus tendue (car on avance à l’aveugle) est d’initialiser l’afficheur. On vous dit qu’il faut :</p>
+
+<p><img src="../content/images/2017/03/lcd_initialization.png" alt="" /></p>
+
+<p>Je vous rassure, c’est pratiquement vrai… mais faux. J’initialise l’afficheur de la manière suivante :</p>
+
+<pre><code>    /* Preparing outputs */
+    LCD_DATA_CNF = 0; /* configure PIC as output */
+    LCD_RS_CNF = 0;   /* configure PIC as output */
+    LCD_RW_CNF = 0;   /* configure PIC as output */
+    LCD_E_CNF = 0;    /* configure PIC as output */
+    LCD_E=0;          /* chip disabled */
+
+    /* Device initialization */
+    delay1ktcy(CRISTAL_FREQ*4); /* Wait for 16ms after poweron (here 16ms) */
+    LCD_DATA = 0x3C;
+    LCD_RS = 0;
+    LCD_RW = 0;
+
+    /* Step 1*/
+    LCD_E=1;
+    delay1ktcy(CRISTAL_FREQ); /* Wait for 4.1ms */
+    delay10tcy(3*CRISTAL_FREQ);
+    LCD_E=0;
+    delay100tcy(CRISTAL_FREQ*8);
+    LCD_E=1;
+    delay10tcy(3+CRISTAL_FREQ); /* Wait for 100µs */
+    LCD_E=0;
+    delay100tcy(CRISTAL_FREQ*8);
+    LCD_E=1;
+    delay10tcy(2*CRISTAL_FREQ); /* Wait for 42µs */
+    LCD_E=0;
+    delay100tcy(CRISTAL_FREQ*8);
+    LCD_E=0;
+    LCDPAUSE;
+
+    /* Display off */
+    //lcd_send_cmd(0x08);
+
+    /* Display clear */
+    lcd_clear();
+
+    /* Entry mode set */
+    lcd_emode(INC_CURSOR);
+
+    // Select Function Set
+    lcd_fmode(IFACE_8BIT | DUAL_LINE);
+
+    /* Display on, cursor on */
+    lcd_dmode(DISPLAY_ON | CURSOR_ON | BLINK_ON);
+
+    #ifdef ENABLE_LCD_PRINTF
+    stdout = STREAM_USER;
+    #endif
+</code></pre>
+
+<p>Ce qui n’est pas précisé dans la doc, c’est qu’il faut faire un premier blackout de 16ms avant d’activer l’afficheur. Vous remarquerez que les délais sont calculés à partir de la fréquence de fonctionnement du microcontrolleur. n’oubliez pas de régler cette valeur dans le fichier <code>lcd.h</code></p>
+
+<p>J’ai rajouté la possibilité d’utiliser la fonction standard <code>printf</code>. Pour que ce soit pris en compte, assurez-vous que la ligne suivante est présente dans <code>lcd.c</code> :</p>
+
+<pre><code>#define ENABLE_LCD_PRINTF
+</code></pre>
+
+<p>Les fonctions que vous utiliserez sont :</p>
+
+<ul>
+<li>lcd_init : initialisation de l’afficheur</li>
+<li>lcd_print : écrit une chaine de caractère</li>
+<li>lcd_setLine : précise sur quelle ligne écrire</li>
+<li>printf: à condition d’avoir compilé avec l’option ENABLE<em>LCD</em>PRINTF</li>
+</ul>
+
+<h2 id="lecodesource">Le code source</h2>
+
+<p>Comme dans l’article sur la mémoire flash, je me suis créé une librairie de fonctions simples pour faire des affichages.</p>
+
+<h3 id="lcdh">lcd.h</h3>
+
+<pre><code>#ifndef __LCD_H__
+#define __LCD_H__
+
+#define CRISTAL_FREQ    48
+
+#define LCD_DATA_CNF    TRISD
+#define LCD_DATA        LATD
+
+#define LCD_RS_CNF      TRISCbits.TRISC2
+#define LCD_RS          LATCbits.LATC2
+
+#define LCD_RW_CNF      TRISCbits.TRISC1
+#define LCD_RW          LATCbits.LATC1
+
+#define LCD_E_CNF       TRISCbits.TRISC0
+#define LCD_E           LATCbits.LATC0
+
+//Entry mode variables
+#define INC_CURSOR 0x02
+#define DEC_CURSOR 0x00
+#define SHIFT_ON 0x01
+
+//Display control variables
+#define DISPLAY_ON 0x04
+#define DISPLAY_OFF 0x00
+#define CURSOR_ON 0x02
+#define BLINK_ON 0x01
+
+//Cursor move variables
+#define SHIFT_DISP 0x08
+#define SHIFT_RIGHT 0x04
+#define SHIFT_LEFT 0x00
+
+//Function set variables
+#define IFACE_4BIT 0x00
+#define IFACE_8BIT 0x10
+#define DUAL_LINE 0x08
+#define DOTS_5X11 0x04
+
+//DDRAM locations
+#define FIRST_LINE 0x00
+#define SECOND_LINE 0x40
+
+void lcd_init();  
+void lcd_print(char* st);  
+void lcd_pushLetter(unsigned char l);  
+void lcd_setLine(unsigned char nb);  
+unsigned char lcd_busy();  
+void lcd_clear();  
+void lcd_home();  
+void lcd_send_cmd(unsigned char cmd);  
+void lcd_send_data(unsigned char dataval);  
+void lcd_ddram(unsigned char address);  
+void lcd_dmode(unsigned char options);  
+void lcd_cmode(unsigned char options);  
+void lcd_emode(unsigned char options);  
+void lcd_fmode(unsigned char options);
+
+#endif
+</code></pre>
+
+<h3 id="lcdc">lcd.c</h3>
+
+<pre><code>#include &lt;pic18fregs.h&gt;
+#include &lt;delay.h&gt;
+#include "lcd.h"
+
+#define LCDPAUSE delay100tcy(CRISTAL_FREQ*8);
+
+void lcd_init() {  
+    /* Preparing outputs */
+    LCD_DATA_CNF = 0;
+    LCD_RS_CNF = 0;
+    LCD_RW_CNF = 0;
+    LCD_E_CNF = 0;
+    LCD_E=0;
+
+    /* Device initialization */
+    delay1ktcy(CRISTAL_FREQ*4); /* Wait for 16ms after poweron (here 16ms) */
+    LCD_DATA = 0x3C;
+    LCD_RS = 0;
+    LCD_RW = 0;
+
+    /* Step 1*/
+    LCD_E=1;
+    delay1ktcy(CRISTAL_FREQ); /* Wait for 4.1ms */
+    delay10tcy(3*CRISTAL_FREQ);
+    LCD_E=0;
+    LCDPAUSE;
+    LCD_E=1;
+    delay10tcy(3+CRISTAL_FREQ); /* Wait for 100µs */
+    LCD_E=0;
+    LCDPAUSE;
+    LCD_E=1;
+    delay10tcy(2*CRISTAL_FREQ); /* Wait for 42µs */
+    LCD_E=0;
+    LCDPAUSE;
+
+    /* Display clear */
+    lcd_clear();
+
+    /* Entry mode set */
+    lcd_emode(INC_CURSOR);
+
+    // Select Function Set
+    lcd_fmode(IFACE_8BIT | DUAL_LINE);
+
+    /* Display on, cursor on */
+    lcd_dmode(DISPLAY_ON | CURSOR_ON | BLINK_ON);
+
+    #ifdef ENABLE_LCD_PRINTF
+    stdout = STREAM_USER;
+    #endif
+}
+
+#ifdef ENABLE_LCD_PRINTF
+PUTCHAR(C)  
+{
+    lcd_send_data((unsigned char)C);
+}
+#endif
+
+void lcd_print(char* st) {  
+    unsigned char i;
+    for(i=0;(st[i]!=0) &amp;&amp; (i&lt;16);i++)
+        lcd_send_data((unsigned char)st[i]);
+}
+
+void lcd_pushLetter(unsigned char l) {  
+    lcd_send_data(l);
+}
+
+void lcd_setLine(unsigned char nb) {  
+    unsigned char i;
+    lcd_ddram(SECOND_LINE*nb);
+    for(i=0;i&lt;16;i++) lcd_send_data(' ');
+    lcd_ddram(SECOND_LINE*nb);
+}
+
+void lcd_clear()  
+{
+    lcd_send_cmd(0x01);
+}
+
+void lcd_home()  
+{
+    lcd_send_cmd(0x02);
+}
+
+void lcd_ddram(unsigned char address)  
+{
+    lcd_send_cmd((address &amp; 0x7F) | 0x80);
+}
+
+/**
+ * set_emode(options) - Set entry mode
+ *
+ * Options:
+ *
+ *  INC_CURSOR - Incremnt cursor after character written
+ *  DEC_CURSOR - Decrement cursor after character written
+ *  SHIFT_ON - Switch Cursor shifting on
+ */
+void lcd_emode(unsigned char options)  
+{
+    lcd_send_cmd((options &amp; 0x03) | 0x04);
+}
+
+/**
+ * set_dmode(options) - Configure display mode
+ *
+ * Options:
+ *
+ *  DISPLAY_ON - Turn Display on
+ *  DISPLAY_OFF - Turn Display off
+ *  CURSOR_ON  - Turn Cursor on
+ *  BLINK_ON - Blink Cursor
+ */
+void lcd_dmode(unsigned char options)  
+{
+    lcd_send_cmd((options &amp; 0x07) | 0x08);
+}
+
+/**
+ * set_cmode(options) - Configure cursor mode
+ *
+ * Options:
+ *
+ *  SHIFT_DISP - Shift Display
+ *  SHIFT_RIGHT - Move cursor right
+ *  SHIFT_LEFT - Move cursor left
+ */
+void lcd_cmode(unsigned char options)  
+{
+    lcd_send_cmd((options &amp; 0x03) | 0x04);
+}
+
+/**
+ * set_fmode(options) - Configure function set
+ *
+ * Options:
+ *
+ *  4BIT_IFACE - 4-bit interface
+ *  8BIT_IFACE - 8-bit interface
+ *  1_16_DUTY - 1/16 duty
+ *  5X10_DOTS - 5x10 dot characters
+ */
+void lcd_fmode(unsigned char options)  
+{
+    lcd_send_cmd((options &amp; 0x1F) | 0x20);
+}
+
+void lcd_send_cmd(unsigned char cmd)  
+{
+    while (lcd_busy());
+
+    LCD_RS = 0;
+    LCD_RW = 0;
+    LCD_DATA_CNF = 0;
+
+    LCD_DATA=cmd;
+
+    LCD_E=1;
+    LCDPAUSE;
+    LCD_E=0;
+    LCD_DATA=0;
+}
+
+void lcd_send_data(unsigned char dataval)  
+{
+    while (lcd_busy());
+
+    LCD_RW = 0;
+    LCD_RS = 1;
+    LCD_DATA = dataval;
+    LCD_E = 1;
+    LCDPAUSE;
+    LCD_E = 0;
+    LCD_DATA=0;
+}
+
+unsigned char lcd_busy()  
+{
+    unsigned char loop=0;
+    unsigned char dataval;
+
+    LCD_DATA_CNF = 0xFF;
+    LCD_RW = 1;
+    LCD_RS = 0;
+    LCD_E = 1;
+
+    LCDPAUSE;
+
+    dataval = LCD_DATA;
+    LCD_E = 0;
+
+    LCD_DATA_CNF = 0x00;
+
+    if (dataval &amp; 0x80)
+        return 1;
+    return 0;
+}
+</code></pre>
+
+<h3 id="configh">config.h</h3>
+
+<pre><code>#include &lt;pic18fregs.h&gt;
+
+// Set the __CONFIG words:
+__code      __at (__CONFIG1L) _conf0   = _PLLDIV_DIVIDE_BY_5__20MHZ_INPUT__1L  &amp; _CPUDIV__OSC1_OSC2_SRC___1__96MHZ_PLL_SRC___2__1L &amp; _USBPLL_CLOCK_SRC_FROM_96MHZ_PLL_2_1L;  
+__code      __at (__CONFIG1H) _conf1   = _OSC_HS__HS_PLL__USB_HS_1H;  
+__code      __at (__CONFIG2L) _conf2   = _VREGEN_ON_2L;  
+__code      __at (__CONFIG2H) _conf3   = _WDT_DISABLED_CONTROLLED_2H;  
+__code      __at (__CONFIG3H) _conf4   = _PBADEN_PORTB_4_0__CONFIGURED_AS_DIGITAL_I_O_ON_RESET_3H;  
+__code      __at (__CONFIG4L) _conf5   = _ENHCPU_OFF_4L &amp; _LVP_OFF_4L ;  
+__code      __at (__CONFIG5L) _conf6   = _CP_0_OFF_5L ;  
+</code></pre>
+
+<h3 id="mainc">main.c</h3>
+
+<pre><code>#include &lt;pic18f4550.h&gt;
+#include "config.h"
+#include "lcd.h"
+#include &lt;stdio.h&gt;
+
+/*
+Designed for a 20MHz cristal
+
+*/
+
+void main() {  
+    lcd_init();
+    //lcd_print("Hello world");
+    printf("Hello world");
+    while (1);
+}
+</code></pre>
+
+<h2 id="tlchargement">Téléchargement</h2>
+
+<p>Le projet est disponible ici: <a href="https://www.noopy.fr/content/misc/2017/03/lcd.tar.gz">lcd.tar.gz</a></p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=18F4550%20-%20afficheur%20LCD&amp;url=https://www.noopy.fr/18f4550-afficheur-lcd/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/18f4550-afficheur-lcd/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/18f4550-afficheur-lcd/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/encore-un-vol/">
+        <section class="post">
+            <h2>Encore un vol</h2>
+            <p>&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/18f4550-memoire-flash/">
+        <section class="post">
+            <h2>18F4550 - mémoire flash</h2>
+            <p>Le microcontrolleur dispose d’une mémoire flash. C’est d’ailleurs dans cette mémoire qu’est stocké votre programme.&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

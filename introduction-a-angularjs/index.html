@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Introduction à AngularJs</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Introduction à AngularJs" />
+    <meta property="og:description" content="On parle depuis quelques années de web applications et plus particulièrement de single page applications. Les single page applications sont des applications qui s&#x27;exécutent depuis une unique page. Pour que ça fonctionne, du code javascript est exécuté sur cette page. Concrêtement, ce programme javascript va manipuler le DOM. Comme vous" />
+    <meta property="og:url" content="https://www.noopy.fr/introduction-a-angularjs/" />
+    <meta property="article:published_time" content="2017-03-26T19:40:59.000Z" />
+    <meta property="article:modified_time" content="2017-03-27T06:26:48.000Z" />
+    <meta property="article:tag" content="AngularJs" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Introduction à AngularJs" />
+    <meta name="twitter:description" content="On parle depuis quelques années de web applications et plus particulièrement de single page applications. Les single page applications sont des applications qui s&#x27;exécutent depuis une unique page. Pour que ça fonctionne, du code javascript est exécuté sur cette page. Concrêtement, ce programme javascript va manipuler le DOM. Comme vous" />
+    <meta name="twitter:url" content="https://www.noopy.fr/introduction-a-angularjs/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="AngularJs" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "Introduction à AngularJs",
+    "url": "https://www.noopy.fr/introduction-a-angularjs/",
+    "datePublished": "2017-03-26T19:40:59.000Z",
+    "dateModified": "2017-03-27T06:26:48.000Z",
+    "keywords": "AngularJs",
+    "description": "On parle depuis quelques années de web applications et plus particulièrement de single page applications. Les single page applications sont des applications qui s&#x27;exécutent depuis une unique page. Pour que ça fonctionne, du code javascript est exécuté sur cette page. Concrêtement, ce programme javascript va manipuler le DOM. Comme vous",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-angularjs">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-angularjs">
+
+        <header class="post-header">
+            <h1 class="post-title">Introduction à AngularJs</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-03-26">26 March 2017</time>  on <a href="../tag/angularjs/index.html">AngularJs</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>On parle depuis quelques années de <em>web applications</em> et plus particulièrement de <em>single page applications</em>. Les <em>single page applications</em> sont des applications qui s'exécutent depuis une unique page. Pour que ça fonctionne, du code javascript est exécuté sur cette page.</p>
+
+<p>Concrêtement, ce programme javascript va manipuler le <em>DOM</em>. Comme vous le savez, les pages web sont écrites en HTML; c'est un langage par balise qui défini une structure, aussi appelé <em>l'arbre DOM</em></p>
+
+<p>Pour la suite, il vaut mieux que vous ayez des notions d'HTML et de javascript.</p>
+
+<h2 id="jquerylaprhistoire">JQuery, la préhistoire</h2>
+
+<p>Il y a fort longtemps, le principal framework utilisé sur les pages web était le <a href="https://jquery.com/">JQuery</a>. C'était fort pratique mais sans rigueur, le code devenait rapidement un sacré sac de noeuds. Le JQuery permet de manipuler directement les éléments du DOM. Un petit exemple vaut mieux que de longs discours.</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec JQuery&lt;/title&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.2.1.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hey !&lt;/h1&gt;
+    &lt;span&gt;Cliquez-moi&lt;/span&gt;
+    &lt;script&gt;
+        $("span").on("click", function () {
+            $("h1").html("Yeah!");
+        });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<p>Ouvrez ce ficher dans votre navigateur internet (ctrl+o), ou allez directement à la page de test (<a href="https://jsfiddle.net/Le35xgvu/">https://jsfiddle.net/Le35xgvu/</a>)</p>
+
+<h3 id="comportement">Comportement</h3>
+
+<p>Quand on clique sur <strong>Cliquez-moi</strong>, le titre change.</p>
+
+<h3 id="petiteexplication">Petite explication:</h3>
+
+<p>La première balise script permet de charger JQuery. La seconde balise est notre programme. Ce dernier intercepte un clique sur "Cliquez-moi" et transforme le titre en "Yeah!". En détail, on sélectionne la balise <code>&lt;span&gt;&lt;/span&gt;</code>, on intercepte tout clique dessus pour exécuter une fonction dite <em>anonyme</em>. Dans cette dernière, on sélectionne la balise <code>&lt;h1&gt;&lt;/h1&gt;</code> et on change le contenu par le texte <code>Yeah!</code></p>
+
+<h2 id="angularjs">AngularJs</h2>
+
+<h3 id="leprogrammededpart">Le programme de départ</h3>
+
+<p>Angular JS est un autre framework avec une autre approche : on ne trafique plus le DOM; on laisse AngularJs s'en occuper. Nous on ne fait que décrire le comportement voulu. Si l'on reprends l'exemple précédent, lors du clique, on ne va pas sélectionner la balise <code>&lt;h1&gt;&lt;/h1&gt;</code> pour y modifier le contenu. On va <em>variabiliser</em> le contenu de la balise <code>&lt;h1&gt;&lt;/h1&gt;</code>. Ensuite, au clique, on modifie la variable. Et hop, l'exemple :</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec Angularjs&lt;/title&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body data-ng-app data-ng-init="titre='Hey'"&gt;
+    &lt;h1&gt;{{titre}}&lt;/h1&gt;
+    &lt;span data-ng-click="titre='Yeah!'"&gt;Cliquez-moi&lt;/span&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<p><a href="https://jsfiddle.net/pdjs24d9/">https://jsfiddle.net/pdjs24d9/</a></p>
+
+<p>Vous avez vu, la balise <code>&lt;body&gt;&lt;/body&gt;</code> s'est vu décorer de deux attributs:</p>
+
+<ul>
+<li>Le premier, <code>data-ng-app</code>indique à angularjs, que notre application se trouve dans cette balise</li>
+<li>Le second, <code>data-ng-init="titre='Hey'"</code>permet d'initialiser une variable <code>titre</code> avec la valeur <em>Hey</em></li>
+</ul>
+
+<p>Vous remarquez ensuite, que la variable <em>titre</em> est entre moustaches <code>{{titre}}</code>. Cela indique à AngularJs d'afficher le contenu de cette variable. C'est pratique pour commencer, mais rapidement on choisira une autre écriture <code>&lt;h1 data-ng-bind="titre"&gt;&lt;/h1&gt;</code> Car le principal inconvénient de cette écriture, est que le temps que l'application se charge, les moustaches sont affichées à l'écran.</p>
+
+<p>Et enfin, le dernier point, l'attribut <code>data-ng-click="titre='Yeah!'"</code>. C'est assez explicite.</p>
+
+<h3 id="onpasselapremirevitesse">On passe la première vitesse ?</h3>
+
+<p>Vous allez me dire: "C'est bien gentil, mais faire une application web qui fait juste ça, c'est pas persuasif!" <br />
+Et je vous réponds: "C'est pas faux"</p>
+
+<p>Nous allons refaire notre exemple du clique qui modifie le titre en plus propre.</p>
+
+<p>Avant tout, on va commencer par se préparer une structure de fichier; parce qu'avant tout, faut être un minimum rigoureux, et être propre. Commencer un projet de patachon vous mènera vers le mur. </p>
+
+<pre><code>app  
+ |--app.js
+ |--app.controller.js
+index.html  
+</code></pre>
+
+<p>Avec le premier fichier, <code>app.js</code>, nous allons introduire la notion de modules. Tout est organisé en modules. Chaque module peux avoir des dépendances vers d'autres modules. Généralement, on ne déclare qu'un module. Editez le fichier <code>app/app.js</code> et copiez le code suivant:</p>
+
+<pre><code class="language-javascript">/* app.js */
+
+// Déclaration de notre module
+angular.module("MyApp", []);  
+</code></pre>
+
+<p>Dans le second fichier, nous allons déclarer un contrôleur (à l'intérieur de notre module). Le contrôleur est la première entité AngularJs. Il y en a d'autres, on le verra plus tard. Dans ce contrôleur, nous allons décrire le comportement de notre page. Quelques règles que je me suis fixé, et que je vous conseille de suivre :</p>
+
+<ul>
+<li>Un fichier par contrôleur</li>
+<li>Un seul contrôleur par fichier</li>
+<li>Le nom d'un contrôleur commence toujours par une majuscule et se termine toujours par <code>Ctrl</code></li>
+<li>le nom de fichier d'un contrôleur se termine toujours par <code>.controller.js</code></li>
+</ul>
+
+<pre><code class="language-javascript">/* app.controller.js */
+
+angular.module("MyApp").controller("MainCtrl", function ($scope) {  
+    "use strict";
+
+    $scope.title = "Hey";
+
+    $scope.click = function() {
+        $scope.title = "Yeah!"
+    };
+});
+</code></pre>
+
+<p>Tient ! c'est quoi cette variable <code>$scope</code> ? C'est une variable lié au dom, dans toute la partie couverte par ce contrôleur. Elle est injectée par AngularJs dans notre contrôleur. Lorsque l'on passe <code>$scope</code> en paramètre de notre contrôleur, AngularJs l'injecte. C'est ce qu'on appelle l'auto-injection. Ce qu'il faut savoir, c'est que, dans notre fichier HTML, toutes les variables, fonctions auquelles nous faisons référence font partie du scope.</p>
+
+<p>Et maintenant, passons à notre fichier html</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec Angularjs&lt;/title&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.controller.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body data-ng-app="MyApp" data-ng-controller="MainCtrl"&gt;
+    &lt;h1 data-ng-bind="title"&gt;&lt;/h1&gt;
+    &lt;span data-ng-click="click()"&gt;Cliquez-moi&lt;/span&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<p><a href="https://jsfiddle.net/qbcm3rwu/">https://jsfiddle.net/qbcm3rwu/</a></p>
+
+<p>Remarquez, que l'attribut <code>data-ng-app</code>fait référence à notre module. On déclare aussi notre contrôleur avec <code>data-ng-controller="MainCtrl"</code></p>
+
+<p>Comme on le disait juste avant, la variable <code>title</code> et la fonction <code>click()</code> sont dans le scope; on peut donc les utiliser directement dans notre HTML.</p>
+
+<h3 id="lescope">Le scope</h3>
+
+<p>C'est une notion très importante dans le framework AngularJs. Tout ce que l'on veut référencer dans le fichier HTML doit être dans le scope. Mais sachez qu'il n'y a pas toujours qu'un seul scope. Il y en a plein. Pour commencer, à chaque contrôleur, on retrouve un scope. Les scopes sont même hiérarchisés. un scope peut avoir des enfants et des parents. Et le plus important:</p>
+
+<p><strong>Lors de la création d'un scope enfant, le scope parent est cloné</strong>. En d'autres terme, lorsqu'AngularJs crée un scope enfant, il le fait en clonant le scope parent.</p>
+
+<p>Pour illustrer cette notion de scope, nous allons prendre un autre exemple et introduire une nouvelle notion : la <code>directive</code>. une directive est une entité AngularJs qui décrit un comportement lorsqu'un attribut (ou une balise) est ajouté dans l'HTML. Nous allons voir la directive <code>data-ng-repeat</code></p>
+
+<p>Modifiez le contrôleur pour y insérer un tableau de valeurs</p>
+
+<pre><code class="language-javascript">/* app.controller.js */
+
+angular.module("MyApp").controller("MainCtrl", function ($scope) {  
+    "use strict";
+
+    $scope.table = [
+        "trucs",
+        "bidules"
+    ];
+
+    $scope.title = "Hey";
+
+    $scope.click = function() {
+        $scope.title = "Yeah!"
+    };
+});
+</code></pre>
+
+<p>et le fichier HTML</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec Angularjs&lt;/title&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.controller.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body data-ng-app="MyApp" data-ng-controller="MainCtrl"&gt;
+    &lt;h1 data-ng-bind="title"&gt;&lt;/h1&gt;
+    &lt;span data-ng-click="click()"&gt;Cliquez-moi&lt;/span&gt;
+    &lt;ul&gt;
+        &lt;li data-ng-repeat="element in table" data-ng-bind="element"&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<p><a href="https://jsfiddle.net/zr29zck4/1/">https://jsfiddle.net/zr29zck4/1/</a></p>
+
+<p>Magique ! Nous avvons affiché une liste contenant:</p>
+
+<ul>
+<li>trucs</li>
+<li>bidules</li>
+</ul>
+
+<p>Comment ça marche ? <code>data-ng-repeat</code> va créer autant de balise <code>&lt;li&gt;&lt;/li&gt;</code> qu'il n'y a d'éléments dans notre tableau. Pour chacune de ces balises <code>&lt;li&gt;&lt;/li&gt;</code>, AngularJs va créer un scope enfant en y injectant l'élément du tableau.</p>
+
+<h3 id="sapristicanemarchepas">Sapristi ! Ca ne marche pas !</h3>
+
+<p>Ben oui, va falloir débugger quand ça ne marche pas. Pour commencer, je vous conseille fortement d'utiliser, comme navigateur Chrome (ou Chromium).</p>
+
+<p>Ensuite, vous devez installer une extension appelée Battarang (<a href="https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk">https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk</a>)</p>
+
+<p>Vous y êtes ? rechargez votre page et ouvrez la console développeur (F12). Faites un clique droit sur <strong>Hey</strong> et faites <em>Inspecter</em>. Vous voyez sur quel element HTML vous êtes. allez dans l'onglet <em>console</em> et tapez <code>$scope</code> puis retour à la ligne. Yeah ! vous pouvez afficher le contenu de votre scope. Vous remarquez que vous trouvez, dans le scope, <code>title</code>, <code>click()</code> et <code>table</code></p>
+
+<p>C'est de cette manière que vous débuggerez la plupart de vos applications.</p>
+
+<p>Maintenant, faites un clique droit sur <strong>trucs</strong>, puis, dans la console, tapez <code>$scope.element</code>; la valeur de element pour cette ligne est affiché; vous êtes dans le scope de la première ligne du <code>data-ng-repeat</code></p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Introduction%20%C3%A0%20AngularJs&amp;url=https://www.noopy.fr/introduction-a-angularjs/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/introduction-a-angularjs/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/introduction-a-angularjs/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/angularjs-et-les-filtres/">
+        <section class="post">
+            <h2>AngularJs et les filtres</h2>
+            <p>C'est une autre entité d'AngularJs : Les filtres filter. Il vont servir à modifier le rendu d'une variable dans votre&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/un-programmateur-chinois/">
+        <section class="post">
+            <h2>Un programmateur Chinois</h2>
+            <p>Je viens de faire l’acquisition d’un programmateur pour ATMEL sur le célèbre site https://fr.aliexpress.com/&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

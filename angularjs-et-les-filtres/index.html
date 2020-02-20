@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>AngularJs et les filtres</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AngularJs et les filtres" />
+    <meta property="og:description" content="C&#x27;est une autre entité d&#x27;AngularJs : Les filtres filter. Il vont servir à modifier le rendu d&#x27;une variable dans votre HTML.  Utilisation des filtres Le cas le plus pertinent est l&#x27;affichage d&#x27;une date Prenons l&#x27;exemple suivant: &amp;lt;!DOCTYPE html&amp;gt;   &amp;lt;html&amp;gt;     &amp;lt;head&amp;gt;     &amp;lt;meta charset&#x3D;&quot;utf-8&quot;&amp;gt;" />
+    <meta property="og:url" content="https://www.noopy.fr/angularjs-et-les-filtres/" />
+    <meta property="article:published_time" content="2017-03-27T06:41:03.000Z" />
+    <meta property="article:modified_time" content="2017-03-27T06:41:32.000Z" />
+    <meta property="article:tag" content="AngularJs" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="AngularJs et les filtres" />
+    <meta name="twitter:description" content="C&#x27;est une autre entité d&#x27;AngularJs : Les filtres filter. Il vont servir à modifier le rendu d&#x27;une variable dans votre HTML.  Utilisation des filtres Le cas le plus pertinent est l&#x27;affichage d&#x27;une date Prenons l&#x27;exemple suivant: &amp;lt;!DOCTYPE html&amp;gt;   &amp;lt;html&amp;gt;     &amp;lt;head&amp;gt;     &amp;lt;meta charset&#x3D;&quot;utf-8&quot;&amp;gt;" />
+    <meta name="twitter:url" content="https://www.noopy.fr/angularjs-et-les-filtres/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="AngularJs" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "AngularJs et les filtres",
+    "url": "https://www.noopy.fr/angularjs-et-les-filtres/",
+    "datePublished": "2017-03-27T06:41:03.000Z",
+    "dateModified": "2017-03-27T06:41:32.000Z",
+    "keywords": "AngularJs",
+    "description": "C&#x27;est une autre entité d&#x27;AngularJs : Les filtres filter. Il vont servir à modifier le rendu d&#x27;une variable dans votre HTML.  Utilisation des filtres Le cas le plus pertinent est l&#x27;affichage d&#x27;une date Prenons l&#x27;exemple suivant: &amp;lt;!DOCTYPE html&amp;gt;   &amp;lt;html&amp;gt;     &amp;lt;head&amp;gt;     &amp;lt;meta charset&#x3D;&quot;utf-8&quot;&amp;gt;",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-angularjs">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-angularjs">
+
+        <header class="post-header">
+            <h1 class="post-title">AngularJs et les filtres</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-03-27">27 March 2017</time>  on <a href="../tag/angularjs/index.html">AngularJs</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>C'est une autre entité d'AngularJs : Les filtres <code>filter</code>. Il vont servir à modifier le rendu d'une variable dans votre HTML. </p>
+
+<h2 id="utilisationdesfiltres">Utilisation des filtres</h2>
+
+<p>Le cas le plus pertinent est l'affichage d'une date Prenons l'exemple suivant:</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec JQuery&lt;/title&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.controller.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body data-ng-app="MyApp" data-ng-controller="MainCtrl"&gt;
+    &lt;label&gt;Nous sommes le&lt;/label&gt;
+    &lt;span data-ng-bind="maintenant"&gt;&lt;/span&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<pre><code class="language-javascript">/* app/app.js */
+
+// Déclaration de notre module
+angular.module("MyApp", []);  
+</code></pre>
+
+<pre><code class="language-javascript">/* app/app.controller.js */
+
+angular.module("MyApp").controller("MainCtrl", function ($scope) {  
+    "use strict";
+
+    $scope.maintenant = new Date();
+});
+</code></pre>
+
+<p><a href="https://jsfiddle.net/rt7wpo79/">https://jsfiddle.net/rt7wpo79/</a></p>
+
+<p>Vous remarquez que la date n'est pas super lisible comme ça:</p>
+
+<blockquote>
+  <p><strong>Nous sommes le</strong> Mon Mar 27 2017 08:15:47 GMT+0200 (CEST)</p>
+</blockquote>
+
+<p>Le filtre prends alors tout son sens. Nous allons appliquer un filter de date sur la variable <code>maintenant</code> de cette façon : <code>maintenant | date:'dd/MM/yyyy'</code></p>
+
+<p>On obtient:  </p>
+
+<blockquote>
+  <p><strong>Nous sommes le</strong> 27/03/2017</p>
+</blockquote>
+
+<p>Vous trouverez toutes les utilisation de ce filtre sur <a href="https://docs.angularjs.org/api/ng/filter/date">https://docs.angularjs.org/api/ng/filter/date</a></p>
+
+<h2 id="creationdunfiltre">Creation d'un filtre</h2>
+
+<p>Vous avez besoin de vous créer un filtre ? C'est parti ! créez-vous un fichier <code>app/app.filter.js</code> (comme pour les contrôleur, on soigne la syntaxe du nommage du fichier de filtre)</p>
+
+<pre><code class="language-javascript">/* app/app.filter.js */
+
+// filter qui juxtapose
+angular.module("MyApp").filter("bob", function() {  
+    return function (input, opt1, opt2) {
+        return [opt1, input, opt2].join(" ");
+    };
+});
+</code></pre>
+
+<p>et modifiez votre HTML</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+&lt;html&gt;  
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Un exemple avec JQuery&lt;/title&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.controller.js"&gt;&lt;/script&gt;
+    &lt;script src="app/app.filter.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body data-ng-app="MyApp" data-ng-controller="MainCtrl"&gt;
+    &lt;div&gt;
+       &lt;span data-ng-bind="'tout' | bob:'coucou':'le monde'"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
+
+<p><a href="https://jsfiddle.net/kkhcfwsy/1/">https://jsfiddle.net/kkhcfwsy/1/</a></p>
+
+<blockquote>
+  <p>coucou tout le monde</p>
+</blockquote>
+
+<p>Le filtre a bien été appliqué sur la chaine <code>'tout'</code> en préfixant avec le premier paramètre et suffixant avec le second paramètre. Vous remarquez que l'on utilise <code>|</code> pour introduire un filtre et que l'on utilise <code>:</code> pour introduire un paramètre de filtre.</p>
+
+<p>Remarquez aussi que l'on peut chainer les filtres. Essayez : <code>&lt;span data-ng-bind="maintenant |date:'dd/MM/yyyy' | bob:'nous sommes le':'et il fait beau'"&gt;&lt;/span&gt;</code></p>
+
+<h2 id="lestrucspasfaire">Les trucs à pas faire</h2>
+
+<p>Un filtre n'est pas fait pour décorer des éléments avec de l'HTML. Par example un filtre qui ajoute <code>&lt;strong&gt;&lt;/strong&gt;</code> autour d'un texte. Pour faire ce genre de chose, il y a une autre entité appelée <code>directive</code> ou encore une entité appelée <code>component</code></p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=AngularJs%20et%20les%20filtres&amp;url=https://www.noopy.fr/angularjs-et-les-filtres/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/angularjs-et-les-filtres/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/angularjs-et-les-filtres/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/pilotez-vos-radiateurs-electriques/">
+        <section class="post">
+            <h2>Pilotez vos radiateurs électriques</h2>
+            <p>Je suis en train d'automatiser l'allumage et lextinction de mes radiateurs électriques. Tous les radiateur électriques récents ont ce&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/introduction-a-angularjs/">
+        <section class="post">
+            <h2>Introduction à AngularJs</h2>
+            <p>On parle depuis quelques années de web applications et plus particulièrement de single page applications. Les single page applications&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>

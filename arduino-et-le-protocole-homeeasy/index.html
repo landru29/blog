@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Arduino et le protocole HomeEasy</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/style.css%3Fv=fd400e0579.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css%3Fv=fd400e0579.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js%3Fv=fd400e0579"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/fr.js"></script>  
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1761181995816567",
+    enable_page_level_ads: true
+  });
+</script>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Trucs et Bidules" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Arduino et le protocole HomeEasy" />
+    <meta property="og:description" content="Après l’implémentation (plus ou moins réussie) du fameux protocole de commande à distance de la domotique sur Raspberry, je vous propose la même sur Arduino. Pour résumer, ce tuto vous explique comment commander des interrupteurs à distance. J’utilise les interrupteurs de la marque Chacon que l’on trouve" />
+    <meta property="og:url" content="https://www.noopy.fr/arduino-et-le-protocole-homeeasy/" />
+    <meta property="article:published_time" content="2016-03-22T10:37:00.000Z" />
+    <meta property="article:modified_time" content="2017-03-12T11:58:46.000Z" />
+    <meta property="article:tag" content="Arduino" />
+    <meta property="article:tag" content="Microcontrollers" />
+    
+    <meta property="article:author" content="https://www.facebook.com/cyrille.meichel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Arduino et le protocole HomeEasy" />
+    <meta name="twitter:description" content="Après l’implémentation (plus ou moins réussie) du fameux protocole de commande à distance de la domotique sur Raspberry, je vous propose la même sur Arduino. Pour résumer, ce tuto vous explique comment commander des interrupteurs à distance. J’utilise les interrupteurs de la marque Chacon que l’on trouve" />
+    <meta name="twitter:url" content="https://www.noopy.fr/arduino-et-le-protocole-homeeasy/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Cyrille Meichel" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Arduino, Microcontrollers" />
+    <meta name="twitter:creator" content="@cyrillemeichel" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Trucs et Bidules",
+        "logo": "https://www.noopy.fr/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Cyrille Meichel",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.noopy.fr/content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://www.noopy.fr/author/landru/",
+        "sameAs": [
+            "http://www.noopy.fr",
+            "https://www.facebook.com/cyrille.meichel",
+            "https://twitter.com/cyrillemeichel"
+        ]
+    },
+    "headline": "Arduino et le protocole HomeEasy",
+    "url": "https://www.noopy.fr/arduino-et-le-protocole-homeeasy/",
+    "datePublished": "2016-03-22T10:37:00.000Z",
+    "dateModified": "2017-03-12T11:58:46.000Z",
+    "keywords": "Arduino, Microcontrollers",
+    "description": "Après l’implémentation (plus ou moins réussie) du fameux protocole de commande à distance de la domotique sur Raspberry, je vous propose la même sur Arduino. Pour résumer, ce tuto vous explique comment commander des interrupteurs à distance. J’utilise les interrupteurs de la marque Chacon que l’on trouve",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.noopy.fr"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../shared/ghost-url.min.js%3Fv=fd400e0579"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "d4242cff8aba"
+});
+</script>
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="Trucs et Bidules" href="../rss/index.html" />
+</head>
+<body class="post-template tag-arduino tag-microcontrollers">
+
+    <nav class="main">
+        <header class="main">
+            <h1 class="main-title">
+                <a class="title" href="../arduino/le-protocole-homeeasy/index.html">              
+                    <span>Trucs et Bidules</span>
+                </a>
+                <small>Un joli bordel</small>
+            </h1>
+        </header>
+        <ul id="menu">
+        <li class="">
+            <a href="../arduino/le-protocole-homeeasy/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/bidules/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/biere/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/microcontrollers/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/linux/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="../tag/angularjs/index.html">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>
+
+        <!--<ul id="menu">
+        
+            <li>
+                <a href="#">Menu02
+                    <i class="fa fa-caret-right collapsed" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down expanded" aria-hidden="true"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                    <li>
+                        <a href="#">Sub-menu01</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../arduino/le-protocole-homeeasy/index.html">Trucs et Bidules</a> &copy; 2020</section>
+            <section class="poweredby">Propulsé par <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+    </nav>
+    <nav class="sub">
+        <img class="main-pic" src="../assets/img/flower.svg">
+    </nav>
+    <div class="container">
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-arduino tag-microcontrollers">
+
+        <header class="post-header">
+            <h1 class="post-title">Arduino et le protocole HomeEasy</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-03-22">22 March 2016</time>  on <a href="../tag/arduino/index.html">Arduino</a>, <a href="../tag/microcontrollers/index.html">Microcontrollers</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Après l’implémentation (plus ou moins réussie) du fameux protocole de commande à distance de la domotique sur Raspberry, je vous propose la même sur Arduino. Pour résumer, ce tuto vous explique comment commander des interrupteurs à distance. J’utilise les interrupteurs de la marque Chacon que l’on trouve à l’enseigne verte du bricolage.</p>
+
+<p>Le constat, c’est que l’implémentation par certains internautes a été douloureuse sur Raspberry. Il fallait donc proposer quelque chose de plus efficace.</p>
+
+<p>Autre difficulté: avec l’implémentation sur Raspberry, il faut être “root” pour émettre des commandes. Ça oblige à introduire une faille de sécurité sur le Rasberry pour pouvoir utiliser l’utiliser avec Jeedom (<a href="https://www.jeedom.com/site/fr/">https://www.jeedom.com/site/fr/</a>).</p>
+
+<h2 id="dtaildunsignal">Détail d’un signal</h2>
+
+<p>Pour ce qui est de l’explication du protocole, vous trouverez tout sur <a href="../commande-de-volets/index.html">L’article du Raspberry</a>. <br />
+Pour résumer, les trames font 32 bits:</p>
+
+<ul>
+<li>26 bits pour l’identification de la télécommande</li>
+<li>1 bit mode “normal” ou touche “G”</li>
+<li>1 bit “on/off”</li>
+<li>4 bits d’identification de la touche de télécommande</li>
+</ul>
+
+<p>Les bits sont encodé de la manière suivante:</p>
+
+<p><img src="../content/images/2017/03/homeeasy.png" alt="" /></p>
+
+<p>J’ai fait le tour de ce que j’ai trouvé sur les différentes implémentations sur Arduino, mais rien de fonctionnel / simple. Beaucoup d’usines à gaz !</p>
+
+<p>Je vous propose quelque chose d’ultra simple avec, en première partie, l’émission du signal.</p>
+
+<h2 id="lemontage">Le montage</h2>
+
+<p><img src="../content/images/2017/03/home-easy01.jpg" alt="" />
+<img src="../content/images/2017/03/home-easy02.jpg" alt="" /></p>
+
+<p>Relativement simple; on connecte :</p>
+
+<ul>
+<li>VCC au 5V de l’Arduino</li>
+<li>GND au GND de l’Arduino</li>
+<li>DATA à la pin 4 de l’Arduino (par exemple)</li>
+</ul>
+
+<h2 id="lecode">Le code</h2>
+
+<p>Tout est dans cette lib : HomeEasyByNoopy  ou sur Github</p>
+
+<p>Dézippez ce fichier dans le dossier “libraries” du dossier de sources de l’Arduino. Lancez, ensuite, l’IDE Arduino. Dans le menu, section “exemples”, vour trouverez les programmes suivant:</p>
+
+<h3 id="emettreunetlcommande">Emettre une télécommande</h3>
+
+<p>C’est assez simple; la librairie envoie les bits en respectant les temps au niveaux bas et niveaux hauts; on utilise des delayMicrosecond() pour ça.</p>
+
+<pre><code class="language- cpp">#include &lt;HomeEasyByNoopy.h&gt;
+
+// create a sender on pin 4 (listen on pin 0, no handler)
+HomeEasyByNoopy sender(4, 0, 0);
+
+void setup() {  
+  // the frame will be repeated  15 times (default is 10)
+  sender.setEmitFrameCount(15);
+}
+
+void loop() {  
+  // Emit the signal "ON" on controller A0A406, device A1
+  sender.emit(0x0a0a406, HE_DEVICE_A + HE_DEVICE_1, HE_ON);
+
+  // wait for 15 seconds before renewing the command
+  delay(15000);
+}
+</code></pre>
+
+<h3 id="recevoirunetlcommande">Recevoir une télécommande</h3>
+
+<p>C’est un peu plus complexe. On va brancher (logiciellement) une interruption sur la pin qui reçoit le signal du recepteur (0, par exemple). A chaque changement (niveau haut/bas), l’interruption déclenchera l’exécution d’un bout de code. Attention, toutes les pins ne se branchent pas à des interruptions; vérifiez la doc de votre arduino. Mais généralement la pin 0 fonctionne.</p>
+
+<p>En parallèle, un timer 16 bits va s’incrémenter toutes les 4µs environ (timer1, prescale à 64). On saura, ainsi calculer les temps aux niveaux hauts et bas avec un précision acceptable. Une fonction getCount() viendra lire le compteur et le remettre à 0. Pour tester :</p>
+
+<pre><code class="language- cpp">#include &lt;HomeEasyByNoopy.h&gt; 
+
+// can emit on pin 4, Listen on pin 0, no handler
+HomeEasyByNoopy sender(4, 0, 0);
+
+void setup() {  
+  Serial.begin(9600);
+}
+
+void loop() {  
+  unsigned long controller;
+  unsigned int device;
+  unsigned char onOff;
+  unsigned char global;
+
+  // Beginning to listen
+  sender.EnableRead(true);
+  delay(2000);
+  sender.EnableRead(false);
+  // Listen is done
+
+  // Decoding what we received
+  // If controller is equal to 0, nothing was heard
+  sender.getReceiveCommand(&amp;controller, &amp;device, &amp;onOff, &amp;global);
+
+  // Display the result
+  Serial.println("##################");
+  Serial.println(controller);
+  Serial.println(device);
+  Serial.println(onOff);
+  Serial.println(global);
+}
+</code></pre>
+
+<h2 id="lesexemples">Les exemples</h2>
+
+<h3 id="emit01">emit01</h3>
+
+<p>Programme simple qui émet une commande toutes les 15 secondes</p>
+
+<h3 id="emit02">emit02</h3>
+
+<p>Programme qui écoute la console série et envoie la commande reçue. Par exemple, pour envoyer:</p>
+
+<ul>
+<li>controller A0A406</li>
+<li>device C3</li>
+<li>allumer</li>
+</ul>
+
+<p>Taper : A0A406+C3</p>
+
+<p>Depuis une console linux (par exemple depuis le raspberry):</p>
+
+<p><code>echo “A0A406+C3” &gt; /dev/ttyACM0</code></p>
+
+<h3 id="receive01">receive01</h3>
+
+<p>Programme qui lance une écoute de 2 secondes et renvoie le résultat de commande sur la console série</p>
+
+<h3 id="receive02">receive02</h3>
+
+<p>Programme qui écoute en continu et envoie les commandes reçues sur la console série</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/landru/index.html" style="background-image: url(../content/images/2017/03/d4622bb6b3f34e7fdb8c42d9d8372a69.png)"><span class="hidden">Photo de Cyrille Meichel</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/landru/index.html">Cyrille Meichel</a></h4>
+
+                    <p>Lire <a href="../author/landru/index.html">d'autres billets</a> de cet auteur.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Rennes - France</span>
+                    <span class="author-link icon-link"><a href="../robots.txt.html">http://www.noopy.fr</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Partagez</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Arduino%20et%20le%20protocole%20HomeEasy&amp;url=https://www.noopy.fr/arduino-et-le-protocole-homeeasy/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.noopy.fr/arduino-et-le-protocole-homeeasy/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.noopy.fr/arduino-et-le-protocole-homeeasy/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<!--<aside class="read-next">
+    <a class="read-next-story no-cover" href="/iot-internet-of-things/">
+        <section class="post">
+            <h2>IOT (Internet Of Things)</h2>
+            <p>Dans cet article nous allons fabriquer un “objet connecté”: un thermomètre qui envoie les mesures sur internet. Et tant&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="/on-fait-sa-biere-maison/">
+        <section class="post">
+            <h2>On fait sa bière maison ?</h2>
+            <p>Depuis quelques années, je brasse ma bière. Mais il me manquait un outil simple pour créer mes recettes. Je&hellip;</p>
+        </section>
+    </a>
+</aside>-->
+
+
+    </div>
+
+    
+    
+
+
+    <!--<ul id="menu">
+        <li class="">
+            <a href="https://www.noopy.fr/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Tous les billets
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/bidules/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les bidules
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/biere/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                La bière
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/microcontrollers/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Les microcontrolleurs
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/linux/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Linux
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="">
+            <a href="https://www.noopy.fr/tag/angularjs/">
+                <i class="fa fa-caret-left menu-delimiteur" aria-hidden="true"></i>
+                Web applications
+                <i class="fa fa-caret-right menu-delimiteur" aria-hidden="true"></i>
+            </a>
+        </li>
+</ul>-->
+
+</body>
+</html>
